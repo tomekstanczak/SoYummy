@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import SharedLayout from "./pages/SharedLayout";
-import WelcomePage from "./pages/WelcomePage";
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import RegisterPage from "./pages/RegisterPage";
 import SigninPage from "./pages/SigninPage";
 import MainPage from "./pages/MainPage";

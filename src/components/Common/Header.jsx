@@ -5,3 +5,8 @@
 //   - ThemeToggler - komponent do przełączania motywu.
 
 // *W wersji mobilnej blok nawigacyjny i przełącznik motywu są otwierane za pomocą hamburger menu, które wyskakuje z góry i jest na całej wysokości urządzenia użytkownika.
+const Header = () => {
+  return <></>;
+};
+
+export default Header;

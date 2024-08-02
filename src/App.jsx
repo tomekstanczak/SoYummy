@@ -3,7 +3,7 @@ import SharedLayout from "./pages/SharedLayout";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import RegisterPage from "./pages/RegisterPage";
 import SigninPage from "./pages/SigninPage";
-import MainPage from "./pages/MainPage";
+import MainPage from "./pages/MainPage/MainPage";
 import AddRecipePage from "./pages/AddRecipePage";
 import CategoriesPage from "./pages/CategoriesPage";
 import FavoritePage from "./pages/FavoritePage";

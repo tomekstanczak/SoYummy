@@ -35,3 +35,14 @@
   margin-left: 4px;
   z-index: 3;
 }
+@media screen and (min-width: 768px) {
+  .chooseContainer {
+    width: 260px;
+    height: 100px;
+    padding: 12px;
+  }
+  .chooseDescription {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

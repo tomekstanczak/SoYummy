@@ -24,40 +24,39 @@ const Search = () => {
   };
 
   return (
-    <div className={styles.mainSearch}>
-      <div className={styles.mainDescriptionContainer}>
-        <h1 className={styles.mainTitle}>
-          <span className={styles.mainTitleSpan}>So</span>Yummy
-        </h1>
-        <p className={styles.mainDescription}>
-          &quot;What to cook?&quot; is not only a recipe app, it is, in fact,
-          your cookbook. You can add your own recipes to save them for the
-          future.
-        </p>
-      </div>
+    <div className={styles.searchPage}>
+      <div className={styles.contentContainer}>
+        <div className={styles.descriptionContainer}>
+          <h1 className={styles.title}>
+            <span className={styles.titleHighlight}>So</span>Yummy
+          </h1>
+          <p className={styles.description}>
+            &quot;What to cook?&quot; is not only a recipe app, it is, in fact,
+            your cookbook. You can add your own recipes to save them for the
+            future.
+          </p>
+        </div>
 
-      <div className={styles.mainSearchbarContainer}>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search recipes..."
-        />
-        <button className={styles.mainSearchbarBtn} onClick={handleSearch}>
-          Search
-        </button>
+        <div className={styles.searchbarContainer}>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search recipes..."
+            className={styles.searchInput}
+          />
+          <button className={styles.searchButton} onClick={handleSearch}>
+            Search
+          </button>
+        </div>
       </div>
+      <img className={styles.spinachImg} src={spinach} alt="leafs of spinach" />
       <img
-        className={styles.mainSpinachImg}
-        src={spinach}
-        alt="leafs of spinach"
-      />
-      <img
-        className={styles.mainUnsplash}
+        className={styles.unsplashImg}
         src={mainUnsplash}
         alt="plate with vegetables"
       />
-      <div className={styles.mainSquareBg}></div>
+      <div className={styles.squareBackground}></div>
     </div>
   );
 };

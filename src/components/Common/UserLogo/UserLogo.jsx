@@ -18,10 +18,7 @@ const UserLogo = () => {
 
   return (
     <div>
-      <div
-        onClick={handleUserLogoClick}
-        style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
-      >
+      <div onClick={handleUserLogoClick} className={styles.container}>
         <img src={userIcon} alt="User" className={styles.userIconStyle} />
         <span className={styles.name}>Imie</span>
       </div>

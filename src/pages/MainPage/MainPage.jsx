@@ -8,15 +8,21 @@ import ChooseYourBreakfast from "../../components/Main/ChoseYourBreakfast/Choose
 import Search from "../../components/Main/Search/Search";
 import PreviewCategories from "../../components/Main/PreviewCategories/PreviewCategories";
 
+import spinach from "../../assets/images/spinach.png";
+
 import styles from "./MainPage.module.css";
 
 const MainPage = () => {
   return (
-    <div className={styles.mainPageContainer}>
-      <ChooseYourBreakfast />
-      <Search />
-      <PreviewCategories />
-    </div>
+    <>
+      <div className={styles.mainPageContainer}>
+        <ChooseYourBreakfast />
+        <Search />
+        <PreviewCategories />
+      </div>
+      <img className={styles.spinachImg} src={spinach} alt="leafs of spinach" />
+      <div className={styles.squareBackground}></div>
+    </>
   );
 };
 

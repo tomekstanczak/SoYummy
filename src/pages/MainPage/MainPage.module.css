@@ -2,13 +2,59 @@
   max-width: 375px;
   margin: 0 auto;
 }
+.spinachImg {
+  position: absolute;
+  top: -5%;
+  right: -22rem;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.squareBackground {
+  position: absolute;
+  top: -4rem;
+  left: 72%;
+  width: 1000px;
+  height: 1080px;
+  z-index: 0;
+  background-color: #ebf3d4;
+  rotate: -55deg;
+  border-radius: 10%;
+}
 @media screen and (min-width: 768px) {
   .mainPageContainer {
     max-width: 768px;
+  }
+  .spinachImg {
+    right: -11rem;
+    top: -8rem;
+    z-index: 1;
+  }
+  .squareBackground {
+    height: 1800px;
+    top: -19rem;
+    left: 55rem;
   }
 }
 @media screen and (min-width: 1440px) {
   .mainPageContainer {
     max-width: 1440px;
+  }
+  .spinachImg {
+    right: 0;
+  }
+  .squareBackground {
+    rotate: -66deg;
+    height: 1600px;
+    width: 1200px;
+    top: -32rem;
+    left: 62rem;
+  }
+}
+@media screen and (min-width: 2140px) {
+  .squareBackground {
+    rotate: -111deg;
+    top: -46rem;
+    left: 99rem;
   }
 }

@@ -1,5 +1,4 @@
 .searchPage {
-  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,6 +29,7 @@
 }
 .searchbarContainer {
   width: 295px;
+  margin-top: 364px;
   display: flex;
   position: relative;
 }
@@ -59,23 +59,7 @@
   top: 33%;
   z-index: 2;
 }
-.spinachImg {
-  position: absolute;
-  top: -5%;
-  left: -50%;
-  overflow: hidden;
-  z-index: 1;
-}
-.squareBackground {
-  position: absolute;
-  top: -15%;
-  left: 72%;
-  width: 1000px;
-  height: 1000px;
-  z-index: 0;
-  background-color: #ebf3d4;
-  rotate: -55deg;
-}
+
 .contentContainer {
   display: flex;
   gap: 32px;
@@ -89,6 +73,7 @@
   }
   .searchPage {
     align-items: flex-start;
+    padding: 140px 32px 168px;
   }
   .title {
     font-size: 72px;
@@ -103,6 +88,7 @@
 
   .searchbarContainer {
     width: 100%;
+    margin-top: 0;
   }
   .searchButton,
   .searchInput {
@@ -110,25 +96,16 @@
     height: 59px;
     font-size: 16px;
   }
+  .searchInput {
+    padding-left: 30px;
+  }
   .searchButton {
     padding: 0 52px;
   }
   .unsplashImg {
     right: 0;
-    top: 11rem;
-  }
-  .spinachImg {
-    left: 30%;
-    top: 20%;
-    right: 0;
-    max-width: 100%;
-    height: auto;
-    overflow: hidden;
-    z-index: 1;
-  }
-  .squareBackground {
-    top: -30%;
-    left: 88%;
+    top: 6rem;
+    width: 378px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -164,15 +141,7 @@
   }
   .unsplashImg {
     width: 578px;
-    right: 0;
-    top: 11rem;
-  }
-  .spinachImg {
-    left: 30%;
-  }
-  .squareBackground {
-    top: -30%;
-    left: 88%;
-    border-radius: 20%;
+    right: 184px;
+    top: 0;
   }
 }

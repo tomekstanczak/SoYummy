@@ -21,30 +21,36 @@ const RegisterPage = () => {
           </div>
           <div>
               <form className={styles.form}>
-                  <label>
-                      Name
-                       <input
-                         type="text"
-                         name="name" />
-                       </label>
+                  <h2 className={styles.title}>Registration</h2>
+                  <div className={styles.box}>
+                      <label className={styles.label}>
+                          <input
+                              className={styles.inputs}
+                              type="text"
+                              name="name"
+                              placeholder="Name"
+                          />
+                      </label>
 
-                  <label>
-                      Email
-                        <input
-              type="email"
-              name="Email" />
-                  </label>
+                      <label className={styles.label}>
+                          <input
+                              className={styles.inputs}
+                              type="email"
+                              name="email"
+                              placeholder="Email"
+                          />
+                      </label>
 
-                  <label>
-                      Password
-            <input
-              type="password"
-              name="Password" />
-            
-                  </label>
-                  <button type="submit">
-                      Sign up
-                  </button>
+                      <label className={styles.label}>
+                          <input
+                              className={styles.inputs}
+                              type="password"
+                              name="password"
+                              placeholder="Password"
+                          />
+                      </label>
+                  </div>
+                  <button type="submit">Sign up</button>
               </form>
           </div>
           <img

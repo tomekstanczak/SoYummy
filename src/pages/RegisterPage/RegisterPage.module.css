@@ -1,25 +1,68 @@
 .container {
-   /* width: 100%;
-  height: 100vh; */
+   /* width: 375px;
+  height: 812px; */
+  position: relative;
+  width: 100%;
+  height: 100vh;
 }
 .signinImg {
   align-items: center;
-  max-width: 285px;
+  max-width: 350px;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    width: 335px;
+    height: 350px;
+    background-color: rgba(42, 44, 54, 1);
+    border-radius: 30px;
+    margin: 0 auto;
 }
-/* .rectangle {
-    padding-top: 100%;
-} */
 
-@media screen and (min-width: 768px) {
+.title {
+    color: rgba(250, 250, 250, 1);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    margin-left: 28px;
+    margin-top: 32px;
+    max-width: 144px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    max-width: 279px ;
+    margin-top: 18px;
+    margin-left: 28px;
+    gap: 12px;    background-color: rgba(42, 44, 54, 1);
+}
+
+.label {
+    border: 1px solid rgba(250, 250, 250, 1);
+    border-radius: 6px;
+}
+
+.inputs {
+    background-color: rgba(42, 44, 54, 1);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    max-width: 279px;
+    height: 45px;
+    border-radius: 6px;
+}
+
+.rectangle {
+    max-width: 375px;
+    height: 490px;
+}
+
+/* @media screen and (min-width: 768px) {
 
 }
 
 @media screen and (min-width: 1440px) {
 
-}
+} */

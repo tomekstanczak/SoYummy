@@ -2,14 +2,27 @@
 // - EditProfile - otwiera komponent UserInfoModal;
 // - LogoutBtn - komponent wylogowujący użytkownika.
 
-import { useState } from "react";
-import UserInfoModal from "../UserInfoModal";
+import { useState, useEffect } from "react";
+import UserInfoModal from "../UserInfoModal/UserInfoModal";
 import styles from "./UserLogoModal.module.css";
 import arrowRight from "../../../assets/icons/formatedIcons/arrow-right.svg";
 import edit from "../../../assets/icons/formatedIcons/edit-01.svg";
 
 const UserLogoModal = ({ onClose }) => {
   const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false);
+
+  const handleEscape = (e) => {
+    if (e.key === "Escape") {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
 
   const handleEditProfileClick = () => {
     setIsUserInfoModalOpen(true);
@@ -44,9 +57,6 @@ const UserLogoModal = ({ onClose }) => {
           >
             Logout <img src={arrowRight} />
           </button>
-          {/* <button onClick={onClose} className={styles.userLogoModalButton}>
-            X
-          </button> */}
         </div>
       </div>
     </>

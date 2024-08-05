@@ -15,10 +15,11 @@ import ShoppingListPage from "./pages/ShoppingListPage";
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<WelcomePage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="signin" element={<SigninPage />} />
+      <Route path="/" element={<WelcomePage />} />
+      <Route path="register" element={<RegisterPage />} />
+      <Route path="signin" element={<SigninPage />} />
+
+      <Route element={<SharedLayout />}>
         <Route path="main" element={<MainPage />} />
         <Route path="add-recipe" element={<AddRecipePage />} />
         <Route path="categories" element={<CategoriesPage />} />

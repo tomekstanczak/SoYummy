@@ -45,6 +45,7 @@
   padding: 16px 0 16px 16px;
   font-size: 16px;
   font-weight: 500;
+  color: #3e4462;
 }
 
 .categoryTitle {
@@ -57,6 +58,7 @@
   padding: 10px 24px;
   font-size: 14px;
   background-color: #8baa36;
+  color: #fafafa;
   border-radius: 6px;
 }
 
@@ -84,4 +86,12 @@
   .recipesContainer {
     gap: 14px;
   }
+}
+.otherCategoriesBtn:hover {
+  transition: 250ms;
+  background-color: #8baa36;
+}
+.recipeSeeAllBtn:hover {
+  transition: 250ms;
+  background-color: #22252a;
 }

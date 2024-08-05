@@ -4,7 +4,7 @@
 //     Zawiera komponent AuthForm.
 
 const RegisterPage = () => {
-  return <></>;
+  return <div></div>;
 };
 
 export default RegisterPage;

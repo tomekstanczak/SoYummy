@@ -8,7 +8,7 @@ import ChooseYourBreakfast from "../../components/Main/ChoseYourBreakfast/Choose
 import Search from "../../components/Main/Search/Search";
 import PreviewCategories from "../../components/Main/PreviewCategories/PreviewCategories";
 
-import spinach from "../../assets/images/spinach.png";
+// import spinach from "../../assets/images/spinach.png";
 
 import styles from "./MainPage.module.css";
 

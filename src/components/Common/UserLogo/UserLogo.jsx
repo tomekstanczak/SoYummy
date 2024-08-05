@@ -1,7 +1,7 @@
 // Komponent renderuje blok ze zdjęciem użytkownika oznaczonym jako zawartość lub ikoną, jeśli nie ma takiego zdjęcia, oraz nazwą użytkownika.
 // Kliknięcie tego bloku powinno wyrenderować komponent UserLogoModal.
 import { useState } from "react";
-import UserLogoModal from "../UserLogoModal";
+import UserLogoModal from "../UserLogoModal/UserLogoModal";
 import userIcon from "../../../assets/icons/formatedIcons/user.svg";
 import styles from "./UserLogo.module.css";
 

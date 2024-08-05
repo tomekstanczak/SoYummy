@@ -6,3 +6,13 @@
 // - Po kliknięciu na tło;
 // - Po naciśnięciu Escape;
 // - Po przesłaniu formularza, zaraz po otrzymaniu pomyślnej odpowiedzi.
+
+const UserInfoModal = () => {
+  return (
+    <>
+      <span>UserInfoModal</span>
+    </>
+  );
+};
+
+export default UserInfoModal;

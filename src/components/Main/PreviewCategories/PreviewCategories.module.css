@@ -69,12 +69,18 @@
 }
 
 @media (min-width: 768px) {
+  .previewCategoriesContainer {
+    margin-top: 72px;
+  }
   .recipesContainer {
     gap: 32px;
   }
 }
 
-@media (min-width: 1444px) {
+@media (min-width: 1440px) {
+  .previewCategoriesContainer {
+    margin-top: 100px;
+  }
   .recipesContainer {
     gap: 14px;
   }

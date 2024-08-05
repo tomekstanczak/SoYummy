@@ -15,6 +15,9 @@
   padding: 18px;
   border: 1px solid #8baa36;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .userLogoModalButton {
@@ -28,7 +31,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 28px;
 }
 .editIcon {
   width: 12px;
@@ -47,4 +49,18 @@
   border-top-right-radius: 40px;
   border-bottom-right-radius: 15px;
   height: 43px;
+}
+
+@media screen and (min-width: 768px) {
+  .userLogoModalContent {
+    background-color: white;
+    width: 177px;
+    height: 134px;
+    padding: 18px;
+    border: 1px solid #8baa36;
+    border-radius: 8px;
+  }
+  .userLogoModalButton {
+    width: 141px;
+  }
 }

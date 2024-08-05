@@ -1,0 +1,107 @@
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000000000;
+}
+
+.modalContent {
+  background: #fff;
+  padding: 32px 24px 32px 24px;
+  border-radius: 10px;
+  position: relative;
+  width: 330px;
+  height: 327px;
+}
+.formStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileInputLabel {
+  cursor: pointer;
+  background: #d9d9d9;
+  border-radius: 99999px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.userImagine {
+  width: 40px;
+  height: 40px;
+}
+.plusStyle {
+  border-radius: 99999px;
+  background-color: #8baa36;
+  position: absolute;
+  top: 72px;
+  left: 55px;
+}
+.fileInputLabel {
+  width: 88px;
+  height: 88px;
+}
+.nameInputLabel {
+  margin-top: 30px;
+  position: relative;
+}
+.userIcon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 13px;
+  top: 18px;
+}
+.editIcon {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  right: 14px;
+  top: 17px;
+}
+
+.nameInput {
+  width: 282px;
+  height: 48px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding-left: 40px;
+}
+.saveButton {
+  color: #fafafa;
+  font-weight: 400;
+  font-size: 14px;
+  width: 282px;
+  height: 48px;
+  background-color: #8baa36;
+  border-radius: 8px;
+}

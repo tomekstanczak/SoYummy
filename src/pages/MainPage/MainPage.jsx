@@ -20,8 +20,8 @@ const MainPage = () => {
         <Search />
         <PreviewCategories />
       </div>
-      <img className={styles.spinachImg} src={spinach} alt="leafs of spinach" />
-      <div className={styles.squareBackground}></div>
+      {/* <img className={styles.spinachImg} src={spinach} alt="leafs of spinach" />
+      <div className={styles.squareBackground}></div> */}
     </>
   );
 };

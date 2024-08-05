@@ -38,7 +38,7 @@ const PreviewCategories = () => {
     const updateNumOfRecipes = () => {
       if (window.innerWidth < 768) {
         setNumOfRecipes(1);
-      } else if (window.innerWidth < 1024) {
+      } else if (window.innerWidth < 1440) {
         setNumOfRecipes(2);
       } else {
         setNumOfRecipes(4);
@@ -65,12 +65,13 @@ const PreviewCategories = () => {
         <div className={styles.previewCategory} key={category}>
           <div className={styles.contentContainer}>
             <h3 className={styles.categoryTitle}>{category}</h3>
-            <div className={styles.recipe}>
+            <div className={styles.recipesContainer}>
               {categoryData[category]
                 ?.slice(0, numOfRecipes)
                 .map((recipe, index) => (
                   <div
                     key={index}
+                    className={styles.recipe}
                     onClick={() => navigate(`/recipe/${recipe.id}`)}
                   >
                     <div className={styles.recipeTitleContainer}>
@@ -80,7 +81,6 @@ const PreviewCategories = () => {
                 ))}
             </div>
           </div>
-
           <button
             className={styles.recipeSeeAllBtn}
             onClick={() => handleSeeAll(category)}
@@ -98,5 +98,4 @@ const PreviewCategories = () => {
     </div>
   );
 };
-
 export default PreviewCategories;

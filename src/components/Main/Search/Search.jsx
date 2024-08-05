@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Search.module.css";
 
 import mainUnsplash from "../../../assets/images/landingPgUnsplash.png";
-import spinach from "../../../assets/images/spinach.png";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -50,13 +49,12 @@ const Search = () => {
           </button>
         </div>
       </div>
-      <img className={styles.spinachImg} src={spinach} alt="leafs of spinach" />
+
       <img
         className={styles.unsplashImg}
         src={mainUnsplash}
         alt="plate with vegetables"
       />
-      <div className={styles.squareBackground}></div>
     </div>
   );
 };

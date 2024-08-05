@@ -119,9 +119,60 @@
   }
   .spinachImg {
     left: 30%;
+    top: 20%;
+    right: 0;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    z-index: 1;
   }
   .squareBackground {
     top: -30%;
     left: 88%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .searchPage {
+    padding: 100px 100px 83px;
+  }
+  .contentContainer {
+    gap: 50px;
+  }
+  .descriptionContainer {
+    align-items: flex-start;
+  }
+  .title {
+    font-size: 100px;
+    line-height: 100px;
+    margin-bottom: 14px;
+  }
+  .description {
+    width: 465px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .searchbarContainer {
+    width: 100%;
+  }
+  .searchButton,
+  .searchInput {
+    height: 70px;
+  }
+  .searchButton {
+    padding: 0 52px;
+  }
+  .unsplashImg {
+    width: 578px;
+    right: 0;
+    top: 11rem;
+  }
+  .spinachImg {
+    left: 30%;
+  }
+  .squareBackground {
+    top: -30%;
+    left: 88%;
+    border-radius: 20%;
   }
 }

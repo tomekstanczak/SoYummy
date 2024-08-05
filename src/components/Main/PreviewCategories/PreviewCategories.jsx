@@ -37,18 +37,23 @@ const PreviewCategories = () => {
   };
 
   return (
-    <div className="previewCategoriesContainer">
+    <div className={styles.previewCategoriesContainer}>
       {categories.map((category) => (
-        <div key={category}>
-          <h3>{category}</h3>
-          <div className="recipes">
+        <div className={styles.previewCategory} key={category}>
+          <h3 className={styles.categoryTitle}>{category}</h3>
+          <div className={styles.recipe}>
             {categoryData[category]?.slice(0, 4).map((recipe, index) => (
               <div key={index} onClick={() => navigate(`/recipe/${recipe.id}`)}>
-                <h4>{recipe.title}</h4>
+                <h4 className={styles.recipeTitle}>{recipe.title}</h4>
               </div>
             ))}
           </div>
-          <button onClick={() => handleSeeAll(category)}>See all</button>
+          <button
+            className={styles.recipeSeeAllBtn}
+            onClick={() => handleSeeAll(category)}
+          >
+            See all
+          </button>
         </div>
       ))}
       <button onClick={handleOtherCategories}>Other categories</button>

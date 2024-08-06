@@ -11,7 +11,8 @@ import MyRecipiesPage from "./pages/MyRecipiesPage";
 import RecipePage from "./pages/RecipePage";
 import SearchPage from "./pages/SearchPage";
 import ShoppingListPage from "./pages/ShoppingListPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+// import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import MobileMenu from "./components/MobileMenu/MobileMenu";
 
 const App = () => {
   return (
@@ -30,7 +31,7 @@ const App = () => {
         <Route path="search" element={<SearchPage />} />
         <Route path="shopping-list" element={<ShoppingListPage />} />
       </Route>
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path="*" element={<MobileMenu />} />
     </Routes>
   );
 };

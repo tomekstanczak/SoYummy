@@ -1,0 +1,64 @@
+.mobileMenu {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #ebf3d4;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 16px 0 16px;
+}
+
+.menuButtonImg {
+  width: 32px;
+  height: 32px;
+}
+.searchBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.searchBtnImg {
+  width: 20px;
+}
+nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 124px;
+}
+
+nav li {
+  margin-bottom: 32px;
+}
+
+nav a {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+}
+
+@media screen and (min-width: 768px) {
+  .topContainer {
+    padding: 18px 32px 0 32px;
+  }
+  .searchBtnImg {
+    width: 24px;
+  }
+  nav a {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  .logo {
+    width: 44px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .mobileMenu {
+    display: none;
+  }
+}

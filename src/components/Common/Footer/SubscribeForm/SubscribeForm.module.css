@@ -1,0 +1,100 @@
+.newsletterForm {
+  display: block;
+}
+
+.newsletterInviteBlock {
+  display: block;
+  color: #fafafa;
+  margin-bottom: 28px;
+}
+
+.newsletterInviteTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+.newsletterInviteText {
+  font-size: 14px;
+}
+
+.newsletterFormContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.newsletterInputContainer {
+  display: flex;
+  align-items: center;
+}
+
+.newsletterInput {
+  background-color: transparent;
+  color: #fafafa;
+  border: 1px solid #fafafa;
+  border-radius: 6px;
+  outline: none;
+  font-size: 10px;
+  line-height: 1.4;
+  width: 204px;
+  height: 38px;
+  padding: 10px 14px;
+}
+
+.newsletterButton {
+  width: 204px;
+  height: 38px;
+  color: #fafafa;
+  background-color: #8baa36;
+  border: 1px solid #8baa36;
+  border-radius: 6px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4;
+  cursor: pointer; /* Dodanie kursora ręki dla przycisku */
+}
+
+@media screen and (min-width: 768px) {
+  .newsletterFormContainer {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .newsletterInput {
+    width: 259px;
+    height: 50px;
+    font-size: 14px;
+  }
+  .newsletterButton {
+    width: 187px;
+    height: 50px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .newsletterFormContainer {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .newsletterInput {
+    width: 339px;
+    height: 60px;
+    font-size: 18px;
+  }
+  .newsletterButton {
+    width: 339px;
+    height: 60px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1439px) {
+  .newsletterInviteBlock {
+    display: none;
+  }
+}

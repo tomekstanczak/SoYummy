@@ -11,6 +11,7 @@ import MyRecipiesPage from "./pages/MyRecipiesPage";
 import RecipePage from "./pages/RecipePage";
 import SearchPage from "./pages/SearchPage";
 import ShoppingListPage from "./pages/ShoppingListPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="search" element={<SearchPage />} />
         <Route path="shopping-list" element={<ShoppingListPage />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };

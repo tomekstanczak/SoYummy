@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import SharedLayout from "./pages/SharedLayout";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import SigninPage from "./pages/SigninPage";
+import SigninPage from "./pages/SigninPage/SigninPage";
 import MainPage from "./pages/MainPage/MainPage";
 import AddRecipePage from "./pages/AddRecipePage";
 import CategoriesPage from "./pages/CategoriesPage";

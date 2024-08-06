@@ -12,14 +12,11 @@ import styles from './RegisterPage.module.css';
 const RegisterPage = () => {
   return (
       <div className={styles.container}>
-          <div>
               <img
                   className={styles.signinImg}
                   src={registration}
                   alt="lady on couch & mobile menu"
               />
-          </div>
-          <div>
               <form className={styles.form}>
                   <h2 className={styles.title}>Registration</h2>
                   <div className={styles.box}>
@@ -30,7 +27,7 @@ const RegisterPage = () => {
                               name="name"
                               placeholder="Name"
                           />
-                          <svg className={styles.svg} width="18" height="18">
+                          <svg className={styles.svg}>
                               <use href="./src/assets/icons/formatedIcons/icons.svg#icon-user"></use>
                           </svg>
                       </label>
@@ -42,7 +39,7 @@ const RegisterPage = () => {
                               name="email"
                               placeholder="Email"
                           />
-                          <svg className={styles.svg} width="18" height="18">
+                          <svg className={styles.svg}>
                               <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
                           </svg>
                       </label>
@@ -54,7 +51,7 @@ const RegisterPage = () => {
                               name="password"
                               placeholder="Password"
                           />
-                          <svg className={styles.svg} width="18" height="18">
+                          <svg className={styles.svg}>
                               <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
                           </svg>
                       </label>
@@ -63,7 +60,7 @@ const RegisterPage = () => {
                       Sign up
                   </button>
               </form>
-          </div>
+              <p className={styles.signIn}>Sign in</p>
           <img
               className={styles.rectangle}
               src={rectangle}

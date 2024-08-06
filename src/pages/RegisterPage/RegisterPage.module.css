@@ -42,6 +42,7 @@
 .label {
     border: 1px solid rgba(250, 250, 250, 1);
     border-radius: 6px;
+    position: relative;
 }
 
 .inputs {
@@ -54,10 +55,21 @@
     border-radius: 6px;
 }
 
-.rectangle {
+.svg {
+    position: absolute;
+}
+
+.button {
+     max-width: 279px;
+     margin-left: 28px;
+     margin-top: 18px;
+     color: rgba(250, 250, 250, 1);
+     background-color: rgba(139, 170, 54, 1);
+}
+/* .rectangle {
     max-width: 375px;
     height: 490px;
-}
+} */
 
 /* @media screen and (min-width: 768px) {
 

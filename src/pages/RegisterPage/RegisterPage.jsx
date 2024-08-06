@@ -30,6 +30,9 @@ const RegisterPage = () => {
                               name="name"
                               placeholder="Name"
                           />
+                          <svg className={styles.svg} width="18" height="18">
+                              <use href="./src/assets/icons/formatedIcons/icons.svg#icon-user"></use>
+                          </svg>
                       </label>
 
                       <label className={styles.label}>
@@ -39,6 +42,9 @@ const RegisterPage = () => {
                               name="email"
                               placeholder="Email"
                           />
+                          <svg className={styles.svg} width="18" height="18">
+                              <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
+                          </svg>
                       </label>
 
                       <label className={styles.label}>
@@ -48,9 +54,14 @@ const RegisterPage = () => {
                               name="password"
                               placeholder="Password"
                           />
+                          <svg className={styles.svg} width="18" height="18">
+                              <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
+                          </svg>
                       </label>
                   </div>
-                  <button type="submit">Sign up</button>
+                  <button className={styles.button} type="submit">
+                      Sign up
+                  </button>
               </form>
           </div>
           <img

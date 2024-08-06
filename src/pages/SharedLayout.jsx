@@ -4,13 +4,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../components/Common/Header";
-import Footer from "../components/Common/Footer";
+import Footer from "../components/Common/Footer/Footer";
+import "./SharedLayout.css"; // Import stylów
 
 const SharedLayout = () => {
   return (
-    <div>
+    <div className="sharedLayoutWrapper">
       <Header />
-      <main>
+      <main className="contentWrapper">
         <Outlet />
       </main>
       <Footer />

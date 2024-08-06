@@ -134,4 +134,10 @@ width: 375px;
 
 @media screen and (min-width: 1440px) {
 
+.rectangle {
+    width: 1440px;
+    height: 325px;
+    margin-top: -350px;
+}
+
 }

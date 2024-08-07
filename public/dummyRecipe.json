@@ -46,8 +46,8 @@
     },
     {
       "recipeId": "2",
-      "name": "Chicken Curry",
-      "description": "A spicy and flavorful chicken curry.",
+      "name": "Salmon Avocado Salad",
+      "description": "Is a healthy salad recipe that’s big on nutrients and flavor. A moist, pan seared salmon is layered on top of spinach, avocado, tomatoes, and red onions. Then drizzled with a homemade lemon vinaigrette.",
       "cookingTime": 45,
       "isFavorite": true,
       "ingredients": [

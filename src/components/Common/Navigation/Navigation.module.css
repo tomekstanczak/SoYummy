@@ -87,7 +87,7 @@ use {
   }
   .desktopNavMenu {
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     justify-content: center;
     gap: 30px;
     font-size: 14px;

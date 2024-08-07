@@ -31,11 +31,6 @@ const Navigation = ({ onClose }) => {
     };
   }, []);
 
-  const handleSearchClick = () => {
-    navigate("/search");
-    onClose();
-  };
-
   const handleLinkClick = () => {
     onClose();
   };

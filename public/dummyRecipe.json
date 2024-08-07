@@ -1,0 +1,91 @@
+{
+  "recipes": [
+    {
+      "recipeId": "1",
+      "name": "Pancakes",
+      "description": "Delicious fluffy pancakes perfect for breakfast.",
+      "cookingTime": 30,
+      "isFavorite": false,
+      "ingredients": [
+        {
+          "name": "Flour",
+          "description": "All-purpose flour",
+          "quantity": "2 cups",
+          "image": "https://example.com/images/flour.png",
+          "isInShoppingList": false
+        },
+        {
+          "name": "Milk",
+          "description": "Whole milk",
+          "quantity": "1.5 cups",
+          "image": "https://example.com/images/milk.png",
+          "isInShoppingList": false
+        },
+        {
+          "name": "Eggs",
+          "description": "Large eggs",
+          "quantity": "2",
+          "image": "https://example.com/images/eggs.png",
+          "isInShoppingList": false
+        },
+        {
+          "name": "Sugar",
+          "description": "Granulated sugar",
+          "quantity": "2 tbsp",
+          "image": "https://example.com/images/sugar.png",
+          "isInShoppingList": false
+        }
+      ],
+      "preparationSteps": [
+        "Mix flour, sugar, and baking powder in a bowl.",
+        "Whisk in milk, eggs, and melted butter until smooth.",
+        "Heat a non-stick skillet over medium heat.",
+        "Pour batter onto skillet and cook until bubbles form on the surface.",
+        "Flip and cook until golden brown."
+      ]
+    },
+    {
+      "recipeId": "2",
+      "name": "Chicken Curry",
+      "description": "A spicy and flavorful chicken curry.",
+      "cookingTime": 45,
+      "isFavorite": true,
+      "ingredients": [
+        {
+          "name": "Chicken",
+          "description": "Boneless chicken thighs",
+          "quantity": "500g",
+          "image": "https://example.com/images/chicken.png",
+          "isInShoppingList": true
+        },
+        {
+          "name": "Onion",
+          "description": "Chopped onion",
+          "quantity": "1 large",
+          "image": "https://example.com/images/onion.png",
+          "isInShoppingList": false
+        },
+        {
+          "name": "Tomatoes",
+          "description": "Diced tomatoes",
+          "quantity": "2",
+          "image": "https://example.com/images/tomatoes.png",
+          "isInShoppingList": false
+        },
+        {
+          "name": "Spices",
+          "description": "Curry powder and garam masala",
+          "quantity": "2 tbsp",
+          "image": "https://example.com/images/spices.png",
+          "isInShoppingList": false
+        }
+      ],
+      "preparationSteps": [
+        "Heat oil in a pot and sauté onions until golden.",
+        "Add spices and cook for another minute.",
+        "Add chicken and cook until browned.",
+        "Stir in tomatoes and simmer until chicken is cooked through."
+      ]
+    }
+  ]
+}

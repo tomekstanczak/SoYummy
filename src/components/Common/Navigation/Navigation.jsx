@@ -33,38 +33,115 @@ const Navigation = ({ onClose }) => {
 
   const handleSearchClick = () => {
     navigate("/search");
+    onClose();
+  };
+
+  const handleLinkClick = () => {
+    onClose();
   };
 
   return (
     <nav>
       <div className={styles.desktopNavMenu}>
-        <NavLink to="/categories/:categoryName">Categories</NavLink>
-        <NavLink to="/add">Add Recipe</NavLink>
-        <NavLink to="/my">My Recipesve</NavLink>
-        <NavLink to="/favorite">Favorite</NavLink>
-        <NavLink to="/shopping-list">Shopping List</NavLink>
-        <button className={styles.searchButton} onClick={handleSearchClick}>
-          <img src={searchIcon} alt="Search" width="24px" />
-        </button>
+        <NavLink
+          to="/categories/:categoryName"
+          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+        >
+          Categories
+        </NavLink>
+        <NavLink
+          to="/add-recipe"
+          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+        >
+          Add Recipe
+        </NavLink>
+        <NavLink
+          to="/my-recipes"
+          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+        >
+          My Recipes
+        </NavLink>
+        <NavLink
+          to="/favorites"
+          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+        >
+          Favorite
+        </NavLink>
+        <NavLink
+          to="/shopping-list"
+          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+        >
+          Shopping List
+        </NavLink>
+        <NavLink
+          to="/search"
+          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+        >
+          <svg width="24" height="24">
+            <use href={`${searchIcon}#search`}></use>
+          </svg>
+        </NavLink>
       </div>
       <div className={styles.mobileNavMenu}>
         <div className={styles.nav}>
           <div className={styles.topConteiner}>
-            <Logo />
+            <NavLink
+              to="/categories/:categoryName"
+              onClick={handleLinkClick}
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+            >
+              <Logo />
+            </NavLink>
+
             <button onClick={onClose}>
-              <img src={xIcon} />
+              <img src={xIcon} alt="Close" />
             </button>
           </div>
           <div className={styles.menu}>
-            <NavLink to="/categories/:categoryName">Categories</NavLink>
-            <NavLink to="/add">Add Recipe</NavLink>
-            <NavLink to="/my">My Recipesve</NavLink>
-            <NavLink to="/favorite">Favorite</NavLink>
-            <NavLink to="/shopping-list">Shopping List</NavLink>
-            <button className={styles.searchButton} onClick={handleSearchClick}>
-              <img src={searchIcon} alt="Search" width="20px" />
+            <NavLink
+              to="/categories/:categoryName"
+              onClick={handleLinkClick}
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+            >
+              Categories
+            </NavLink>
+            <NavLink
+              to="/add-recipe"
+              onClick={handleLinkClick}
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+            >
+              Add Recipe
+            </NavLink>
+            <NavLink
+              to="/my-recipes"
+              onClick={handleLinkClick}
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+            >
+              My Recipes
+            </NavLink>
+            <NavLink
+              to="/favorites"
+              onClick={handleLinkClick}
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+            >
+              Favorite
+            </NavLink>
+            <NavLink
+              to="/shopping-list"
+              onClick={handleLinkClick}
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+            >
+              Shopping List
+            </NavLink>
+            <NavLink
+              to="/search"
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+            >
+              <svg width="24" height="24">
+                <use href={`${searchIcon}#search`}></use>
+              </svg>{" "}
               Search
-            </button>
+            </NavLink>
           </div>
           <div className={styles.toggleConteiner}>
             <ThemeToggler />

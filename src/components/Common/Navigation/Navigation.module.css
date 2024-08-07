@@ -1,7 +1,13 @@
 .desktopNavMenu {
   display: none;
 }
-
+.mobileNavMenu .menu use {
+  fill: transparent;
+}
+use {
+  fill: transparent;
+  stroke: #22252a;
+}
 .nav {
   display: flex;
   flex-direction: column;
@@ -35,7 +41,10 @@
   font-weight: 500;
   gap: 32px;
 }
-
+.menu a:last-child {
+  display: flex;
+  gap: 8px;
+}
 .mobileNav a {
   color: white;
   text-decoration: none;
@@ -62,6 +71,15 @@
   bottom: 18px;
   left: 16px;
 }
+.activeLink {
+  color: #8baa36;
+  stroke: #8baa36;
+  fill: transparent;
+}
+.activeLink use {
+  stroke: #8baa36;
+  fill: transparent;
+}
 
 @media (min-width: 1440px) {
   .mobileNavMenu {
@@ -69,7 +87,7 @@
   }
   .desktopNavMenu {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     gap: 30px;
     font-size: 14px;

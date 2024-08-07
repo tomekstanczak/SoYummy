@@ -96,7 +96,7 @@ width: 375px;
 .rectangle {
     width: 375px;
     height: 490px;
-    margin-top: -320px;
+    margin-top: -315px;
 }
 
 @media screen and (min-width: 768px) {
@@ -206,6 +206,6 @@ width: 375px;
     .rectangle {
         width: 1440px;
         height: 325px;
-        margin-top: -180px;
+        margin-top: -115px;
     }
 }

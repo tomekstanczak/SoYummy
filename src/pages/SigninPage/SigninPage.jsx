@@ -7,7 +7,9 @@
 import rectangle from '../../assets/images/Rectangle 8970.png'
 import registration from '../../assets/images/SigninImg.png'
 
-import styles from './SigninPage.module.css'
+import styles from './SigninPage.module.css';
+
+import { Link } from 'react-router-dom';
 
 
 const SigninPage = () => {
@@ -49,7 +51,9 @@ const SigninPage = () => {
                     Sign In
                 </button>
             </form>
-            <p className={styles.registration}>Registration</p>
+            <Link className={styles.registration} to="/register">
+                Registration
+            </Link>
             <img
                 className={styles.rectangle}
                 src={rectangle}

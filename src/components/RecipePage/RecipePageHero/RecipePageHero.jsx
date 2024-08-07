@@ -6,21 +6,31 @@
 // Kliknięcie przycisku AddtoFavorite powinno spełnić żądanie i dodać przepis do listy ulubionych.
 // Jeśli taki przepis znajduje się już na liście ulubionych, to zamiast przycisku AddtoFavorite powinien znajdować się przycisk RemoveFromFavorite, którego kliknięcie spowoduje usunięcie przepisu z listy ulubionych.
 
+import clock from "../../../assets/icons/formatedIcons/clock.svg";
+
 import styles from "./RecipePageHero.module.css";
 
 const RecipePageHero = ({ recipe, isFavorite, toggleFavorite }) => {
   return (
     <div className={styles.recipePageHero}>
-      <h1 className={styles.mainPageTitle}>{recipe.name}</h1>
-      <p className={styles.description}>{recipe.description}</p>
+      <div className={styles.descriptionContainer}>
+        <h1 className={styles.mainPageTitle}>{recipe.name}</h1>
+        <p className={styles.description}>{recipe.description}</p>
+      </div>
+
       {isFavorite ? (
-        <button onClick={toggleFavorite}>Remove from Favorite</button>
+        <button className={styles.addBtn} onClick={toggleFavorite}>
+          Remove from favorite recipes
+        </button>
       ) : (
-        <button onClick={toggleFavorite}>Add to Favorite</button>
+        <button className={styles.addBtn} onClick={toggleFavorite}>
+          Add to favorite recipes
+        </button>
       )}
       {recipe.cookingTime && (
         <p className={styles.cookingTime}>
-          Cooking time: {recipe.cookingTime} minutes
+          <img src={clock} alt="clock" />
+          {recipe.cookingTime} min
         </p>
       )}
     </div>

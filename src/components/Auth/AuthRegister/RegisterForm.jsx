@@ -1,9 +1,3 @@
-// AuthForm.js
-
-//     Formularz do rejestracji/logowania.
-//     Walidacja pól i wyświetlanie błędów.
-//     Przekierowanie po pomyślnym zalogowaniu/rejestracji.
-
 // Komponent AuthForm może być również zaimplementowany przez dwa komponenty SigninForm i RegisterForm.
 
 const INITIAL_STATE = {
@@ -11,7 +5,7 @@ const INITIAL_STATE = {
     email: '',
     password: '',
 }
-class SignUpForm extends React.Component {
+class RegisterForm extends Component {
     state = { ...INITIAL_STATE }
 
     handleChange = (evt) => {
@@ -90,6 +84,6 @@ class SignUpForm extends React.Component {
 }
 
 ReactDOM.render(
-    <SignUpForm onSubmit={(values) => console.log(values)} />,
+    <RegisterForm onSubmit={(values) => console.log(values)} />,
     document.getElementById('root')
 )

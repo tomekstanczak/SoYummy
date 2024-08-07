@@ -4,7 +4,7 @@ import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import RegisterPage from "./pages/RegisterPage";
 import SigninPage from "./pages/SigninPage";
 import MainPage from "./pages/MainPage/MainPage";
-import AddRecipePage from "./pages/AddRecipePage";
+import AddRecipePage from "./pages/AddRecipePage/AddRecipePage";
 import CategoriesPage from "./pages/CategoriesPage";
 import FavoritePage from "./pages/FavoritePage";
 import MyRecipiesPage from "./pages/MyRecipiesPage";

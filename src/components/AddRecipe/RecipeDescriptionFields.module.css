@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fileInput,
+.input,
+.textarea,
+.select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.fileInput {
+  width: 100%;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.select {
+  height: 40px;
+  overflow-y: auto;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}

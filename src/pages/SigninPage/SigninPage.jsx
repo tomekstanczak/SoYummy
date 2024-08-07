@@ -49,7 +49,7 @@ const SigninPage = () => {
                     Sign In
                 </button>
             </form>
-            <p className={styles.signIn}>Registration</p>
+            <p className={styles.registration}>Registration</p>
             <img
                 className={styles.rectangle}
                 src={rectangle}

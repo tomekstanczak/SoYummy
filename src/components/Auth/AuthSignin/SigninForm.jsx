@@ -5,9 +5,14 @@ import styles from './SigninForm.module.css'
 
 import { useState } from "react"
 
+INITIAL_STATE = {
+    email: '',
+    password: '',
+}
+
 export const SigninForm = () => {
 
-    const [userData, setUserData] = useState({ email: '', password: '' })
+    const [userData, setUserData] = useState(INITIAL_STATE)
 
     const onChange = (e) => {
         const { name, value } = e.target
@@ -20,6 +25,8 @@ export const SigninForm = () => {
     
     const onSubmit = (e) => {
         e.preventDefault()
+
+        setUserData(INITIAL_STATE)
     }
 
     return (

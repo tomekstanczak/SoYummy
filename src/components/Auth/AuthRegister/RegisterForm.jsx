@@ -4,9 +4,15 @@ import styles from './RegisterForm.module.css'
 
 import { useState } from "react"
 
+INITIAL_STATE = {
+    login: '',
+    email: '',
+    password: '',
+}
+
 export const RegisterForm = () => {
     
-const [userData, setUserData] = useState({ login: '', email: '', password: '' })
+const [userData, setUserData] = useState(INITIAL_STATE)
 
 const onChange = (e) => {
     const { name, value } = e.target
@@ -19,6 +25,8 @@ const onChange = (e) => {
 
 const onSubmit = (e) => {
     e.preventDefault()
+
+    setUserData(INITIAL_STATE)
 }
         return (
             <form className={styles.form} onSubmit={onSubmit}>
@@ -28,7 +36,7 @@ const onSubmit = (e) => {
                         <input
                             className={styles.inputs}
                             type="text"
-                            name="name"
+                            name="login"
                             placeholder="Name"
                             onChange={onChange}
                         />

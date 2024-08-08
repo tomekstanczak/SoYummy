@@ -7,10 +7,8 @@ const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
         <thead>
           <tr className={styles.tableHead}>
             <th>Ingredients</th>
-            <div className={styles.NumAndList}>
-              <th>Number</th>
-              <th>Add to List</th>
-            </div>
+            <th>Number</th>
+            <th>Add to List</th>
           </tr>
         </thead>
         <tbody className={styles.ingredientListBody}>
@@ -18,25 +16,22 @@ const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
             <tr key={index} className={styles.ingredientRow}>
               <td className={styles.ingredientCell}>
                 <img
-                  src={ingredient.image || "path/to/default/image.png"} // Użyj domyślnego obrazu
-                  alt={ingredient.name}
+                  src={ingredient.thumb || "path/to/default/image.png"}
+                  alt={ingredient.title}
                   className={styles.ingredientImage}
                 />
-                <h3 className={styles.ingredientName}>{ingredient.name}</h3>
+                <h3 className={styles.ingredientName}>{ingredient.ttl}</h3>
               </td>
-              <div className={styles.NumAndListDescription}>
-                <td className={styles.ingredientCell}>
-                  <p>{ingredient.measure}</p>{" "}
-                  {/* Użyj ingredient.measure zamiast ingredient.quantity */}
-                </td>
-                <td className={styles.ingredientCell}>
-                  <input
-                    type="checkbox"
-                    checked={ingredient.isInShoppingList || false} // Dodaj domyślną wartość
-                    onChange={() => toggleIngredient(ingredient)}
-                  />
-                </td>
-              </div>
+              <td className={styles.ingredientCell}>
+                <p>{ingredient.measure}</p>
+              </td>
+              <td className={styles.ingredientCell}>
+                <input
+                  type="checkbox"
+                  checked={ingredient.isInShoppingList || false}
+                  onChange={() => toggleIngredient(ingredient)}
+                />
+              </td>
             </tr>
           ))}
         </tbody>

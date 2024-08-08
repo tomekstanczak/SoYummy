@@ -5,21 +5,17 @@ const RecipePageHero = ({ recipe, isFavorite, toggleFavorite }) => {
   return (
     <div className={styles.recipePageHero}>
       <div className={styles.descriptionContainer}>
-        <h1 className={styles.mainPageTitle}>{recipe.title}</h1>{" "}
-        {/* Zmieniono na recipe.title */}
+        <h1 className={styles.mainPageTitle}>{recipe.title}</h1>
         <p className={styles.description}>{recipe.description}</p>
       </div>
 
-      {isFavorite ? (
-        <button className={styles.addBtn} onClick={toggleFavorite}>
-          Remove from favorite recipes
-        </button>
-      ) : (
-        <button className={styles.addBtn} onClick={toggleFavorite}>
-          Add to favorite recipes
-        </button>
-      )}
-      {recipe.time && ( // Użyj recipe.time
+      <button className={styles.addBtn} onClick={toggleFavorite}>
+        {isFavorite
+          ? "Remove from favorite recipes"
+          : "Add to favorite recipes"}
+      </button>
+
+      {recipe.time && (
         <p className={styles.cookingTime}>
           <img src={clock} alt="clock" />
           {recipe.time} min

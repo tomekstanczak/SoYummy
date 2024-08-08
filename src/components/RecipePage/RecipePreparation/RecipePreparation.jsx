@@ -4,6 +4,10 @@ const RecipePreparation = ({ preparationSteps }) => {
   // Podziel instrukcje na kroki na podstawie nowej linii
   const stepsArray = preparationSteps.split("\r\n");
 
+  if (!Array.isArray(preparationSteps)) {
+    return <div>Error: Preparation steps should be an array.</div>;
+  }
+
   return (
     <div className={styles.preparation}>
       <h2 className={styles.preparationTitle}>Recipe Preparation</h2>
@@ -18,7 +22,7 @@ const RecipePreparation = ({ preparationSteps }) => {
       {recipe.preview && ( // Użyj preview jako obrazek
         <img
           className={styles.preparationImg}
-          src={recipe.preview}
+          src={recipe.thumb}
           alt={recipe.title}
         />
       )}

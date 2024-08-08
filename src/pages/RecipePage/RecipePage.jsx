@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios"; // Dodaj axios, jeśli jeszcze nie został dodany
+import axios from "axios";
+
 import RecipePageHero from "../../components/RecipePage/RecipePageHero/RecipePageHero";
 import RecipeIngredientsList from "../../components/RecipePage/RecipeIngredientsList/RecipeIngredientsList";
 import RecipePreparation from "../../components/RecipePage/RecipePreparation/RecipePreparation";
@@ -18,10 +19,10 @@ const RecipePage = () => {
         const response = await axios.get(
           `https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipe/${recipeId}`
         );
-        const data = response.data.data.recipe; // Odczytaj odpowiednie dane z odpowiedzi
+        const data = response.data.data.recipe;
         console.log("Fetched data:", data);
         setRecipe(data);
-        setIsFavorite(data?.favorites?.includes("yourUserId") || false); // Ustal, czy przepis jest ulubiony
+        setIsFavorite(data?.favorites?.includes("yourUserId") || false);
       } catch (error) {
         console.error("Error fetching recipe:", error);
       }
@@ -52,7 +53,6 @@ const RecipePage = () => {
         toggleIngredient={toggleIngredient}
       />
       <RecipePreparation preparationSteps={recipe.instructions} />
-      {/* Użyj 'instructions' jako kroki przygotowania */}
     </div>
   );
 };

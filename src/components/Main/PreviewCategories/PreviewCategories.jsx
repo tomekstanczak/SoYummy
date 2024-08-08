@@ -5,33 +5,42 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import recipeData from "../../../../public/dummyMeal.json";
+import axios from "axios";
 
 import styles from "./PreviewCategories.module.css";
 
-const categories = ["Breakfast", "Miscellaneous", "Chicken", "Desserts"];
+const categories = ["Breakfast", "Miscellaneous", "Chicken", "Dessert"];
 
 const PreviewCategories = () => {
   const [categoryData, setCategoryData] = useState({});
   const [numOfRecipes, setNumOfRecipes] = useState(4);
   const navigate = useNavigate();
 
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const results = {};
-  //       for (const category of categories) {
-  //         results[category] = await fetch(`/api/categories/${category}`).then(
-  //           (res) => res.json()
-  //         );
-  //       }
-  //       setCategoryData(results);
-  //     };
-
-  //     fetchData();
-  //   }, []);
-
   useEffect(() => {
-    setCategoryData(recipeData);
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(
+          "https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipes/main-page"
+        );
+
+        const fetchedData = {};
+
+        if (data.data.recipes) {
+          categories.forEach((category) => {
+            fetchedData[category] = data.data.recipes[category] || [];
+          });
+        } else {
+          console.error("No recipes found in the data.");
+        }
+
+        setCategoryData(fetchedData);
+        console.log("Updated Category Data: ", fetchedData);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -72,9 +81,14 @@ const PreviewCategories = () => {
                   <div
                     key={index}
                     className={styles.recipe}
-                    onClick={() => navigate(`/recipe/${recipe.id}`)}
+                    onClick={() => navigate(`/recipe/${recipe._id}`)}
                   >
                     <div className={styles.recipeTitleContainer}>
+                      <img
+                        src={recipe.thumb}
+                        alt={recipe.title}
+                        className={styles.recipeImage}
+                      />
                       <h4 className={styles.recipeTitle}>{recipe.title}</h4>
                     </div>
                   </div>
@@ -98,4 +112,5 @@ const PreviewCategories = () => {
     </div>
   );
 };
+
 export default PreviewCategories;

@@ -1,37 +1,27 @@
 // Komponent AuthForm może być również zaimplementowany przez dwa komponenty SigninForm i RegisterForm.
 
-const INITIAL_STATE = {
-    name: '',
-    email: '',
-    password: '',
+import styles from './RegisterForm.module.css'
+
+import { useState } from "react"
+
+export const RegisterForm = () => {
+    
+const [userData, setUserData] = useState({ login: '', email: '', password: '' })
+
+const onChange = (e) => {
+    const { name, value } = e.target
+
+    setUserData((prev) => ({
+        ...prev,
+        [name]: value,
+    }))
 }
-class RegisterForm extends Component {
-    state = { ...INITIAL_STATE }
 
-    handleChange = (evt) => {
-        const { name, value } = evt.target
-        this.setState({ [name]: value })
-    }
-
-    handleSubmit = (evt) => {
-        evt.preventDefault()
-        const { name, email, password } = this.state
-
-        console.log(`Name: ${login}, Email: ${email}, Password: ${password}`)
-
-        this.props.onSubmit({ ...this.state })
-        this.reset()
-    }
-
-    reset = () => {
-        this.setState({ ...INITIAL_STATE })
-    }
-
-    render() {
-        const { name, email, password } = this.state
-
+const onSubmit = (e) => {
+    e.preventDefault()
+}
         return (
-            <form className={styles.form} onSubmit={this.handleSubmit}>
+            <form className={styles.form} onSubmit={onSubmit}>
                 <h2 className={styles.title}>Registration</h2>
                 <div className={styles.box}>
                     <label className={styles.label}>
@@ -40,8 +30,7 @@ class RegisterForm extends Component {
                             type="text"
                             name="name"
                             placeholder="Name"
-                            value={name}
-                            onChange={this.handleChange}
+                            onChange={onChange}
                         />
                         <svg className={styles.svg}>
                             <use href="./src/assets/icons/formatedIcons/icons.svg#icon-user"></use>
@@ -53,8 +42,7 @@ class RegisterForm extends Component {
                             type="email"
                             name="email"
                             placeholder="Email"
-                            value={email}
-                            onChange={this.handleChange}
+                            onChange={onChange}
                         />
                         <svg className={styles.svg}>
                             <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
@@ -67,8 +55,7 @@ class RegisterForm extends Component {
                             type="password"
                             name="password"
                             placeholder="Password"
-                            value={password}
-                            onChange={this.handleChange}
+                            onChange={onChange}
                         />
                         <svg className={styles.svg}>
                             <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
@@ -81,9 +68,4 @@ class RegisterForm extends Component {
             </form>
         )
     }
-}
 
-ReactDOM.render(
-    <RegisterForm onSubmit={(values) => console.log(values)} />,
-    document.getElementById('root')
-)

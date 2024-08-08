@@ -1,59 +1,60 @@
 // Komponent AuthForm może być również zaimplementowany przez dwa komponenty SigninForm i RegisterForm.
 
 
-class SigninForm extends Component {
-    handleSubmit = (evt) => {
-        evt.preventDefault()
+import styles from './SigninForm.module.css'
 
-        const form = evt.currentTarget
-        const email = form.elements.email.value
-        const password = form.elements.password.value
+import { useState } from "react"
 
-        console.log(email, password)
+export const SigninForm = () => {
 
-        this.props.onSubmit({ email, password })
+    const [userData, setUserData] = useState({ email: '', password: '' })
 
-        form.reset()
+    const onChange = (e) => {
+        const { name, value } = e.target
+       
+        setUserData(prev => ({
+            ...prev,
+            [name]: value
+        }))
+    }
+    
+    const onSubmit = (e) => {
+        e.preventDefault()
     }
 
-    render() {
-        return (
-            <form className={styles.form} onSubmit={this.handleSubmit}>
-                <h2 className={styles.title}>Sign In</h2>
-                <div className={styles.box}>
-                    <label className={styles.label}>
-                        <input
-                            className={styles.inputs}
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                        />
-                        <svg className={styles.svg}>
-                            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
-                        </svg>
-                    </label>
+    return (
+        <form className={styles.form} onSubmit={onSubmit}>
+            <h2 className={styles.title}>Sign In</h2>
+            <div className={styles.box}>
+                <label className={styles.label}>
+                    <input
+                        className={styles.inputs}
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        onChange={onChange}
+                    />
+                    <svg className={styles.svg}>
+                        <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
+                    </svg>
+                </label>
 
-                    <label className={styles.label}>
-                        <input
-                            className={styles.inputs}
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                        />
-                        <svg className={styles.svg}>
-                            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
-                        </svg>
-                    </label>
-                </div>
-                <button className={styles.button} type="submit">
-                    Sign In
-                </button>
-            </form>
-        )
-    }
+                <label className={styles.label}>
+                    <input
+                        className={styles.inputs}
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        onChange={onChange}
+                    />
+                    <svg className={styles.svg}>
+                        <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
+                    </svg>
+                </label>
+            </div>
+            <button className={styles.button} type="submit">
+                Sign In
+            </button>
+        </form>
+    )
 }
-
-ReactDOM.render(
-    <SigninForm onSubmit={(values) => console.log(values)} />,
-    document.getElementById('root')
-)

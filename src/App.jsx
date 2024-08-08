@@ -1,3 +1,4 @@
+
 import { Route, Routes } from "react-router-dom";
 import AddRecipePage from "./pages/AddRecipePage/AddRecipePage";
 import CategoriesPage from "./pages/CategoriesPage";
@@ -9,15 +10,16 @@ import SearchPage from "./pages/SearchPage";
 import ShoppingListPage from "./pages/ShoppingListPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import RecipePage from "./pages/RecipePage/RecipePage";
-import RegisterPage from "./pages/RegisterPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import SharedLayout from "./pages/SharedLayout";
-// 
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import SigninPage from "./pages/SigninPage/SigninPage";
 import ShoppingListPage from "./pages/ShoppingListPage";
-import SigninPage from "./pages/SigninPage";
+
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 
 const App = () => {
+
   return (
     <Routes>
       <Route path="/" element={<WelcomePage />} />
@@ -38,5 +40,6 @@ const App = () => {
     </Routes>
   );
 };
+
 
 export default App;

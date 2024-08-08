@@ -26,9 +26,6 @@ const SearchPage = () => {
   const searchType = query.get("type");
 
   useEffect(() => {
-    console.log("Search Value:", searchValue);
-    console.log("Search Type:", searchType);
-
     if (searchValue && searchType) {
       // Symulacja żądania do backendu
       const fetchRecipes = async () => {

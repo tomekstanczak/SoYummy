@@ -1,8 +1,32 @@
+import noResultsImg from "../../../assets/images/Recipe/searchNoResults.png";
+
 import styles from "./SearchedRecipesList.module.css";
 
 const SearchedRecipesList = ({ recipes }) => {
-  if (!recipes || recipes.length === 0) {
-    return <div className={styles.noResults}>Need searching</div>;
+  if (!recipes) {
+    return (
+      <>
+        <img
+          className={styles.searchPageImg}
+          src={noResultsImg}
+          alt="vegetables"
+        />
+        <div className={styles.noResults}>Enter query</div>
+      </>
+    );
+  } else if (recipes.length === 0) {
+    return (
+      <>
+        <img
+          className={styles.searchPageImg}
+          src={noResultsImg}
+          alt="vegetables"
+        />
+        <div className={styles.noResults}>
+          Try looking for something else...
+        </div>
+      </>
+    );
   }
 
   return (

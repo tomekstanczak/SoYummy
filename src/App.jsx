@@ -5,15 +5,11 @@ import FavoritePage from "./pages/FavoritePage";
 import MainPage from "./pages/MainPage/MainPage";
 import MyRecipiesPage from "./pages/MyRecipiesPage";
 import RecipePage from "./pages/RecipePage/RecipePage";
-import SearchPage from "./pages/SearchPage";
 import ShoppingListPage from "./pages/ShoppingListPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import RecipePage from "./pages/RecipePage/RecipePage";
 import RegisterPage from "./pages/RegisterPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import SharedLayout from "./pages/SharedLayout";
-// 
-import ShoppingListPage from "./pages/ShoppingListPage";
 import SigninPage from "./pages/SigninPage";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 

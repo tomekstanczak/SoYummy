@@ -1,11 +1,3 @@
-// Komponent otrzymuje kolekcję danych składników receptury jako właściwości, których używa do renderowania listy odpowiednich elementów.
-// Każdy element na liście renderuje:
-//  - Obraz składnika lub odpowiadający mu symbol zastępczy;
-//  - Tytuł z nazwą składnika;
-//  - Opis składnika, jeśli istnieje;
-//  - Ilość;
-//  - Pole wyboru - kliknięcie pola wyboru powoduje wykonanie żądania do backendu i dodanie składnika oraz jego ilości do listy zakupów, po czym w polu wyboru pojawia się znacznik wyboru.
-
 import styles from "./RecipeIngredientsList.module.css";
 
 const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
@@ -26,7 +18,7 @@ const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
             <tr key={index} className={styles.ingredientRow}>
               <td className={styles.ingredientCell}>
                 <img
-                  src={ingredient.image}
+                  src={ingredient.image || "path/to/default/image.png"} // Użyj domyślnego obrazu
                   alt={ingredient.name}
                   className={styles.ingredientImage}
                 />
@@ -34,12 +26,13 @@ const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
               </td>
               <div className={styles.NumAndListDescription}>
                 <td className={styles.ingredientCell}>
-                  <p>{ingredient.quantity}</p>
+                  <p>{ingredient.measure}</p>{" "}
+                  {/* Użyj ingredient.measure zamiast ingredient.quantity */}
                 </td>
                 <td className={styles.ingredientCell}>
                   <input
                     type="checkbox"
-                    checked={ingredient.isInShoppingList}
+                    checked={ingredient.isInShoppingList || false} // Dodaj domyślną wartość
                     onChange={() => toggleIngredient(ingredient)}
                   />
                 </td>

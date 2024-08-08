@@ -8,7 +8,7 @@ import AddRecipePage from "./pages/AddRecipePage/AddRecipePage";
 import CategoriesPage from "./pages/CategoriesPage";
 import FavoritePage from "./pages/FavoritePage";
 import MyRecipiesPage from "./pages/MyRecipiesPage";
-import RecipePage from "./pages/RecipePage/RecipePage";
+// import RecipePage from "./pages/RecipePage/RecipePage";
 import SearchPage from "./pages/SearchPage";
 import ShoppingListPage from "./pages/ShoppingListPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="add-recipe" element={<AddRecipePage />} />
         <Route path="categories" element={<CategoriesPage />} />
         <Route path="favorites" element={<FavoritePage />} />
-        <Route path="my-recipes" element={<MyRecipiesPage />} />
+        {/* <Route path="my-recipes" element={<MyRecipiesPage />} /> */}
         <Route path="recipe/:recipeId" element={<RecipePage />} />
         <Route path="search" element={<SearchPage />} />
         <Route path="shopping-list" element={<ShoppingListPage />} />

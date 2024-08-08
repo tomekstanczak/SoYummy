@@ -7,10 +7,10 @@ import MyRecipiesPage from "./pages/MyRecipiesPage";
 import RecipePage from "./pages/RecipePage/RecipePage";
 import ShoppingListPage from "./pages/ShoppingListPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import RegisterPage from "./pages/RegisterPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import SharedLayout from "./pages/SharedLayout";
-import SigninPage from "./pages/SigninPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import SigninPage from "./pages/SigninPage/SigninPage";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 
 const App = () => {

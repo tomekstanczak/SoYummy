@@ -81,7 +81,7 @@ const PreviewCategories = () => {
                   <div
                     key={index}
                     className={styles.recipe}
-                    onClick={() => navigate(`/recipe/${recipe.id}`)}
+                    onClick={() => navigate(`/recipe/${recipe._id}`)}
                   >
                     <div className={styles.recipeTitleContainer}>
                       <img

@@ -34,6 +34,12 @@
 .ingredientName {
   font-size: 12px;
 }
+.ingredientImage {
+  width: 57px;
+  height: 57px;
+  margin-right: 12px;
+  background-color: wheat;
+}
 .NumAndList {
   width: 40%;
   display: flex;

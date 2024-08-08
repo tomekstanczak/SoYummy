@@ -25,15 +25,12 @@ const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
           {ingredients.map((ingredient, index) => (
             <tr key={index} className={styles.ingredientRow}>
               <td className={styles.ingredientCell}>
-                {/* <img
+                <img
                   src={ingredient.image}
                   alt={ingredient.name}
                   className={styles.ingredientImage}
-                /> */}
-                {/* <div className={styles.ingredientDetails}> */}
+                />
                 <h3 className={styles.ingredientName}>{ingredient.name}</h3>
-                {/* {ingredient.description && <p>{ingredient.description}</p>} */}
-                {/* </div> */}
               </td>
               <div className={styles.NumAndListDescription}>
                 <td className={styles.ingredientCell}>

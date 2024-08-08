@@ -1,0 +1,48 @@
+.container {
+  margin: 20px;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.ingredientsList {
+  margin-bottom: 20px;
+}
+
+.ingredientContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.select,
+.input {
+  margin-right: 10px;
+}
+
+.removeButton {
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.addButton,
+.saveButton {
+  margin-right: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.addButton {
+  background-color: green;
+  color: white;
+  border: none;
+}
+
+.saveButton {
+  background-color: blue;
+  color: white;
+  border: none;
+}

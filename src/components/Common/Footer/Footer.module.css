@@ -1,0 +1,142 @@
+.footerContainer {
+  width: 100%;
+  padding: 12px;
+}
+
+.footer {
+  background-color: #22252a;
+}
+
+.footerCopyright {
+  background-color: #fafafa;
+}
+
+.footerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  align-items: center;
+}
+
+.footerNavSub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 32px;
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.footerBlock {
+  color: #fafafa;
+  width: 418px;
+  height: 156px;
+}
+
+.footerHeader {
+  margin-bottom: 24px;
+}
+
+.footerTitle {
+  display: flex;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.footerCopyrightBox {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  color: #22252a;
+  font-size: 10px;
+}
+
+.footerFollowUs {
+  font-size: 20px;
+  color: #8baa36;
+}
+
+.footerList {
+  list-style-type: disc; /* Typ punktora: disc (kółka) */
+  padding-left: 20px;
+}
+
+@media screen and (min-width: 320px) {
+  .footerContainer {
+    width: 320px;
+    padding: 28px 32px 18px;
+    margin: 0 auto;
+  }
+  .footerCopyrightBox {
+    gap: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footerContainer {
+    width: 768px;
+    padding: 20px 32px 24px;
+  }
+  .footerBox {
+    gap: 38px;
+  }
+  .footerTitle {
+    font-size: 28px;
+    gap: 12px;
+  }
+  .footerList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+    margin-left: 16px;
+    font-size: 14px;
+  }
+  .footerNav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .footerCopyrightBox {
+    gap: 28px;
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .footerContainer {
+    width: 1440px;
+    padding: 64px 100px 50px;
+  }
+  .footerBox {
+    gap: 41px;
+  }
+  .footerNavSub {
+    width: 100%;
+    flex-direction: row;
+    align-items: start;
+    gap: 235px;
+  }
+  .footerList {
+    gap: 12px;
+    margin-top: 40px;
+    margin-left: 16px;
+    font-size: 18px;
+    list-style-type: disc; /* Typ punktora: disc (kółka) */
+    padding-left: 20px;
+  }
+
+  .footerCopyrightBox {
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footerList {
+    display: none;
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "Breakfast": [
+    {
+      "id": "1",
+      "title": "Pancakes",
+      "description": "Fluffy pancakes with syrup",
+      "image": "pancakes.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Omelette",
+      "description": "Cheese and ham omelette",
+      "image": "omelette.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Smoothie",
+      "description": "Healthy green smoothie",
+      "image": "smoothie.jpg"
+    },
+    {
+      "id": "4",
+      "title": "French Toast",
+      "description": "Classic French toast with berries",
+      "image": "french_toast.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Breakfast Burrito",
+      "description": "Burrito with eggs, bacon, and cheese",
+      "image": "breakfast_burrito.jpg"
+    }
+  ],
+  "Miscellaneous": [
+    {
+      "id": "6",
+      "title": "Spring Rolls",
+      "description": "Crispy spring rolls with sweet chili sauce",
+      "image": "spring_rolls.jpg"
+    },
+    {
+      "id": "7",
+      "title": "Sushi",
+      "description": "Assorted sushi platter",
+      "image": "sushi.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Nachos",
+      "description": "Loaded nachos with cheese and jalapenos",
+      "image": "nachos.jpg"
+    },
+    {
+      "id": "9",
+      "title": "Quesadilla",
+      "description": "Cheese quesadilla with salsa",
+      "image": "quesadilla.jpg"
+    }
+  ],
+  "Chicken": [
+    {
+      "id": "10",
+      "title": "Grilled Chicken",
+      "description": "Grilled chicken breast with vegetables",
+      "image": "grilled_chicken.jpg"
+    },
+    {
+      "id": "11",
+      "title": "Chicken Curry",
+      "description": "Spicy chicken curry with rice",
+      "image": "chicken_curry.jpg"
+    },
+    {
+      "id": "12",
+      "title": "Chicken Alfredo",
+      "description": "Pasta with chicken in Alfredo sauce",
+      "image": "chicken_alfredo.jpg"
+    },
+    {
+      "id": "13",
+      "title": "Fried Chicken",
+      "description": "Crispy fried chicken with fries",
+      "image": "fried_chicken.jpg"
+    }
+  ],
+  "Desserts": [
+    {
+      "id": "14",
+      "title": "Chocolate Cake",
+      "description": "Rich chocolate cake with frosting",
+      "image": "chocolate_cake.jpg"
+    },
+    {
+      "id": "15",
+      "title": "Ice Cream",
+      "description": "Vanilla ice cream with sprinkles",
+      "image": "ice_cream.jpg"
+    },
+    {
+      "id": "16",
+      "title": "Apple Pie",
+      "description": "Homemade apple pie with a flaky crust",
+      "image": "apple_pie.jpg"
+    },
+    {
+      "id": "17",
+      "title": "Cheesecake",
+      "description": "Creamy cheesecake with a graham cracker crust",
+      "image": "cheesecake.jpg"
+    }
+  ]
+}

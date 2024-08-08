@@ -1,0 +1,58 @@
+.ingredientsList {
+  padding: 32px 16px 50px;
+  font-size: 10px;
+}
+.ingredientsList tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background-color: #ebf3d4;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.ingredientsList td {
+  display: flex;
+  align-items: center;
+}
+.ingredientListBody tr {
+  height: 86px;
+}
+.ingredientsTable .tableHead {
+  height: 42px;
+  padding: 12px 14px;
+  background-color: #8baa36;
+  color: #fafafa;
+}
+
+.ingredientsTable {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.ingredientName {
+  font-size: 12px;
+}
+.NumAndList {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+.NumAndList th {
+}
+.NumAndListDescription {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+td p {
+  max-width: 70px;
+  background-color: #8baa36;
+  padding: 4px;
+  border-radius: 4px;
+  color: #fafafa;
+}
+.ingredientCell input {
+  margin-right: 18px;
+}

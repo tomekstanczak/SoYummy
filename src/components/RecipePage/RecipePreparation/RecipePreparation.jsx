@@ -8,14 +8,16 @@ import styles from "./RecipePreparation.module.css";
 const RecipePreparation = ({ preparationSteps }) => {
   return (
     <div className={styles.preparation}>
-      <h2>Preparation</h2>
-      <ol>
+      <h2 className={styles.preparationTitle}>Recipe Preparation</h2>
+      <ol className={styles.preparationList}>
         {preparationSteps.map((step, index) => (
           <li key={index} className={styles.preparationStep}>
-            {step}
+            <span className={styles.stepNumber}>{index + 1}</span>
+            <p>{step}</p>
           </li>
         ))}
       </ol>
+      <img className={styles.preparationImg} src="" alt="" />
     </div>
   );
 };

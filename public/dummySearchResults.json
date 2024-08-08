@@ -1,0 +1,68 @@
+{
+  "recipes": [
+    {
+      "id": "1",
+      "name": "Classic Pancakes",
+      "description": "Fluffy pancakes made with simple ingredients.",
+      "image": "https://example.com/images/pancakes.png",
+      "cookingTime": 20,
+      "isFavorite": false
+    },
+    {
+      "id": "2",
+      "name": "Chicken Curry",
+      "description": "A spicy and flavorful chicken curry.",
+      "image": "https://example.com/images/chicken-curry.png",
+      "cookingTime": 45,
+      "isFavorite": true
+    },
+    {
+      "id": "3",
+      "name": "Avocado Toast",
+      "description": "Healthy avocado toast with a sprinkle of chili flakes.",
+      "image": "https://example.com/images/avocado-toast.png",
+      "cookingTime": 10,
+      "isFavorite": true
+    },
+    {
+      "id": "4",
+      "name": "Beef Stew",
+      "description": "A hearty beef stew with carrots and potatoes.",
+      "image": "https://example.com/images/beef-stew.png",
+      "cookingTime": 120,
+      "isFavorite": false
+    },
+    {
+      "id": "5",
+      "name": "Caesar Salad",
+      "description": "Classic Caesar salad with homemade croutons.",
+      "image": "https://example.com/images/caesar-salad.png",
+      "cookingTime": 15,
+      "isFavorite": false
+    },
+    {
+      "id": "6",
+      "name": "Spaghetti Carbonara",
+      "description": "Creamy spaghetti carbonara with pancetta.",
+      "image": "https://example.com/images/spaghetti-carbonara.png",
+      "cookingTime": 25,
+      "isFavorite": true
+    },
+    {
+      "id": "7",
+      "name": "Vegetable Stir-Fry",
+      "description": "A quick and easy vegetable stir-fry with soy sauce.",
+      "image": "https://example.com/images/vegetable-stirfry.png",
+      "cookingTime": 15,
+      "isFavorite": false
+    },
+    {
+      "id": "8",
+      "name": "Lemon Cheesecake",
+      "description": "Rich and creamy lemon cheesecake with a graham cracker crust.",
+      "image": "https://example.com/images/lemon-cheesecake.png",
+      "cookingTime": 90,
+      "isFavorite": true
+    }
+  ]
+}

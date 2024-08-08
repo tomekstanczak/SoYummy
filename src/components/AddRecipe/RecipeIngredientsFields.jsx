@@ -16,22 +16,34 @@ const RecipeIngredientsFields = ({
   unitOptions,
 }) => {
   const [localIngredients, setLocalIngredients] = useState(ingredients);
+  const [ingredientCount, setIngredientCount] = useState(1);
 
   useEffect(() => {
     setLocalIngredients([...ingredients, { name: "", amount: "", unit: "" }]);
-  }, [ingredients]);
+  }, []);
 
   const handleAddIngredient = () => {
     setLocalIngredients([
       ...localIngredients,
       { name: "", amount: "", unit: "" },
     ]);
+    setIngredientCount(ingredientCount + 1);
   };
 
   const handleRemoveIngredient = (index) => {
     const updatedIngredients = localIngredients.filter((_, i) => i !== index);
     setLocalIngredients(updatedIngredients);
-    setIngredients(updatedIngredients); // Update parent state
+    setIngredients(updatedIngredients);
+    setIngredientCount(ingredientCount - 1);
+  };
+
+  const handleRemoveLastIngredient = () => {
+    if (ingredientCount > 0) {
+      const updatedIngredients = localIngredients.slice(0, -1);
+      setLocalIngredients(updatedIngredients);
+      setIngredients(updatedIngredients); // Update parent state
+      setIngredientCount(ingredientCount - 1); // Zmniejsz licznik o 1
+    }
   };
 
   const handleIngredientChange = (index, field, value) => {
@@ -39,12 +51,25 @@ const RecipeIngredientsFields = ({
       i === index ? { ...ingredient, [field]: value } : ingredient
     );
     setLocalIngredients(updatedIngredients);
-    setIngredients(updatedIngredients); // Update parent state
+    setIngredients(updatedIngredients);
   };
 
   return (
     <div className={styles.container}>
       <h2 className={styles.subtitle}>Ingredients</h2>
+      <div>
+        <button type="button" onClick={handleAddIngredient}>
+          +
+        </button>
+        ({ingredientCount})
+        <button
+          type="button"
+          onClick={handleRemoveLastIngredient}
+          disabled={ingredientCount === 0}
+        >
+          -
+        </button>
+      </div>
       <div className={styles.ingredientsList}>
         {localIngredients.map((ingredient, index) => (
           <div key={index} className={styles.ingredientContainer}>

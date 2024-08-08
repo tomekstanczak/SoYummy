@@ -30,9 +30,7 @@
 
 .recipe {
   width: 343px;
-  height: 343px;
-  background-color: cadetblue;
-  border-radius: 8px;
+  height: 323px;
 }
 
 .recipeTitleContainer {
@@ -46,6 +44,15 @@
   font-size: 16px;
   font-weight: 500;
   color: #3e4462;
+}
+.recipeImage {
+  width: 343px;
+  height: 323px;
+  position: absolute;
+  top: -15.2rem;
+  left: -16px;
+  z-index: -1;
+  border-radius: 8px;
 }
 
 .categoryTitle {
@@ -110,6 +117,10 @@
     gap: 14px;
   }
   .recipe {
+    width: 300px;
+    height: 323px;
+  }
+  .recipeImage {
     width: 300px;
     height: 323px;
   }

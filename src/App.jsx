@@ -3,7 +3,7 @@ import AddRecipePage from "./pages/AddRecipePage/AddRecipePage";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import FavoritePage from "./pages/FavoritePage";
 import MainPage from "./pages/MainPage/MainPage";
-import MyRecipiesPage from "./pages/MyRecipiesPage";
+import MyRecipiesPage from "./pages/MyRecipiesPage/MyRecipiesPage";
 import RecipePage from "./pages/RecipePage/RecipePage";
 import ShoppingListPage from "./pages/ShoppingListPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";

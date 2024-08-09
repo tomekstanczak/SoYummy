@@ -5,7 +5,7 @@ import UserLogoModal from "../UserLogoModal/UserLogoModal";
 import userIcon from "../../../assets/icons/formatedIcons/user.svg";
 import styles from "./UserLogo.module.css";
 
-const UserLogo = () => {
+const UserLogo = ({ user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleUserLogoClick = () => {
@@ -16,11 +16,13 @@ const UserLogo = () => {
     setIsModalOpen(false);
   };
 
+  const name = user.name;
+
   return (
     <div>
       <div onClick={handleUserLogoClick} className={styles.container}>
         <img src={userIcon} alt="User" className={styles.userIconStyle} />
-        <span className={styles.name}>Imie</span>
+        <span className={styles.name}>{name}</span>
       </div>
       {isModalOpen && <UserLogoModal onClose={handleCloseModal} />}
     </div>

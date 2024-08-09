@@ -1,8 +1,6 @@
 // Komponent AuthForm może być również zaimplementowany przez dwa komponenty SigninForm i RegisterForm.
 
 import styles from "./SigninForm.module.css";
-
-import styles from './SigninForm.module.css'
 import axios from "axios"
 import { useState } from "react"
 
@@ -14,15 +12,6 @@ const INITIAL_STATE = {
 
 export const SigninForm = () => {
   const [userData, setUserData] = useState(INITIAL_STATE);
-
-  const onChange = (e) => {
-    const { name, value } = e.target;
-
-    setUserData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
     const onChange = (e) => {
         const { name, value } = e.target

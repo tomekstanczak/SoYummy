@@ -1,15 +1,8 @@
 // Komponent AuthForm może być również zaimplementowany przez dwa komponenty SigninForm i RegisterForm.
 
-
 import styles from './RegisterForm.module.css'
 import axios from "axios"
 import { useState } from "react"
-
-const INITIAL_STATE = {
-    name: '',
-    email: '',
-    password: '',
-}
 
 const INITIAL_STATE = {
   login: "",
@@ -93,24 +86,3 @@ const onSubmit = async(e) => {
             </form>
         )
     }
-
-
-        <label className={styles.label}>
-          <input
-            className={styles.inputs}
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={onChange}
-          />
-          <svg className={styles.svg}>
-            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
-          </svg>
-        </label>
-      </div>
-      <button className={styles.button} type="submit">
-        Sign up
-      </button>
-    </form>
-  );
-};

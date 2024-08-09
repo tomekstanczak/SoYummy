@@ -6,15 +6,12 @@ import FavoritePage from "./pages/FavoritePage";
 import MainPage from "./pages/MainPage/MainPage";
 import MyRecipiesPage from "./pages/MyRecipiesPage";
 import RecipePage from "./pages/RecipePage/RecipePage";
-import SearchPage from "./pages/SearchPage";
 import ShoppingListPage from "./pages/ShoppingListPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import RecipePage from "./pages/RecipePage/RecipePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import SharedLayout from "./pages/SharedLayout";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import SigninPage from "./pages/SigninPage/SigninPage";
-import ShoppingListPage from "./pages/ShoppingListPage";
 
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 

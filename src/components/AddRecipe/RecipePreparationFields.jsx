@@ -11,29 +11,20 @@ const RecipePreparationFields = ({ preparation, setPreparation }) => {
 
   const handleTextChange = (e) => {
     setText(e.target.value);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      const newPreparation = text
-        .split("\n")
-        .filter((line) => line.trim() !== "");
-      setPreparation(newPreparation);
-      setText("");
-    }
+    setPreparation(text);
   };
 
   return (
     <div className={styles.container}>
-      <label htmlFor="preparation">Recipe Preparation</label>
+      <label htmlFor="preparation">
+        <h3>Recipe Preparation</h3>
+      </label>
       <textarea
         id="preparation"
         value={text}
         onChange={handleTextChange}
-        onKeyDown={handleKeyDown}
         className={styles.textarea}
-        placeholder="Enter preparation steps here..."
+        placeholder="Enter recipe"
       />
     </div>
   );

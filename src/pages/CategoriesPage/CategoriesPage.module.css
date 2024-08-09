@@ -1,0 +1,138 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.topbar {
+  border-bottom: 2px solid #e0e0e0;
+  margin-left: 16px;
+}
+
+.categoryList {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  list-style-type: none;
+  padding: 10px 29px 22px 29px;
+}
+
+.categoryList li {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.activeCategory {
+  font-weight: bold;
+  color: #8baa36;
+  border-bottom: 2px solid #8baa36;
+}
+
+.mainContent {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  max-width: 1440px;
+}
+
+.recipeList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  gap: 28px;
+  margin-bottom: 100px;
+}
+
+.recipeItem {
+  position: relative;
+  cursor: pointer;
+}
+
+.recipePicture {
+  width: 343px;
+  height: 323px;
+  border-radius: 8px;
+}
+.recipeTitle {
+  position: absolute;
+  bottom: 26px;
+  left: 18px;
+  width: 307px;
+  height: 52px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 767px) {
+  .recipeItem {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+
+  .recipeList {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    gap: 28px;
+    margin-bottom: 150px;
+  }
+  .recipePicture {
+    width: 336px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .categoryList li {
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recipePicture {
+    width: 300px;
+  }
+  .recipeTitle {
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    width: 268px;
+    height: 52px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.recipeItem:hover {
+  background-color: #f0f0f0;
+}
+
+.error {
+  color: red;
+}

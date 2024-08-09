@@ -1,12 +1,13 @@
+import { useContext } from "react";
+import { RecipeContext } from "../../../context/RecipeContext";
+
 import styles from "./RecipePreparation.module.css";
 
 const RecipePreparation = ({ preparationSteps }) => {
-  // Podziel instrukcje na kroki na podstawie nowej linii
-  const stepsArray = preparationSteps.split("\r\n");
+  const { recipe } = useContext(RecipeContext);
 
-  if (!Array.isArray(preparationSteps)) {
-    return <div>Error: Preparation steps should be an array.</div>;
-  }
+  const stepsArray =
+    typeof preparationSteps === "string" ? preparationSteps.split("\r\n") : [];
 
   return (
     <div className={styles.preparation}>
@@ -19,7 +20,7 @@ const RecipePreparation = ({ preparationSteps }) => {
           </li>
         ))}
       </ol>
-      {recipe.preview && ( // Użyj preview jako obrazek
+      {recipe.preview && (
         <img
           className={styles.preparationImg}
           src={recipe.thumb}

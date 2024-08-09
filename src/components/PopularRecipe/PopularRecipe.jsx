@@ -17,9 +17,11 @@ const PopularRecipe = () => {
     const fetchPopularRecipes = async () => {
       try {
         const response = await axios.get(
-          "https://so-yummy-31fabc853d58.herokuapp.com/popular-recipe"
+          "https://so-yummy-31fabc853d58.herokuapp.com/popular-recipe/popular-recipe"
         );
-        setRecipes(response.data.recipes);
+        console.log(response.data.data);
+        console.log(response);
+        setRecipes(response.data.data);
         setError(null);
       } catch (err) {
         setRecipes([]);
@@ -31,14 +33,25 @@ const PopularRecipe = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.popularContainer}>
       <h3>Popular Recipes</h3>
       {error && <p>{error}</p>}
       {recipes.length > 0 ? (
-        <ul>
+        <ul className={styles.popularList}>
           {recipes.map((recipe) => (
-            <li key={recipe.id}>
-              <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
+            <li key={recipe.id} className={styles.popularListItems}>
+              <img src={recipe.thumb} className={styles.popularPictures} />
+              <div className={styles.popularText}>
+                <Link
+                  to={`/recipe/${recipe._id}`}
+                  className={styles.popularTitle}
+                >
+                  {recipe.title}
+                </Link>
+                <p className={styles.popularDescription}>
+                  {recipe.description}
+                </p>
+              </div>
             </li>
           ))}
         </ul>

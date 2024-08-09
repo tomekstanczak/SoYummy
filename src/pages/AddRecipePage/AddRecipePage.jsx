@@ -16,9 +16,13 @@ const AddRecipePage = () => {
       <MainPageTitle title="Add Recipe" />
       <div className={styles.formContainer}>
         <AddRecipeForm />
-        <div className={styles.followUsContainer}>
-          <FollowUs />
-          <PopularRecipe />
+        <div className={styles.followUsPopularContainer}>
+          <div className={styles.followUs}>
+            <FollowUs />
+          </div>
+          <div className={styles.popular}>
+            <PopularRecipe />
+          </div>
         </div>
       </div>
     </div>

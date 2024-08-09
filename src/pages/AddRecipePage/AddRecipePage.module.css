@@ -23,6 +23,8 @@
   .formContainer {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    gap: 121px;
     flex-direction: row;
   }
   .followUsPopularContainer {

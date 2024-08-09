@@ -39,7 +39,7 @@ const Navigation = ({ onClose }) => {
     <nav>
       <div className={styles.desktopNavMenu}>
         <NavLink
-          to="/categories/:categoryName"
+          to="/categories"
           className={({ isActive }) => (isActive ? styles.activeLink : "")}
         >
           Categories
@@ -94,7 +94,7 @@ const Navigation = ({ onClose }) => {
           </div>
           <div className={styles.menu}>
             <NavLink
-              to="/categories/:categoryName"
+              to="/categories"
               onClick={handleLinkClick}
               className={({ isActive }) => (isActive ? styles.activeLink : "")}
             >

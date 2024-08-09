@@ -1,8 +1,15 @@
 // Komponent AuthForm może być również zaimplementowany przez dwa komponenty SigninForm i RegisterForm.
 
-import styles from "./RegisterForm.module.css";
 
-import { useState } from "react";
+import styles from './RegisterForm.module.css'
+import axios from "axios"
+import { useState } from "react"
+
+const INITIAL_STATE = {
+    name: '',
+    email: '',
+    password: '',
+}
 
 const INITIAL_STATE = {
   login: "",
@@ -16,44 +23,77 @@ export const RegisterForm = () => {
     const { name, value } = e.target;
 
     setUserData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+        ...prev,
+        [name]: value,
+    }))
+}
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+const onSubmit = async(e) => {
+    e.preventDefault()
 
-    setUserData(INITIAL_STATE);
-  };
-  return (
-    <form className={styles.form} onSubmit={onSubmit}>
-      <h2 className={styles.title}>Registration</h2>
-      <div className={styles.box}>
-        <label className={styles.label}>
-          <input
-            className={styles.inputs}
-            type="text"
-            name="login"
-            placeholder="Name"
-            onChange={onChange}
-          />
-          <svg className={styles.svg}>
-            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-user"></use>
-          </svg>
-        </label>
-        <label className={styles.label}>
-          <input
-            className={styles.inputs}
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={onChange}
-          />
-          <svg className={styles.svg}>
-            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
-          </svg>
-        </label>
+    setUserData(INITIAL_STATE)
+    try {
+        const response = await axios.post(
+            "https://so-yummy-31fabc853d58.herokuapp.com/auth/signup",
+            userData
+        );
+        console.log('ok', response.data)
+    } catch (e) {
+        console.log(e.response);
+    }
+}
+        return (
+            <form className={styles.form} onSubmit={onSubmit}>
+                <h2 className={styles.title}>Registration</h2>
+                <div className={styles.box}>
+                    <label className={styles.label}>
+                        <input
+                            className={styles.inputs}
+                            type="text"
+                            name="name"
+                            placeholder="Name"
+                            value={userData.name}
+                            onChange={onChange}
+                        />
+                        <svg className={styles.svg}>
+                            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-user"></use>
+                        </svg>
+                    </label>
+                    <label className={styles.label}>
+                        <input
+                            className={styles.inputs}
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            value={userData.email}
+                            onChange={onChange}
+                        />
+                        <svg className={styles.svg}>
+                            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
+                        </svg>
+                    </label>
+
+                    <label className={styles.label}>
+                        <input
+                            className={styles.inputs}
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={userData.password}
+                            onChange={onChange}
+                        />
+                        <svg className={styles.svg}>
+                            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
+                        </svg>
+                    </label>
+                </div>
+                <button className={styles.button} type="submit">
+                    Sign up
+                </button>
+            </form>
+        )
+    }
+
 
         <label className={styles.label}>
           <input

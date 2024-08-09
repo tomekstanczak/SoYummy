@@ -8,6 +8,9 @@
 
 import { useState, useEffect } from "react";
 import styles from "./RecipeIngredientsFields.module.css";
+import plus from "../../assets/icons/formatedIcons/plus.svg";
+import minus from "../../assets/icons/formatedIcons/Minus.svg";
+import cross from "../../assets/icons/formatedIcons/X.svg";
 
 const RecipeIngredientsFields = ({
   ingredients,
@@ -41,8 +44,8 @@ const RecipeIngredientsFields = ({
     if (ingredientCount > 0) {
       const updatedIngredients = localIngredients.slice(0, -1);
       setLocalIngredients(updatedIngredients);
-      setIngredients(updatedIngredients); // Update parent state
-      setIngredientCount(ingredientCount - 1); // Zmniejsz licznik o 1
+      setIngredients(updatedIngredients);
+      setIngredientCount(ingredientCount - 1);
     }
   };
 
@@ -51,24 +54,27 @@ const RecipeIngredientsFields = ({
       i === index ? { ...ingredient, [field]: value } : ingredient
     );
     setLocalIngredients(updatedIngredients);
+    console.log(updatedIngredients);
     setIngredients(updatedIngredients);
   };
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.subtitle}>Ingredients</h2>
-      <div>
-        <button type="button" onClick={handleAddIngredient}>
-          +
-        </button>
-        ({ingredientCount})
-        <button
-          type="button"
-          onClick={handleRemoveLastIngredient}
-          disabled={ingredientCount === 0}
-        >
-          -
-        </button>
+      <div className={styles.titlePart}>
+        <h2 className={styles.subtitle}>Ingredients</h2>
+        <div className={styles.ingredientCounter}>
+          <button
+            type="button"
+            onClick={handleRemoveLastIngredient}
+            disabled={ingredientCount === 0}
+          >
+            <img src={minus} className={styles.counterIcon} />
+          </button>
+          <span className={styles.counterText}>{ingredientCount}</span>
+          <button type="button" onClick={handleAddIngredient}>
+            <img src={plus} className={styles.counterIcon} />
+          </button>
+        </div>
       </div>
       <div className={styles.ingredientsList}>
         {localIngredients.map((ingredient, index) => (
@@ -80,42 +86,45 @@ const RecipeIngredientsFields = ({
               }
               className={styles.select}
             >
-              <option value="">Select an ingredient</option>
+              <option value=""></option>
               {ingredientOptions.map((option, i) => (
                 <option key={i} value={option}>
                   {option}
                 </option>
               ))}
             </select>
-            <input
-              type="number"
-              value={ingredient.amount}
-              onChange={(e) =>
-                handleIngredientChange(index, "amount", e.target.value)
-              }
-              className={styles.input}
-              placeholder="Amount"
-            />
-            <select
-              value={ingredient.unit}
-              onChange={(e) =>
-                handleIngredientChange(index, "unit", e.target.value)
-              }
-              className={styles.select}
-            >
-              <option value="">Select unit</option>
-              {unitOptions.map((option, i) => (
-                <option key={i} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+            <div>
+              <div>
+                <input
+                  type="number"
+                  value={ingredient.amount}
+                  onChange={(e) =>
+                    handleIngredientChange(index, "amount", e.target.value)
+                  }
+                  className={styles.input}
+                />
+                <select
+                  value={ingredient.unit}
+                  onChange={(e) =>
+                    handleIngredientChange(index, "unit", e.target.value)
+                  }
+                  className={styles.selectUnit}
+                >
+                  <option value=""></option>
+                  {unitOptions.map((option, i) => (
+                    <option key={i} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
             <button
               type="button"
               onClick={() => handleRemoveIngredient(index)}
               className={styles.removeButton}
             >
-              X
+              <img src={cross} />
             </button>
           </div>
         ))}

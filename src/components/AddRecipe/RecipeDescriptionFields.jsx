@@ -7,100 +7,132 @@
 // Listy rozwijane powinny wyświetlać 6 wierszy danych, wszystkie inne powinny być przewijane w obrębie listy.
 // Komponent poprzez właściwości odbiera wartości dla danych wejściowych, a także uchwyt do przetwarzania tych wartości.
 
-import React from "react";
+import { useState } from "react";
 import styles from "./RecipeDescriptionFields.module.css";
+import cameraVector from "../../assets/icons/formatedIcons/photoCameraVector.svg";
+import camera from "../../assets/icons/formatedIcons/photoCamera.svg";
 
 const RecipeDescriptionFields = ({
-  image = null,
-  setImage = () => {},
-  name = "",
-  setName = () => {},
-  description = "",
-  setDescription = () => {},
-  category = "",
-  setCategory = () => {},
-  cookingTime = "",
-  setCookingTime = () => {},
-  categories = [],
-  errors = {},
+  description,
+  setDescription,
+  categories,
+  cookingTime,
+  setCookingTime,
+  setImage,
+  name,
+  setName,
+  category,
+  setCategory,
+  error,
 }) => {
+  const cookingTimeOptions = [...Array(24).keys()].map((n) => (n + 1) * 5);
+  const [recipiePictureURL, setrecipiePictureURL] = useState(null);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setrecipiePictureURL(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.fieldContainer}>
-        <label htmlFor="image">Recipe Image:</label>
+      <div className={styles.fileInputContainer}>
+        <label htmlFor="image" className={styles.imageLabel}>
+          {!recipiePictureURL ? (
+            <div className={styles.fullCameraIcon}>
+              <img
+                src={cameraVector}
+                alt="Camera vector"
+                className={styles.cameraVector}
+              />
+              <img src={camera} alt="Camera icon" className={styles.camera} />
+            </div>
+          ) : (
+            <img
+              src={recipiePictureURL}
+              alt="Recipe picture"
+              className={styles.recipeImage}
+            />
+          )}
+        </label>
         <input
           id="image"
           type="file"
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={handleFileChange}
           className={styles.fileInput}
         />
-        {errors.image && <div className={styles.error}>{errors.image}</div>}
+        {error.image && <div className={styles.error}>{error.image}</div>}
       </div>
+      <div className={styles.inputsConteiner}>
+        <div className={styles.fieldContainer}>
+          <input
+            id="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className={styles.input}
+            placeholder="Enter item title"
+          />
+          {error.name && <div className={styles.error}>{error.name}</div>}
+        </div>
 
-      <div className={styles.fieldContainer}>
-        <label htmlFor="name">Recipe Name:</label>
-        <input
-          id="name"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className={styles.input}
-        />
-        {errors.name && <div className={styles.error}>{errors.name}</div>}
-      </div>
+        <div className={styles.fieldContainer}>
+          <textarea
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className={styles.textarea}
+            placeholder="Enter about recipe"
+          />
+          {error.description && (
+            <div className={styles.error}>{error.description}</div>
+          )}
+        </div>
 
-      <div className={styles.fieldContainer}>
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className={styles.textarea}
-        />
-        {errors.description && (
-          <div className={styles.error}>{errors.description}</div>
-        )}
-      </div>
+        <div className={styles.fieldContainer}>
+          <select
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className={styles.select}
+          >
+            <option value="">Category</option>
+            {categories.map((cat, index) => (
+              <option key={index} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+          {error.category && (
+            <div className={styles.error}>{error.category}</div>
+          )}
+        </div>
 
-      <div className={styles.fieldContainer}>
-        <label htmlFor="category">Category:</label>
-        <select
-          id="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className={styles.select}
-        >
-          <option value="">Select a category</option>
-          {categories.map((cat, index) => (
-            <option key={index} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
-        {errors.category && (
-          <div className={styles.error}>{errors.category}</div>
-        )}
-      </div>
-
-      <div className={styles.fieldContainer}>
-        <label htmlFor="cookingTime">Cooking Time (minutes):</label>
-        <select
-          id="cookingTime"
-          value={cookingTime}
-          onChange={(e) => setCookingTime(e.target.value)}
-          className={styles.select}
-        >
-          <option value="">Select time</option>
-          {[...Array(24).keys()].map((n) => (
-            <option key={n} value={(n + 1) * 5}>
-              {(n + 1) * 5} minutes
-            </option>
-          ))}
-        </select>
-        {errors.cookingTime && (
-          <div className={styles.error}>{errors.cookingTime}</div>
-        )}
+        <div className={styles.fieldContainer}>
+          <select
+            id="cookingTime"
+            value={cookingTime}
+            onChange={(e) => setCookingTime(e.target.value)}
+            className={styles.select}
+          >
+            <option value="">Cooking time</option>
+            {cookingTimeOptions.map((time, index) => (
+              <option key={index} value={time}>
+                {time} minutes
+              </option>
+            ))}
+          </select>
+          {error.cookingTime && (
+            <div className={styles.error}>{error.cookingTime}</div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ const PopularRecipe = () => {
     const fetchPopularRecipes = async () => {
       try {
         const response = await axios.get(
-          "https://so-yummy-31fabc853d58.herokuapp.com/popular-recipe"
+          "https://so-yummy-31fabc853d58.herokuapp.com/popular-recipe/popular-recipe"
         );
         setRecipes(response.data.recipes);
         setError(null);

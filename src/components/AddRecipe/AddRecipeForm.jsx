@@ -7,32 +7,37 @@
 // Po pomyślnym wysłaniu żądania, przepis jest dodawany do listy własnych przepisów użytkownika. Następnie użytkownik powinien zostać przekierowany na stronę MyRecipesPage.
 // Po wystąpieniu błędu w żądaniu, użytkownikowi zostanie wyświetlone odpowiednie powiadomienie push.
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import RecipeDescriptionFields from "./RecipeDescriptionFields";
 import RecipeIngredientsFields from "./RecipeIngredientsFields";
 import RecipePreparationFields from "./RecipePreparationFields";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./AddRecipeForm.module.css";
 
 const AddRecipeForm = () => {
+  const [image, setImage] = useState(null);
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [cookingTime, setCookingTime] = useState();
   const [ingredients, setIngredients] = useState([]);
   const [preparation, setPreparation] = useState("");
+  const [ingredientOptions, setIngredientOptions] = useState([]);
   const [errors, setErrors] = useState({});
   const [categories, setCategories] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://so-yummy-31fabc853d58.herokuapp.com/recipes/category-list"
+          "https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipes/category-list"
         );
         const categoryTitles = response.data.data.categories.map(
           (cat) => cat.title
         );
-        console.log(categoryTitles);
         setCategories(categoryTitles);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -42,13 +47,33 @@ const AddRecipeForm = () => {
     fetchCategories();
   }, []);
 
-  const ingredientOptions = ["Flour", "Sugar", "Eggs", "Milk"];
-  const unitOptions = ["g", "ml", "cups", "pieces"];
+  useEffect(() => {
+    const fetchIngredients = async () => {
+      try {
+        const response = await axios.get(
+          "https://so-yummy-31fabc853d58.herokuapp.com/ingredients/ingredients/list"
+        );
+        const ingredientOptions = response.data.data.ingredients.map(
+          (ingredient) => ingredient.ttl
+        );
+        setIngredientOptions(ingredientOptions);
+      } catch (error) {
+        console.error("Error fetching ingredients:", error);
+      }
+    };
+
+    fetchIngredients();
+  }, []);
+
+  const unitOptions = ["tbs", "tsp", "kg", "g"];
 
   const validate = () => {
     const errors = {};
+    if (!name) errors.name = "Recipe name is required";
     if (!description) errors.description = "Description is required";
-    if (!ingredients) errors.ingredients = "Ingredients are required";
+    if (!category) errors.category = "Category is required";
+    if (!cookingTime) errors.cookingTime = "Cooking time is required";
+    if (!ingredients.length) errors.ingredients = "Ingredients are required";
     if (!preparation)
       errors.preparation = "Preparation instructions are required";
     return errors;
@@ -63,14 +88,31 @@ const AddRecipeForm = () => {
       return;
     }
 
-    try {
-      // Assuming an API function to submit the recipe
-      await submitRecipe({ description, ingredients, preparation });
+    const data = {
+      title: name,
+      category: category,
+      instructions: preparation,
+      time: cookingTime,
+      ingredients: ingredients,
+    };
 
-      // Redirect to MyRecipesPage
-      navigate("/my-recipes");
+    try {
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YjUyOTA0MjBhYjQ5ZmJhODRhZDgwNCIsImlhdCI6MTcyMzE1NjkwOSwiZXhwIjoxNzIzMjAwMTA5fQ.wwEJKDKPn-XZmiUBktg5fJSTTvrCo1hgg-aDnV0X-g0";
+      await axios.post(
+        "https://so-yummy-31fabc853d58.herokuapp.com/ownRecipes/",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token} `,
+          },
+        }
+      );
+
+      console.log("ok");
+      navigate("/main");
     } catch (error) {
-      // Display error notification
       alert("Failed to add recipe. Please try again.");
     }
   };
@@ -80,29 +122,37 @@ const AddRecipeForm = () => {
       <RecipeDescriptionFields
         description={description}
         setDescription={setDescription}
-        error={errors.description}
+        name={name}
+        setName={setName}
         categories={categories}
+        category={category}
+        setCategory={setCategory}
+        cookingTime={cookingTime}
+        setCookingTime={setCookingTime}
+        setImage={setImage}
+        error={errors}
       />
       <RecipeIngredientsFields
         ingredients={ingredients}
         setIngredients={setIngredients}
         ingredientOptions={ingredientOptions}
         unitOptions={unitOptions}
+        error={errors.ingredients}
       />
       <RecipePreparationFields
         preparation={preparation}
         setPreparation={setPreparation}
         error={errors.preparation}
       />
-      <button type="submit" className={styles.submitButton}>
+      <button
+        type="submit"
+        className={styles.submitButton}
+        onClick={handleSubmit}
+      >
         Add Recipe
       </button>
     </form>
   );
-};
-
-const submitRecipe = async (recipeData) => {
-  return new Promise((resolve) => setTimeout(resolve, 1000));
 };
 
 export default AddRecipeForm;

@@ -7,11 +7,11 @@
 // Po zmianie kategorii, do backendu zostanie wysłane nowe żądanie. Kliknięcie podglądu wybranego przepisu powoduje otwarcie strony RecipePage.
 
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./CategoriesPage.module.css";
 import Loader from "../../components/Common/Loader/Loader";
 import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
+import { fetchCategories, fetchRecipes } from "./CetegoriesServices";
 
 const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
@@ -23,50 +23,37 @@ const CategoriesPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const loadData = async () => {
       try {
-        const response = await axios.get(
-          "https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipes/category-list"
-        );
-        setCategories(response.data.data.categories);
-      } catch (err) {
-        setError("Failed to fetch categories");
-      }
-    };
+        const categories = await fetchCategories();
+        setCategories(categories);
 
-    const fetchRecipes = async (category) => {
-      console.log(category);
-      try {
-        const response = await axios.get(
-          `https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipes/${category}`
-        );
-        setRecipes(response.data.data.recipes);
+        const params = new URLSearchParams(location.search);
+        const initialCategory = params.get("category") || "Beef";
+        setSelectedCategory(initialCategory);
+
+        const recipes = await fetchRecipes(initialCategory);
+        setRecipes(recipes);
+        setError(null);
       } catch (err) {
-        setError("Failed to fetch recipes");
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    const params = new URLSearchParams(location.search);
-    const initialCategory = params.get("category") || "Beef";
-    setSelectedCategory(initialCategory);
-    fetchCategories();
-    fetchRecipes(initialCategory);
+    loadData();
   }, [location.search]);
 
   const handleCategoryChange = async (category) => {
     setLoading(true);
     setSelectedCategory(category);
-    console.log("handle:", category);
     try {
-      const response = await axios.get(
-        `https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipes/${category}`
-      );
-      setRecipes(response.data.data.recipes);
+      const recipes = await fetchRecipes(category);
+      setRecipes(recipes);
       setError(null);
     } catch (err) {
-      setError("Failed to fetch recipes");
+      setError(err.message);
     } finally {
       setLoading(false);
     }

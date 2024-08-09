@@ -13,6 +13,10 @@
   position: relative;
   font-family: "Poppins", sans-serif;
 }
+#root {
+  overflow-x: hidden;
+  min-width: 375px;
+}
 body {
   line-height: 1;
 }

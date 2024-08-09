@@ -139,6 +139,10 @@
   .searchButton {
     padding: 0 52px;
   }
+  .searchButton:hover {
+    transition: 250ms;
+    background-color: #8baa36;
+  }
   .unsplashImg {
     width: 578px;
     right: 184px;

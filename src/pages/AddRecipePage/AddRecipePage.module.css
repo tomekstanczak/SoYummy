@@ -1,0 +1,13 @@
+.addRecipeContainer {
+  display: block;
+}
+.formContainer {
+  display: flex;
+  justify-content: center;
+  gap: 121px;
+}
+.followUsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}

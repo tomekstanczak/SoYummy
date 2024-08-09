@@ -1,0 +1,16 @@
+.submitButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  color: #fafafa;
+  background-color: black;
+  gap: 4px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 15px;
+  height: 52px;
+  width: 161px;
+  margin-bottom: 15px;
+}

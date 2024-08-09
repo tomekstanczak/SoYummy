@@ -1,0 +1,39 @@
+.navMenu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  color: #fafafa;
+  padding: 0;
+  margin: 0;
+}
+
+.navLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navLink:hover,
+.navLink:focus,
+.navLink:active {
+  color: #8baa36;
+}
+
+.navActive {
+  color: #8baa36;
+}
+
+@media screen and (min-width: 768px) {
+  .navMenu {
+    gap: 20px;
+    align-items: start;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .navMenu {
+    gap: 24px;
+  }
+}

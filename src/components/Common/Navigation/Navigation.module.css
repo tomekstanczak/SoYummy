@@ -1,0 +1,96 @@
+.desktopNavMenu {
+  display: none;
+}
+.mobileNavMenu .menu use {
+  fill: transparent;
+}
+use {
+  fill: transparent;
+  stroke: #22252a;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ebf3d4;
+  z-index: 1000;
+}
+
+.searchButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #22252a;
+  font-weight: 500;
+  gap: 32px;
+}
+.menu a:last-child {
+  display: flex;
+  gap: 8px;
+}
+.mobileNav a {
+  color: white;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.mobileNav button {
+  margin-top: 20px;
+}
+
+.topConteiner {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  padding-right: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggleConteiner {
+  position: absolute;
+  bottom: 18px;
+  left: 16px;
+}
+.activeLink {
+  color: #8baa36;
+  stroke: #8baa36;
+  fill: transparent;
+}
+.activeLink use {
+  stroke: #8baa36;
+  fill: transparent;
+}
+
+@media (min-width: 1440px) {
+  .mobileNavMenu {
+    display: none;
+  }
+  .desktopNavMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,32 @@
+h2 {
+  color: #3e4462;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.followIconList {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  gap: 14px;
+}
+
+.followLink {
+  color: inherit;
+}
+.followLink:hover,
+.followLink:focus {
+  color: inherit;
+}
+
+.followIcon {
+  width: 24px; /* rozmiar ikon */
+  height: 24px; /* rozmiar ikon */
+}
+
+@media screen and (min-width: 768px) {
+  .followIconList {
+    gap: 18px;
+  }
+}

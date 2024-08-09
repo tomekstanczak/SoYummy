@@ -11,6 +11,7 @@ import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./CategoriesPage.module.css";
 import Loader from "../../components/Common/Loader/Loader";
+import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
 
 const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
@@ -78,7 +79,7 @@ const CategoriesPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.topbar}>
-        <h2>Categories</h2>
+        <MainPageTitle title="Categories" />
         <ul className={styles.categoryList}>
           {categories.map((category) => (
             <li
@@ -108,7 +109,7 @@ const CategoriesPage = () => {
                   onClick={() => handleRecipeClick(recipe._id)}
                 >
                   <img src={recipe.thumb} className={styles.recipePicture} />
-                  {recipe.title}
+                  <spam className={styles.recipeTitle}>{recipe.title}</spam>
                 </li>
               ))}
             </ul>

@@ -1,6 +1,21 @@
+import { useContext } from "react";
+import { RecipeContext } from "../../../context/RecipeContext";
 import styles from "./RecipeIngredientsList.module.css";
 
 const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
+  const { ingredients: allIngredients } = useContext(RecipeContext);
+
+  const enrichedIngredients = ingredients.map((ingredient) => {
+    const matchedIngredient = allIngredients.find(
+      (item) => item._id === ingredient.id
+    );
+
+    return {
+      ...ingredient,
+      ...matchedIngredient,
+    };
+  });
+
   return (
     <div className={styles.ingredientsList}>
       <table className={styles.ingredientsTable}>
@@ -12,12 +27,12 @@ const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
           </tr>
         </thead>
         <tbody className={styles.ingredientListBody}>
-          {ingredients.map((ingredient, index) => (
+          {enrichedIngredients.map((ingredient, index) => (
             <tr key={index} className={styles.ingredientRow}>
               <td className={styles.ingredientCell}>
                 <img
-                  src={ingredient.thumb || "path/to/default/image.png"}
-                  alt={ingredient.title}
+                  src={ingredient.thb || "path/to/default/image.png"}
+                  alt={ingredient.ttl}
                   className={styles.ingredientImage}
                 />
                 <h3 className={styles.ingredientName}>{ingredient.ttl}</h3>

@@ -7,9 +7,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import SearchBar from "../../components/SearchPage/SearchBar/SearchBar";
 import SearchedRecipesList from "../../components/SearchPage/SearchedRecipesList/SearchedRecipesList";
-
 import { useSearch } from "../../context/SearchContext";
-
 import styles from "./SearchPage.module.css";
 
 const useQuery = () => {
@@ -18,23 +16,41 @@ const useQuery = () => {
 
 const SearchPage = () => {
   const query = useQuery();
-  const { recipes, searchError, searchRecipes } = useSearch();
+  const {
+    recipes,
+    searchError,
+    searchRecipesByTitle,
+    searchRecipesByIngredient,
+  } = useSearch();
 
   const searchValue = query.get("search");
   const searchType = query.get("type");
 
   useEffect(() => {
-    if (searchValue && searchType === "keyword") {
-      searchRecipes(searchValue);
+    if (searchValue) {
+      if (searchType === "title") {
+        searchRecipesByTitle(searchValue);
+      } else if (searchType === "ingredient") {
+        searchRecipesByIngredient(searchValue);
+      }
     }
-  }, [searchValue, searchType, searchRecipes]);
+  }, [
+    searchValue,
+    searchType,
+    searchRecipesByTitle,
+    searchRecipesByIngredient,
+  ]);
 
   const handleSearch = (searchValue, searchType) => {
     const url = new URL(window.location);
     url.searchParams.set("search", searchValue);
     url.searchParams.set("type", searchType);
     window.history.pushState({}, "", url.toString());
-    searchRecipes(searchValue);
+    if (searchType === "title") {
+      searchRecipesByTitle(searchValue);
+    } else if (searchType === "ingredient") {
+      searchRecipesByIngredient(searchValue);
+    }
   };
 
   return (

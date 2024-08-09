@@ -5,7 +5,7 @@ import styles from './SigninForm.module.css'
 
 import { useState } from "react"
 
-INITIAL_STATE = {
+const INITIAL_STATE = {
     email: '',
     password: '',
 }

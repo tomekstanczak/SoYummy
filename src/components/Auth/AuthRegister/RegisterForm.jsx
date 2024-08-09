@@ -4,7 +4,7 @@ import styles from './RegisterForm.module.css'
 
 import { useState } from "react"
 
-INITIAL_STATE = {
+const INITIAL_STATE = {
     login: '',
     email: '',
     password: '',
@@ -25,9 +25,33 @@ const onChange = (e) => {
 
 const onSubmit = (e) => {
     e.preventDefault()
+    this.registerUser(e.target.login.value, e.target.email.value, e.target.password.value);
 
     setUserData(INITIAL_STATE)
 }
+    const registerUser = (login, email, password) => {
+        fetch('http://localhost:3000/users', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                login: login,
+                email: email,
+                password: password,
+            })
+        }).then(function (response) {
+            if (response.status === 200) {
+               console.log('User registered!') 
+            } else {
+               console.log('User not registered!')  
+            }
+        }).catch(function(error) {
+            console.log('error')
+        })
+    }
+
         return (
             <form className={styles.form} onSubmit={onSubmit}>
                 <h2 className={styles.title}>Registration</h2>

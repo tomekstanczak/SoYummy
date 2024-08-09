@@ -5,15 +5,17 @@
 //   - ThemeToggler - komponent do przełączania motywu.
 
 // *W wersji mobilnej blok nawigacyjny i przełącznik motywu są otwierane za pomocą hamburger menu, które wyskakuje z góry i jest na całej wysokości urządzenia użytkownika.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import UserLogo from "../UserLogo/UserLogo";
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
 import styles from "./Header.module.css";
+import axios from "axios";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState({});
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -23,20 +25,45 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      const token = localStorage.getItem("authToken");
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      }
+
+      try {
+        const response = await axios.get(
+          "https://so-yummy-31fabc853d58.herokuapp.com/auth/currentUser",
+          {
+            headers: {
+              Authorization: `Bearer ${token} `,
+            },
+          }
+        );
+        console.log(response);
+        setUser(response.data.data.user);
+      } catch (e) {
+        console.log("message:", e);
+      }
+    };
+    fetchUserProfile();
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.desktopMenu}>
         <Logo />
         <Navigation />
         <div className={styles.userTogglerContainer}>
-          <UserLogo />
+          <UserLogo user={user} />
           <ThemeToggler />
         </div>
       </div>
       <div className={styles.mobileMenu}>
         <Logo />
         <div className={styles.userMenuContainer}>
-          <UserLogo />
+          <UserLogo user={user} />
           {isMenuOpen && (
             <div className={styles.mobileMenuContent}>
               <Navigation onClose={handleCloseMenu} />

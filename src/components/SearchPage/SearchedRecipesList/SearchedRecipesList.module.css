@@ -1,4 +1,27 @@
-.searchPageImg {
-  width: 208px;
-  height: 133px;
+.recipeCard {
+  display: flex;
+  margin-bottom: 28px;
+}
+.recipeCard:last-child {
+  margin-bottom: 40px;
+}
+.image {
+  width: 343px;
+  height: 323px;
+  border-radius: 8px;
+}
+.name {
+  width: 307px;
+  min-height: 52px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 0 16px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.23999999463558197px;
+  background-color: #fafafa;
 }

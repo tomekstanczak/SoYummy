@@ -1,9 +1,11 @@
 // Komponent AuthForm może być również zaimplementowany przez dwa komponenty SigninForm i RegisterForm.
 
-import styles from "./RegisterForm.module.css";
+
 
 import { useState } from "react";
 import axios from "axios";
+import styles from './RegisterForm.module.css'
+
 
 const INITIAL_STATE = {
   name: "",
@@ -18,10 +20,10 @@ export const RegisterForm = () => {
     const { name, value } = e.target;
 
     setUserData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+        ...prev,
+        [name]: value,
+    }))
+}
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -68,6 +70,7 @@ export const RegisterForm = () => {
             <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
           </svg>
         </label>
+
 
         <label className={styles.label}>
           <input

@@ -1,11 +1,11 @@
 // Komponent AuthForm może być również zaimplementowany przez dwa komponenty SigninForm i RegisterForm.
 
 import styles from './RegisterForm.module.css'
-
+import axios from "axios"
 import { useState } from "react"
 
 const INITIAL_STATE = {
-    login: '',
+    name: '',
     email: '',
     password: '',
 }
@@ -23,35 +23,20 @@ const onChange = (e) => {
     }))
 }
 
-const onSubmit = (e) => {
+const onSubmit = async(e) => {
     e.preventDefault()
-    this.registerUser(e.target.login.value, e.target.email.value, e.target.password.value);
 
     setUserData(INITIAL_STATE)
-}
-    const registerUser = (login, email, password) => {
-        fetch('http://localhost:3000/users', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                login: login,
-                email: email,
-                password: password,
-            })
-        }).then(function (response) {
-            if (response.status === 200) {
-               console.log('User registered!') 
-            } else {
-               console.log('User not registered!')  
-            }
-        }).catch(function(error) {
-            console.log('error')
-        })
+    try {
+        const response = await axios.post(
+            "https://so-yummy-31fabc853d58.herokuapp.com/auth/signup",
+            userData
+        );
+        console.log('ok', response.data)
+    } catch (e) {
+        console.log(e.response);
     }
-
+}
         return (
             <form className={styles.form} onSubmit={onSubmit}>
                 <h2 className={styles.title}>Registration</h2>
@@ -60,8 +45,9 @@ const onSubmit = (e) => {
                         <input
                             className={styles.inputs}
                             type="text"
-                            name="login"
+                            name="name"
                             placeholder="Name"
+                            value={userData.name}
                             onChange={onChange}
                         />
                         <svg className={styles.svg}>
@@ -74,6 +60,7 @@ const onSubmit = (e) => {
                             type="email"
                             name="email"
                             placeholder="Email"
+                            value={userData.email}
                             onChange={onChange}
                         />
                         <svg className={styles.svg}>
@@ -87,6 +74,7 @@ const onSubmit = (e) => {
                             type="password"
                             name="password"
                             placeholder="Password"
+                            value={userData.password}
                             onChange={onChange}
                         />
                         <svg className={styles.svg}>

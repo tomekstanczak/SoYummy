@@ -2,7 +2,7 @@
 
 
 import styles from './SigninForm.module.css'
-
+import axios from "axios"
 import { useState } from "react"
 
 const INITIAL_STATE = {
@@ -23,11 +23,22 @@ export const SigninForm = () => {
         }))
     }
     
-    const onSubmit = (e) => {
-        e.preventDefault()
+    const onSubmit = async (e) => {
+    e.preventDefault()
 
-        setUserData(INITIAL_STATE)
+    setUserData(INITIAL_STATE)
+    try {
+        const response = await axios.post(
+            "https://so-yummy-31fabc853d58.herokuapp.com/auth/login",
+            userData
+        );
+        const token = response.data
+        console.log("ok", response.data);
+        return
+    } catch (e) {
+        console.log(e.response);
     }
+}
 
     return (
         <form className={styles.form} onSubmit={onSubmit}>
@@ -39,6 +50,7 @@ export const SigninForm = () => {
                         type="email"
                         name="email"
                         placeholder="Email"
+                        value={userData.email}
                         onChange={onChange}
                     />
                     <svg className={styles.svg}>
@@ -52,6 +64,7 @@ export const SigninForm = () => {
                         type="password"
                         name="password"
                         placeholder="Password"
+                        value={userData.password}
                         onChange={onChange}
                     />
                     <svg className={styles.svg}>

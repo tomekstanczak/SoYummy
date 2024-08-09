@@ -10,12 +10,12 @@ export const SearchProvider = ({ children }) => {
   const [searchError, setSearchError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const searchRecipes = async (keyword) => {
+  const searchRecipes = async (title) => {
     setLoading(true);
     setSearchError(null);
     try {
       const response = await axios.get(
-        `https://so-yummy-31fabc853d58.herokuapp.com/recipes/search?keyword=${keyword}`
+        `https://so-yummy-31fabc853d58.herokuapp.com/recipes/search?keyword=${title}`
       );
       const data = response.data.data.recipes;
       setRecipes(data);

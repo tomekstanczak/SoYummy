@@ -7,7 +7,9 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import SearchBar from "../../components/SearchPage/SearchBar/SearchBar";
 import SearchedRecipesList from "../../components/SearchPage/SearchedRecipesList/SearchedRecipesList";
+
 import { useSearch } from "../../context/SearchContext";
+
 import styles from "./SearchPage.module.css";
 
 const useQuery = () => {

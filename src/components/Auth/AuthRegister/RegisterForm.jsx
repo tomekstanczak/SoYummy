@@ -3,12 +3,14 @@
 import styles from "./RegisterForm.module.css";
 
 import { useState } from "react";
+import axios from "axios";
 
 const INITIAL_STATE = {
-  login: "",
+  name: "",
   email: "",
   password: "",
 };
+
 export const RegisterForm = () => {
   const [userData, setUserData] = useState(INITIAL_STATE);
 
@@ -21,11 +23,21 @@ export const RegisterForm = () => {
     }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(userData);
     setUserData(INITIAL_STATE);
+    try {
+      const response = await axios.post(
+        "https://so-yummy-31fabc853d58.herokuapp.com/auth/signup",
+        userData
+      );
+      console.log("ok", response.data);
+    } catch (e) {
+      console.log(e.response);
+    }
   };
+
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <h2 className={styles.title}>Registration</h2>
@@ -34,7 +46,8 @@ export const RegisterForm = () => {
           <input
             className={styles.inputs}
             type="text"
-            name="login"
+            name="name"
+            value={userData.name}
             placeholder="Name"
             onChange={onChange}
           />
@@ -47,6 +60,7 @@ export const RegisterForm = () => {
             className={styles.inputs}
             type="email"
             name="email"
+            value={userData.email}
             placeholder="Email"
             onChange={onChange}
           />
@@ -60,6 +74,7 @@ export const RegisterForm = () => {
             className={styles.inputs}
             type="password"
             name="password"
+            value={userData.password}
             placeholder="Password"
             onChange={onChange}
           />

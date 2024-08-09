@@ -3,6 +3,8 @@
 import styles from "./SigninForm.module.css";
 
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const INITIAL_STATE = {
   email: "",
@@ -11,6 +13,8 @@ const INITIAL_STATE = {
 
 export const SigninForm = () => {
   const [userData, setUserData] = useState(INITIAL_STATE);
+
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -21,10 +25,27 @@ export const SigninForm = () => {
     }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(userData);
     setUserData(INITIAL_STATE);
+    try {
+      const response = await axios.post(
+        "https://so-yummy-31fabc853d58.herokuapp.com/auth/login",
+        userData
+      );
+      const token = response.data.token;
+
+      localStorage.setItem("authToken", token);
+
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+      console.log("ok", response.data);
+      setUserData(INITIAL_STATE);
+      navigate(`/main`);
+    } catch (e) {
+      console.log(e.response);
+    }
   };
 
   return (
@@ -36,6 +57,7 @@ export const SigninForm = () => {
             className={styles.inputs}
             type="email"
             name="email"
+            value={userData.email}
             placeholder="Email"
             onChange={onChange}
           />
@@ -49,6 +71,7 @@ export const SigninForm = () => {
             className={styles.inputs}
             type="password"
             name="password"
+            value={userData.password}
             placeholder="Password"
             onChange={onChange}
           />

@@ -1,5 +1,6 @@
 .addRecipeContainer {
   display: block;
+  max-width: 1440px;
 }
 .formContainer {
   display: flex;

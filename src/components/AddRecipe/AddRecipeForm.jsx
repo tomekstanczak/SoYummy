@@ -97,14 +97,16 @@ const AddRecipeForm = () => {
     };
 
     try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YjUyOTA0MjBhYjQ5ZmJhODRhZDgwNCIsImlhdCI6MTcyMzE1NjkwOSwiZXhwIjoxNzIzMjAwMTA5fQ.wwEJKDKPn-XZmiUBktg5fJSTTvrCo1hgg-aDnV0X-g0";
+      const token = localStorage.getItem("authToken");
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      }
+
       await axios.post(
         "https://so-yummy-31fabc853d58.herokuapp.com/ownRecipes/",
         data,
         {
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token} `,
           },
         }

@@ -6,7 +6,7 @@ h1 {
   padding: 53px 16px 72px 16px;
 }
 
-@media (min-width: 767px) {
+@media screen and (min-width: 767px) {
   h1 {
     font-size: 32px;
     font-weight: 600;
@@ -17,12 +17,13 @@ h1 {
   }
 }
 
-@media (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   h1 {
     font-size: 44px;
     font-weight: 600;
   }
   .titleContainer {
     padding: 102px 100px 100px 100px;
+    max-width: 1440px;
   }
 }

@@ -6,21 +6,30 @@ const SearchContext = createContext();
 export const SearchProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
   const [searchError, setSearchError] = useState(null);
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    recipesPerPage: 10,
+  });
 
-  const searchRecipesByTitle = async (title) => {
+  const searchRecipesByTitle = async (title, currentPage, recipesPerPage) => {
     try {
       const response = await axios.get(
         `https://so-yummy-31fabc853d58.herokuapp.com/recipes/search?keyword=${title}`
       );
       setRecipes(response.data.data.recipes);
       setSearchError(null);
+      setPagination({ currentPage, recipesPerPage });
     } catch (error) {
       setSearchError("Failed to fetch recipes by title. Please try again.");
       setRecipes([]);
     }
   };
 
-  const searchRecipesByIngredient = async (ingredient) => {
+  const searchRecipesByIngredient = async (
+    ingredient,
+    currentPage,
+    recipesPerPage
+  ) => {
     try {
       const response = await axios.get(
         `https://so-yummy-31fabc853d58.herokuapp.com/ingredients/ingredients?keyword=${ingredient}`
@@ -32,6 +41,7 @@ export const SearchProvider = ({ children }) => {
       );
       setRecipes(recipeList);
       setSearchError(null);
+      setPagination({ currentPage, recipesPerPage });
     } catch (error) {
       setSearchError(
         "Failed to fetch recipes by ingredient. Please try again."
@@ -45,6 +55,7 @@ export const SearchProvider = ({ children }) => {
       value={{
         recipes,
         searchError,
+        pagination,
         searchRecipesByTitle,
         searchRecipesByIngredient,
       }}

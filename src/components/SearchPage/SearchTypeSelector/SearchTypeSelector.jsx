@@ -10,7 +10,7 @@ const SearchTypeSelector = ({ searchType, setSearchType }) => {
           onChange={(e) => setSearchType(e.target.value)}
           className={styles.select}
         >
-          <option value="query">Title</option>
+          <option value="title">Title</option>
           <option value="ingredient">Ingredient</option>
         </select>
       </label>

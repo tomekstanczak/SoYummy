@@ -4,7 +4,7 @@ import SearchTypeSelector from "../SearchTypeSelector/SearchTypeSelector";
 import styles from "./SearchBar.module.css";
 
 const SearchBar = ({ onSearch }) => {
-  const [searchType, setSearchType] = useState("query");
+  const [searchType, setSearchType] = useState("title");
 
   const handleSearch = (searchValue) => {
     onSearch(searchValue, searchType);

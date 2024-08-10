@@ -3,28 +3,21 @@
 // - SerchBar - który renderuje SearchForm z MainPage i SearchTypeSelector;
 // - SearchedRecipesList - komponent renderujący listę przepisów tak samo jak na stronie CategoriesPage.
 
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchPage/SearchBar/SearchBar";
 import SearchedRecipesList from "../../components/SearchPage/SearchedRecipesList/SearchedRecipesList";
 import { useSearch } from "../../context/SearchContext";
 import styles from "./SearchPage.module.css";
 
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
-
 const SearchPage = () => {
-  const query = useQuery();
   const {
     recipes,
     searchError,
     searchRecipesByTitle,
     searchRecipesByIngredient,
   } = useSearch();
-
-  const searchValue = query.get("search");
-  const searchType = query.get("type");
+  const [searchValue, setSearchValue] = useState("");
+  const [searchType, setSearchType] = useState("title");
 
   useEffect(() => {
     if (searchValue) {
@@ -41,16 +34,9 @@ const SearchPage = () => {
     searchRecipesByIngredient,
   ]);
 
-  const handleSearch = (searchValue, searchType) => {
-    const url = new URL(window.location);
-    url.searchParams.set("search", searchValue);
-    url.searchParams.set("type", searchType);
-    window.history.pushState({}, "", url.toString());
-    if (searchType === "title") {
-      searchRecipesByTitle(searchValue);
-    } else if (searchType === "ingredient") {
-      searchRecipesByIngredient(searchValue);
-    }
+  const handleSearch = (value, type) => {
+    setSearchValue(value);
+    setSearchType(type);
   };
 
   return (

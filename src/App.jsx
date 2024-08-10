@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import AddRecipePage from "./pages/AddRecipePage/AddRecipePage";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
-import FavoritePage from "./pages/FavoritePage";
+import FavoritePage from "./pages/FavoritePage/FavoritePage";
 import MainPage from "./pages/MainPage/MainPage";
 import MyRecipiesPage from "./pages/MyRecipiesPage/MyRecipiesPage";
 import RecipePage from "./pages/RecipePage/RecipePage";

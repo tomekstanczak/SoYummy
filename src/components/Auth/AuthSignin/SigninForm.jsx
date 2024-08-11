@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 
 
 export const SigninForm = () => {
-  const [userData, setUserData] = useState(INITIAL_STATE);
+    const [userData, setUserData] = useState(INITIAL_STATE);
 
     const onChange = (e) => {
         const { name, value } = e.target
@@ -21,6 +21,7 @@ export const SigninForm = () => {
             [name]: value
         }))
     }
+
     
     const onSubmit = async (e) => {
     e.preventDefault()
@@ -67,8 +68,7 @@ export const SigninForm = () => {
                         onChange={onChange}
                     />
                     <svg className={styles.svg}>
-                        <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02">
-                        </use>
+                        <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
                     </svg>
                 </label>
             </div>

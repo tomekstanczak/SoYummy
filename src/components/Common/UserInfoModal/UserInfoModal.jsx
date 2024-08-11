@@ -50,15 +50,14 @@ const UserInfoModal = ({ onClose }) => {
   };
 
   const handleSubmit = async (e) => {
+    const newUserName = { name: username };
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://so-yummy-31fabc853d58.herokuapp.com/auth/signup/",
-        username
+      const response = await axios.patch(
+        "https://so-yummy-31fabc853d58.herokuapp.com/auth//updateUser",
+        newUserName
       );
-      console.log(response);
-      response.data.name = username;
-
+      console.log(response.data.data.user.name);
       onClose();
     } catch (error) {
       setError("Failed to update profile");

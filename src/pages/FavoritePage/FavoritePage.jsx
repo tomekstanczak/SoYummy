@@ -7,16 +7,29 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./FavoritePage.module.css";
 import EmptyState from "./EmptyState/EmptyState";
+import axios from "axios";
 
 // Funkcja do pobierania przepisów z backendu
 const fetchFavoriteRecipes = async () => {
-  const response = await fetch(
-    "https://so-yummy-31fabc853d58.herokuapp.com/favorites/favorites"
+  const token = localStorage.getItem("authToken");
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
+
+  const response = await axios.get(
+    "https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite",
+    {
+      headers: {
+        Authorization: `Bearer ${token} `,
+      },
+    }
   ); // Ścieżka API
-  if (!response.ok) {
+
+  console.log("toto", response);
+  if (!response) {
     throw new Error("Failed to fetch favorite recipes");
   }
-  return response.json();
+  return response.data.data.recipes;
 };
 
 // Funkcja do usuwania przepisu z backendu
@@ -43,6 +56,7 @@ const FavoritePage = () => {
     const getFavoriteRecipes = async () => {
       try {
         const data = await fetchFavoriteRecipes();
+        console.log("get", data);
         setFavoriteRecipes(data);
       } catch (error) {
         console.error(error);
@@ -78,7 +92,7 @@ const FavoritePage = () => {
           {favoriteRecipes.map((recipe) => (
             <div className={styles.recipeCard} key={recipe.id}>
               <img
-                src={recipe.image}
+                src={recipe.thumb}
                 alt={recipe.title}
                 className={styles.recipeImage}
               />

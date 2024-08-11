@@ -34,6 +34,23 @@ export const RecipeProvider = ({ children }) => {
     }
   };
 
+  const fetchIsFavorite = async (recipeId) => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+    try {
+      const response = await axios.post(
+        `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/add`,
+        { recipeId }
+      );
+
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <RecipeContext.Provider
       value={{
@@ -43,6 +60,7 @@ export const RecipeProvider = ({ children }) => {
         setIsFavorite,
         fetchIngredientsList,
         ingredients,
+        fetchIsFavorite,
       }}
     >
       {children}

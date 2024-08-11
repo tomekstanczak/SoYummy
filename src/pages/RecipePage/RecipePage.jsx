@@ -15,6 +15,7 @@ const RecipePage = () => {
     setIsFavorite,
     fetchIngredientsList,
     ingredients: allIngredients,
+    fetchIsFavorite,
   } = useContext(RecipeContext);
 
   useEffect(() => {
@@ -24,6 +25,7 @@ const RecipePage = () => {
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
+    fetchIsFavorite(recipeId);
   };
 
   if (!recipe) return <div>Loading...</div>;

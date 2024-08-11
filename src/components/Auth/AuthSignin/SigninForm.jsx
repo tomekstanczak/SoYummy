@@ -35,13 +35,13 @@ export const SigninForm = () => {
         "https://so-yummy-31fabc853d58.herokuapp.com/auth/login",
         userData
       );
-      const token = response.data.token;
+
+      const token = response.data.data.user.token;
 
       localStorage.setItem("authToken", token);
 
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-      console.log("ok", response.data);
       setUserData(INITIAL_STATE);
       navigate(`/main`);
     } catch (e) {

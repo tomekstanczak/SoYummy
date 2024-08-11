@@ -12,6 +12,7 @@ import styles from "./UserInfoModal.module.css";
 import userIcon from "../../../assets/icons/formatedIcons/user.svg";
 import edit from "../../../assets/icons/formatedIcons/edit-01.svg";
 import plus from "../../../assets/icons/formatedIcons/plus.svg";
+import axios from "axios";
 
 const UserInfoModal = ({ onClose }) => {
   const [username, setUsername] = useState("");
@@ -51,9 +52,13 @@ const UserInfoModal = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // API KOD
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log("Profile updated", { username, profilePicture });
+      const response = await axios.post(
+        "https://so-yummy-31fabc853d58.herokuapp.com/auth/signup/",
+        username
+      );
+      console.log(response);
+      response.data.name = username;
+
       onClose();
     } catch (error) {
       setError("Failed to update profile");

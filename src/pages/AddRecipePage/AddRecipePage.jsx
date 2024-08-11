@@ -13,7 +13,9 @@ import styles from "./AddRecipePage.module.css";
 const AddRecipePage = () => {
   return (
     <div className={styles.addRecipeContainer}>
-      <MainPageTitle title="Add Recipe" />
+      <div className={styles.titleBox}>
+        <MainPageTitle title="Add Recipe" />
+      </div>
       <div className={styles.formContainer}>
         <AddRecipeForm />
         <div className={styles.followUsPopularContainer}>

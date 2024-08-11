@@ -15,6 +15,18 @@
 .followUs {
   display: none;
 }
+.titleBox {
+  padding-left: 16px;
+  padding-right: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .titleBox {
+    display: block;
+  }
+}
 
 @media screen and (min-width: 1440px) {
   .followUs {

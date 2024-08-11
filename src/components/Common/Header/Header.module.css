@@ -11,6 +11,7 @@
   justify-content: space-between;
   padding: 18px 100px 18px 100px;
   width: 100%;
+  gap: 187px;
 }
 
 .userTogglerContainer {
@@ -35,11 +36,13 @@
 @media (max-width: 767px) {
   .mobileMenu {
     padding: 18px 16px 0px 16px;
+    gap: 166px;
   }
 }
 
 @media (min-width: 768px) {
   .mobileMenu {
+    gap: 553px;
     padding: 18px 32px 0px 32px;
   }
 }
@@ -48,11 +51,14 @@
   .desktopMenu {
     display: none;
   }
+  .header {
+    width: 1440px;
+  }
 
   .mobileMenu {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
 

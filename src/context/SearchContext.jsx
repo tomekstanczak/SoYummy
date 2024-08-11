@@ -3,35 +3,68 @@ import axios from "axios";
 
 const SearchContext = createContext();
 
-export const useSearch = () => useContext(SearchContext);
-
 export const SearchProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
   const [searchError, setSearchError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    recipesPerPage: 10,
+  });
 
-  const searchRecipes = async (title) => {
-    setLoading(true);
-    setSearchError(null);
+  const searchRecipesByTitle = async (title, currentPage, recipesPerPage) => {
     try {
       const response = await axios.get(
         `https://so-yummy-31fabc853d58.herokuapp.com/recipes/search?keyword=${title}`
       );
-      const data = response.data.data.recipes;
-      setRecipes(data);
+      setRecipes(response.data.data.recipes);
+      setSearchError(null);
+      setPagination({ currentPage, recipesPerPage });
     } catch (error) {
-      setSearchError("Failed to fetch recipes. Please try again.");
+      setSearchError("Failed to fetch recipes by title. Please try again.");
       setRecipes([]);
-    } finally {
-      setLoading(false);
+    }
+  };
+
+  const searchRecipesByIngredient = async (
+    ingredient,
+    currentPage,
+    recipesPerPage
+  ) => {
+    try {
+      const response = await axios.get(
+        `https://so-yummy-31fabc853d58.herokuapp.com/ingredients/ingredients?keyword=${ingredient}`
+      );
+      const ingredientData = response.data.data.ingredients;
+
+      const recipeList = ingredientData.flatMap(
+        (ingredient) => ingredient.recipes
+      );
+      setRecipes(recipeList);
+      setSearchError(null);
+      setPagination({ currentPage, recipesPerPage });
+    } catch (error) {
+      setSearchError(
+        "Failed to fetch recipes by ingredient. Please try again."
+      );
+      setRecipes([]);
     }
   };
 
   return (
     <SearchContext.Provider
-      value={{ recipes, searchError, loading, searchRecipes }}
+      value={{
+        recipes,
+        searchError,
+        pagination,
+        searchRecipesByTitle,
+        searchRecipesByIngredient,
+      }}
     >
       {children}
     </SearchContext.Provider>
   );
+};
+
+export const useSearch = () => {
+  return useContext(SearchContext);
 };

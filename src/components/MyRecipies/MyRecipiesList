@@ -1,0 +1,28 @@
+import React from "react";
+import styles from "./MyRecipesList.module.css";
+
+const MyRecipesList = ({ recipes, onRecipeClick }) => {
+  return (
+    <ul className={styles.recipesList}>
+      {recipes.map((recipe) => (
+        <li
+          key={recipe.id}
+          className={styles.recipeItem}
+          onClick={() => onRecipeClick(recipe.id)}
+        >
+          <img
+            src={recipe.image}
+            alt={recipe.title}
+            className={styles.recipeImage}
+          />
+          <div className={styles.recipeInfo}>
+            <h3 className={styles.recipeTitle}>{recipe.title}</h3>
+            <p className={styles.recipeDescription}>{recipe.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export default MyRecipesList;

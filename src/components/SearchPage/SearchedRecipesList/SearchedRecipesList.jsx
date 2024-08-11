@@ -1,8 +1,10 @@
 import noResultsImg from "../../../assets/images/Recipe/searchNoResults.png";
-
+import { useNavigate } from "react-router-dom";
 import styles from "./SearchedRecipesList.module.css";
 
 const SearchedRecipesList = ({ recipes }) => {
+  const navigate = useNavigate();
+
   if (!recipes) {
     return (
       <>
@@ -32,7 +34,11 @@ const SearchedRecipesList = ({ recipes }) => {
   return (
     <div className={styles.recipesList}>
       {recipes.map((recipe) => (
-        <div key={recipe._id} className={styles.recipeCard}>
+        <div
+          key={recipe._id}
+          onClick={() => navigate(`/recipe/${recipe._id}`)}
+          className={styles.recipeCard}
+        >
           <img src={recipe.thumb} alt={recipe.title} className={styles.image} />
           <h3 className={styles.name}>{recipe.title}</h3>
         </div>

@@ -4,8 +4,6 @@
 //     Zawiera komponent AuthForm.
 
 
-
-import rectangle from '../../assets/images/Rectangle 8970.png'
 import registration from '../../assets/images/SigninImg.png'
 
 import styles from './SigninPage.module.css';
@@ -25,11 +23,6 @@ const SigninPage = () => {
             <Link className={styles.registration} to="/register">
                 Registration
             </Link>
-            <img
-                className={styles.rectangle}
-                src={rectangle}
-                alt="bottom black background"
-            />
         </div>
     )
 }

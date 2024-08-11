@@ -37,8 +37,22 @@
     position: relative;
 }
 
+
+.secure {
+    border: 1px solid rgba(60, 188, 129, 1);
+    border-radius: 6px;
+    position: relative;
+}
+
+.error {
+    border: 1px solid rgba(231, 74, 59, 1);
+    border-radius: 6px;
+    position: relative;
+}
+
 .inputs {
     background-color: rgba(42, 44, 54, 1);
+    color: white;
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
@@ -49,6 +63,30 @@
     opacity: 80%;
 }
 
+.inputs:focus{
+    outline: 0;
+}
+
+.secure:hover{
+     border: 1px solid rgba(60, 188, 129, 1);
+}
+
+:hover::placeholder {
+    color: white;
+}
+
+.icons {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .svg {
     position: absolute;
     top: 12px;
@@ -56,7 +94,9 @@
     opacity: 80%;
     width: 18px;
     height: 18px;
+    pointer-events: none;
 }
+
 
 .button {
     width: 279px;
@@ -68,6 +108,10 @@
     border-radius: 6px;
     line-height: 18px;
     font-size: 16px;
+}
+
+.button:hover {
+    color: black
 }
 
 @media screen and (min-width: 768px) {
@@ -112,7 +156,7 @@
         width: 400px;
         height: 56px;
         margin-left: 50px;
-        margin-top: 50px;
+        margin-top: 30px;
     }
 }
 

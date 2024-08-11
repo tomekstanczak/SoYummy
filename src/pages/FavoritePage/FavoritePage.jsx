@@ -34,16 +34,24 @@ const fetchFavoriteRecipes = async () => {
 
 // Funkcja do usuwania przepisu z backendu
 const deleteFavoriteRecipe = async (id) => {
-  const response = await fetch(
-    `https://so-yummy-31fabc853d58.herokuapp.com/favorites/favorites${id}`,
+  console.log("id", id);
+  const token = localStorage.getItem("authToken");
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
+
+  const response = await axios.delete(
+    `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/delete/${id}`,
     {
-      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token} `,
+      },
     }
   );
-  if (!response.ok) {
+  if (!response) {
     throw new Error("Failed to delete favorite recipe");
   }
-  return response.json();
+  return response;
 };
 
 const FavoritePage = () => {
@@ -70,7 +78,7 @@ const FavoritePage = () => {
     try {
       await deleteFavoriteRecipe(id);
       // Aktualizowanie stanu po usunięciu
-      setFavoriteRecipes(favoriteRecipes.filter((recipe) => recipe.id !== id));
+      setFavoriteRecipes(favoriteRecipes.filter((recipe) => recipe._id !== id));
     } catch (error) {
       console.error(error);
     }
@@ -78,7 +86,7 @@ const FavoritePage = () => {
 
   const viewRecipeHandler = (id) => {
     navigate(
-      `https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipes/${id}`
+      `https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipe/${id}`
     ); // Przekierowanie do strony przepisu
   };
 
@@ -90,7 +98,7 @@ const FavoritePage = () => {
       ) : (
         <div className={styles.list} ref={listRef}>
           {favoriteRecipes.map((recipe) => (
-            <div className={styles.recipeCard} key={recipe.id}>
+            <div className={styles.recipeCard} key={recipe._id}>
               <img
                 src={recipe.thumb}
                 alt={recipe.title}
@@ -100,13 +108,13 @@ const FavoritePage = () => {
               <p className={styles.recipeDescription}>{recipe.description}</p>
               <button
                 className={styles.deleteIcon}
-                onClick={() => onDeleteHandler(recipe.id)}
+                onClick={() => onDeleteHandler(recipe._id)}
               >
                 🗑️
               </button>
               <button
                 className={styles.viewRecipeButton}
-                onClick={() => viewRecipeHandler(recipe.id)}
+                onClick={() => viewRecipeHandler(recipe._id)}
               >
                 See Recipe
               </button>

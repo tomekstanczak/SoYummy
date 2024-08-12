@@ -27,7 +27,6 @@ export const RecipeProvider = ({ children }) => {
         `https://so-yummy-31fabc853d58.herokuapp.com/ingredients/ingredients/list`
       );
       const data = response.data.data.ingredients;
-
       setIngredients(data);
     } catch (error) {
       console.error("Error fetching ingredients:", error);
@@ -44,10 +43,41 @@ export const RecipeProvider = ({ children }) => {
         `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/add`,
         { recipeId }
       );
-
       console.log(response);
     } catch (e) {
       console.log(e);
+    }
+  };
+
+  const addToShoppingList = async (ingredient) => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+    try {
+      const response = await axios.post(
+        `https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list/add`,
+        {
+          ttl: ingredient.ttl,
+          desc: ingredient.desc || "",
+          t: ingredient.t || "",
+          thb: ingredient.thb || "",
+        }
+      );
+      console.log("Ingredient added to shopping list:", response.data);
+    } catch (error) {
+      console.error("Error adding ingredient to shopping list:", error);
+    }
+  };
+
+  const removeFromShoppingList = async (ingredientId) => {
+    try {
+      const response = await axios.delete(
+        `https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list/delete/${ingredientId}`
+      );
+      console.log("Removed from shopping list:", response.data);
+    } catch (error) {
+      console.error("Error removing from shopping list:", error);
     }
   };
 
@@ -61,6 +91,8 @@ export const RecipeProvider = ({ children }) => {
         fetchIngredientsList,
         ingredients,
         fetchIsFavorite,
+        addToShoppingList,
+        removeFromShoppingList,
       }}
     >
       {children}

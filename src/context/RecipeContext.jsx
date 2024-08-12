@@ -7,6 +7,7 @@ export const RecipeProvider = ({ children }) => {
   const [recipe, setRecipe] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [shoppingList, setShoppingList] = useState([]);
 
   const fetchRecipe = async (recipeId) => {
@@ -33,7 +34,7 @@ export const RecipeProvider = ({ children }) => {
       console.error("Error fetching ingredients:", error);
     }
   };
-  const fetchFavoriteRecipes = async (recipeId) => {
+  const fetchFavoriteRecipes = async () => {
     const token = localStorage.getItem("authToken");
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -42,13 +43,13 @@ export const RecipeProvider = ({ children }) => {
       const response = await axios.get(
         `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/`
       );
-      setIsFavorite(response.data.isFavorite);
+      setFavoriteRecipes(response.data.data.favoriteRecipes);
     } catch (error) {
       console.error("Error checking if recipe is favorite:", error);
     }
   };
   const checkIfFavorite = (recipeId) => {
-    return isFavorite.some((favorite) => favorite._id === recipeId);
+    return favoriteRecipes.some((favorite) => favorite._id === recipeId);
   };
 
   const addToFavorites = async (recipeId) => {
@@ -165,6 +166,7 @@ export const RecipeProvider = ({ children }) => {
         shoppingList,
         addToShoppingList,
         removeFromShoppingList,
+        favoriteRecipes,
       }}
     >
       {children}

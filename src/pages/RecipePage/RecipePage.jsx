@@ -15,6 +15,7 @@ const RecipePage = () => {
     fetchIngredientsList,
     ingredients: allIngredients,
     toggleFavorite,
+    checkIfFavorite,
   } = useContext(RecipeContext);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const RecipePage = () => {
     <div className={styles.recipePage}>
       <RecipePageHero
         recipe={recipe}
-        isFavorite={isFavorite}
+        checkIfFavorite={checkIfFavorite}
         toggleFavorite={() => toggleFavorite(recipeId)}
       />
       <RecipeIngredientsList

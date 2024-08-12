@@ -10,9 +10,9 @@ const RecipePageHero = ({
 }) => {
   useEffect(() => {
     if (recipe) {
-      setIsFavorite(checkIfFavorite(recipe._id));
+      checkIfFavorite(recipe._id);
     }
-  }, [recipe, checkIfFavorite, setIsFavorite]);
+  }, [recipe, checkIfFavorite]);
 
   return (
     <div className={styles.recipePageHero}>

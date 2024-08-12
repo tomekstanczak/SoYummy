@@ -1,7 +1,6 @@
+import { useEffect } from "react";
 import clock from "../../../assets/icons/formatedIcons/clock.svg";
 import styles from "./RecipePageHero.module.css";
-
-import { useEffect } from "react";
 
 const RecipePageHero = ({
   recipe,
@@ -10,8 +9,10 @@ const RecipePageHero = ({
   checkIfFavorite,
 }) => {
   useEffect(() => {
-    checkIfFavorite(recipe._id);
-  }, [recipe._id, checkIfFavorite]);
+    if (recipe) {
+      checkIfFavorite(recipe._id);
+    }
+  }, [recipe, checkIfFavorite]);
 
   return (
     <div className={styles.recipePageHero}>

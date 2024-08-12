@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import clock from "../../../assets/icons/formatedIcons/clock.svg";
 import styles from "./RecipePageHero.module.css";
 

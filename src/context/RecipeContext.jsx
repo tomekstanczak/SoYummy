@@ -11,7 +11,7 @@ export const RecipeProvider = ({ children }) => {
   const [shoppingList, setShoppingList] = useState([]);
 
   useEffect(() => {
-    fetchFavoriteRecipes();
+    fetchFavoriteRecipes(); // Ładowanie ulubionych przepisów przy starcie
   }, []);
 
   const fetchRecipe = async (recipeId) => {
@@ -21,7 +21,8 @@ export const RecipeProvider = ({ children }) => {
       );
       const data = response.data.data.recipe;
       setRecipe(data);
-      setIsFavorite(checkIfFavorite(data._id));
+      const favoriteStatus = checkIfFavorite(data._id);
+      setIsFavorite(favoriteStatus); // Ustawienie statusu ulubionego
     } catch (error) {
       console.error("Error fetching recipe:", error);
     }
@@ -85,7 +86,7 @@ export const RecipeProvider = ({ children }) => {
         `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/delete/${recipeId}`
       );
       setIsFavorite(false);
-      await fetchFavoriteRecipes(); // Odświeżenie ulubionych przepisów
+      await fetchFavoriteRecipes();
     } catch (error) {
       console.error("Error removing recipe from favorites:", error);
     }

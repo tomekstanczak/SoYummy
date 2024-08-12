@@ -20,7 +20,7 @@ const RecipePage = () => {
   useEffect(() => {
     fetchRecipe(recipeId);
     fetchIngredientsList();
-  }, [recipeId, fetchRecipe, fetchIngredientsList]);
+  }, [recipeId]);
 
   if (!recipe) return <div>Loading...</div>;
 

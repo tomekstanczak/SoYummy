@@ -12,21 +12,15 @@ const RecipePage = () => {
     recipe,
     isFavorite,
     fetchRecipe,
-    setIsFavorite,
     fetchIngredientsList,
     ingredients: allIngredients,
-    fetchIsFavorite,
+    toggleFavorite,
   } = useContext(RecipeContext);
 
   useEffect(() => {
     fetchRecipe(recipeId);
     fetchIngredientsList();
-  }, [recipeId]);
-
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-    fetchIsFavorite(recipeId);
-  };
+  }, [recipeId, fetchRecipe, fetchIngredientsList]);
 
   if (!recipe) return <div>Loading...</div>;
 
@@ -35,7 +29,7 @@ const RecipePage = () => {
       <RecipePageHero
         recipe={recipe}
         isFavorite={isFavorite}
-        toggleFavorite={toggleFavorite}
+        toggleFavorite={() => toggleFavorite(recipeId)}
       />
       <RecipeIngredientsList
         ingredients={recipe.ingredients}

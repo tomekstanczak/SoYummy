@@ -1,7 +1,18 @@
 import clock from "../../../assets/icons/formatedIcons/clock.svg";
 import styles from "./RecipePageHero.module.css";
 
-const RecipePageHero = ({ recipe, isFavorite, toggleFavorite }) => {
+import { useEffect } from "react";
+
+const RecipePageHero = ({
+  recipe,
+  isFavorite,
+  toggleFavorite,
+  checkIfFavorite,
+}) => {
+  useEffect(() => {
+    checkIfFavorite(recipe._id);
+  }, [recipe._id, checkIfFavorite]);
+
   return (
     <div className={styles.recipePageHero}>
       <div className={styles.descriptionContainer}>

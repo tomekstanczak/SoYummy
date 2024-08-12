@@ -9,7 +9,10 @@ const RecipePageHero = ({ recipe, isFavorite, toggleFavorite }) => {
         <p className={styles.description}>{recipe.description}</p>
       </div>
 
-      <button className={styles.addBtn} onClick={toggleFavorite}>
+      <button
+        className={styles.addBtn}
+        onClick={() => toggleFavorite(recipe._id)}
+      >
         {isFavorite
           ? "Remove from favorite recipes"
           : "Add to favorite recipes"}

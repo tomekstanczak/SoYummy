@@ -28,14 +28,13 @@ export const RecipeProvider = ({ children }) => {
         `https://so-yummy-31fabc853d58.herokuapp.com/ingredients/ingredients/list`
       );
       const data = response.data.data.ingredients;
-
       setIngredients(data);
     } catch (error) {
       console.error("Error fetching ingredients:", error);
     }
   };
 
-  const fetchIsFavorite = async (recipeId) => {
+  const addToFavorites = async (recipeId) => {
     const token = localStorage.getItem("authToken");
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -45,12 +44,12 @@ export const RecipeProvider = ({ children }) => {
         `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/add`,
         { recipeId }
       );
-
       console.log(response);
     } catch (e) {
       console.log(e);
     }
   };
+
   const fetchShoppingList = async () => {
     try {
       const response = await axios.get(
@@ -60,6 +59,8 @@ export const RecipeProvider = ({ children }) => {
       setShoppingList(data);
     } catch (error) {
       console.error("Błąd podczas pobierania listy zakupów:", error);
+
+
     }
   };
 
@@ -72,10 +73,10 @@ export const RecipeProvider = ({ children }) => {
         setIsFavorite,
         fetchIngredientsList,
         ingredients,
+
         fetchIsFavorite,
         shoppingList,
         fetchShoppingList,
-        // removeFromShoppingList,
       }}
     >
       {children}

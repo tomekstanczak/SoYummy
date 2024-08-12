@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchPage/SearchBar/SearchBar";
 import SearchedRecipesList from "../../components/SearchPage/SearchedRecipesList/SearchedRecipesList";
+import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
 import { useSearch } from "../../context/SearchContext";
 import styles from "./SearchPage.module.css";
 
@@ -52,6 +53,7 @@ const SearchPage = () => {
 
   return (
     <div className={styles.searchPage}>
+      <MainPageTitle title="Search" />
       <SearchBar onSearch={handleSearch} />
       {searchError && <div className={styles.error}>{searchError}</div>}
       <SearchedRecipesList

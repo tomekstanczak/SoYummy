@@ -1,0 +1,37 @@
+.itemRow {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.productImage {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.quantity {
+  padding: 10px;
+}
+
+.remove {
+  text-align: center;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .product {
+    font-size: 1.2rem;
+  }
+}

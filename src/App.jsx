@@ -5,7 +5,7 @@ import FavoritePage from "./pages/FavoritePage/FavoritePage";
 import MainPage from "./pages/MainPage/MainPage";
 import MyRecipiesPage from "./pages/MyRecipiesPage/MyRecipiesPage";
 import RecipePage from "./pages/RecipePage/RecipePage";
-import ShoppingListPage from "./pages/ShoppingListPage";
+import ShoppingListPage from "./pages/ShoppingListPage/ShoppingListPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import SharedLayout from "./pages/SharedLayout";

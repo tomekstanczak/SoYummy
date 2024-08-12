@@ -1,9 +1,22 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { RecipeContext } from "../../../context/RecipeContext";
 import styles from "./RecipeIngredientsList.module.css";
 
-const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
-  const { ingredients: allIngredients } = useContext(RecipeContext);
+const RecipeIngredientsList = ({ ingredients }) => {
+  const {
+    ingredients: allIngredients,
+    addToShoppingList,
+    removeFromShoppingList,
+  } = useContext(RecipeContext);
+
+  const initialShoppingListState = ingredients.reduce((acc, ingredient) => {
+    acc[ingredient.id] = false;
+    return acc;
+  }, {});
+
+  const [isInShoppingList, setIsInShoppingList] = useState(
+    initialShoppingListState
+  );
 
   const enrichedIngredients = ingredients.map((ingredient) => {
     const matchedIngredient = allIngredients.find(
@@ -15,6 +28,24 @@ const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
       ...matchedIngredient,
     };
   });
+
+  const handleCheckboxChange = (ingredient) => {
+    const ingredientId = ingredient.id;
+
+    if (isInShoppingList[ingredientId]) {
+      removeFromShoppingList(ingredient._id);
+      setIsInShoppingList((prevState) => ({
+        ...prevState,
+        [ingredientId]: false,
+      }));
+    } else {
+      addToShoppingList(ingredient);
+      setIsInShoppingList((prevState) => ({
+        ...prevState,
+        [ingredientId]: true,
+      }));
+    }
+  };
 
   return (
     <div className={styles.ingredientsList}>
@@ -43,8 +74,8 @@ const RecipeIngredientsList = ({ ingredients, toggleIngredient }) => {
               <td className={styles.ingredientCell}>
                 <input
                   type="checkbox"
-                  checked={ingredient.isInShoppingList || false}
-                  onChange={() => toggleIngredient(ingredient)}
+                  checked={isInShoppingList[ingredient.id] || false}
+                  onChange={() => handleCheckboxChange(ingredient)}
                 />
               </td>
             </tr>

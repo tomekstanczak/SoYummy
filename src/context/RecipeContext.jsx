@@ -33,19 +33,22 @@ export const RecipeProvider = ({ children }) => {
       console.error("Error fetching ingredients:", error);
     }
   };
-  const checkIfFavorite = async (recipeId) => {
+  const fetchFavoriteRecipes = async (recipeId) => {
     const token = localStorage.getItem("authToken");
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
     try {
       const response = await axios.get(
-        `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/check/${recipeId}`
+        `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/`
       );
       setIsFavorite(response.data.isFavorite);
     } catch (error) {
       console.error("Error checking if recipe is favorite:", error);
     }
+  };
+  const checkIfFavorite = (recipeId) => {
+    return isFavorite.some((favorite) => favorite._id === recipeId);
   };
 
   const addToFavorites = async (recipeId) => {
@@ -153,6 +156,7 @@ export const RecipeProvider = ({ children }) => {
         setIsFavorite,
         fetchIngredientsList,
         ingredients,
+        fetchFavoriteRecipes,
         checkIfFavorite,
         addToFavorites,
         removeFromFavorites,

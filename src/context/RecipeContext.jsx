@@ -7,6 +7,7 @@ export const RecipeProvider = ({ children }) => {
   const [recipe, setRecipe] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [shoppingList, setShoppingList] = useState([]);
 
   const fetchRecipe = async (recipeId) => {
     try {
@@ -50,6 +51,17 @@ export const RecipeProvider = ({ children }) => {
       console.log(e);
     }
   };
+  const fetchShoppingList = async () => {
+    try {
+      const response = await axios.get(
+        "https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list"
+      );
+      const data = response.data.data;
+      setShoppingList(data);
+    } catch (error) {
+      console.error("Błąd podczas pobierania listy zakupów:", error);
+    }
+  };
 
   return (
     <RecipeContext.Provider
@@ -61,6 +73,9 @@ export const RecipeProvider = ({ children }) => {
         fetchIngredientsList,
         ingredients,
         fetchIsFavorite,
+        shoppingList,
+        fetchShoppingList,
+        // removeFromShoppingList,
       }}
     >
       {children}

@@ -1,0 +1,21 @@
+.shoppingListContainer {
+  padding: 10px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.header {
+  background-color: #a3cc5a;
+  color: #ffffff;
+  padding: 10px;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .shoppingListContainer {
+    padding: 20px;
+  }
+}

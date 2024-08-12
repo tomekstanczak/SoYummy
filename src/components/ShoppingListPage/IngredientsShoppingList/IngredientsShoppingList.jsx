@@ -8,10 +8,8 @@ const IngredientsShoppingList = () => {
     useContext(RecipeContext);
 
   useEffect(() => {
-    if (shoppingList.length === 0) {
-      fetchShoppingList();
-    }
-  }, [shoppingList, fetchShoppingList]);
+    fetchShoppingList();
+  }, [fetchShoppingList]);
 
   const handleRemove = (id) => {
     removeFromShoppingList(id);

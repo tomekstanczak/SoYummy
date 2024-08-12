@@ -7,6 +7,7 @@ export const RecipeProvider = ({ children }) => {
   const [recipe, setRecipe] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [shoppingList, setShoppingList] = useState([]);
 
   const fetchRecipe = async (recipeId) => {
     try {
@@ -73,6 +74,22 @@ export const RecipeProvider = ({ children }) => {
       addToFavorites(recipeId);
     }
   };
+
+  const fetchShoppingList = async () => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+    try {
+      const response = await axios.get(
+        "https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list/"
+      );
+      setShoppingList(response.data.data.shoppingList);
+    } catch (error) {
+      console.error("Error fetching shopping list:", error);
+    }
+  };
+
   const addToShoppingList = async (ingredient) => {
     const token = localStorage.getItem("authToken");
     if (token) {
@@ -89,17 +106,25 @@ export const RecipeProvider = ({ children }) => {
         }
       );
       console.log("Ingredient added to shopping list:", response.data);
+      fetchShoppingList();
     } catch (error) {
       console.error("Error adding ingredient to shopping list:", error);
     }
   };
 
   const removeFromShoppingList = async (ingredientId) => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
     try {
       const response = await axios.delete(
         `https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list/delete/${ingredientId}`
       );
       console.log("Removed from shopping list:", response.data);
+      setShoppingList((prevList) =>
+        prevList.filter((item) => item.id !== ingredientId)
+      );
     } catch (error) {
       console.error("Error removing from shopping list:", error);
     }
@@ -117,6 +142,8 @@ export const RecipeProvider = ({ children }) => {
         addToFavorites,
         removeFromFavorites,
         toggleFavorite,
+        fetchShoppingList,
+        shoppingList,
         addToShoppingList,
         removeFromShoppingList,
       }}

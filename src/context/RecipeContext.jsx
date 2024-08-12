@@ -33,7 +33,7 @@ export const RecipeProvider = ({ children }) => {
     }
   };
 
-  const fetchIsFavorite = async (recipeId) => {
+  const addToFavorites = async (recipeId) => {
     const token = localStorage.getItem("authToken");
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -48,7 +48,29 @@ export const RecipeProvider = ({ children }) => {
       console.log(e);
     }
   };
+  const removeFromFavorites = async (recipeId) => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+    try {
+      const response = await axios.delete(
+        `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/delete/${recipeId}`
+      );
+      setIsFavorite(false); // Ustawienie na nie-ulubione po usunięciu
+      console.log("Recipe removed from favorites:", response.data);
+    } catch (error) {
+      console.error("Error removing recipe from favorites:", error);
+    }
+  };
 
+  const toggleFavorite = (recipeId) => {
+    if (isFavorite) {
+      removeFromFavorites(recipeId);
+    } else {
+      addToFavorites(recipeId);
+    }
+  };
   const addToShoppingList = async (ingredient) => {
     const token = localStorage.getItem("authToken");
     if (token) {
@@ -90,7 +112,9 @@ export const RecipeProvider = ({ children }) => {
         setIsFavorite,
         fetchIngredientsList,
         ingredients,
-        fetchIsFavorite,
+        addToFavorites,
+        removeFromFavorites,
+        toggleFavorite,
         addToShoppingList,
         removeFromShoppingList,
       }}

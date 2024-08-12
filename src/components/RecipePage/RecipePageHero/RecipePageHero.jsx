@@ -2,18 +2,7 @@ import { useEffect } from "react";
 import clock from "../../../assets/icons/formatedIcons/clock.svg";
 import styles from "./RecipePageHero.module.css";
 
-const RecipePageHero = ({
-  recipe,
-  isFavorite,
-  toggleFavorite,
-  checkIfFavorite,
-}) => {
-  useEffect(() => {
-    if (recipe) {
-      checkIfFavorite(recipe._id);
-    }
-  }, [recipe, checkIfFavorite]);
-
+const RecipePageHero = ({ recipe, isFavorite, toggleFavorite }) => {
   return (
     <div className={styles.recipePageHero}>
       <div className={styles.descriptionContainer}>
@@ -21,10 +10,7 @@ const RecipePageHero = ({
         <p className={styles.description}>{recipe.description}</p>
       </div>
 
-      <button
-        className={styles.addBtn}
-        onClick={() => toggleFavorite(recipe._id)}
-      >
+      <button className={styles.addBtn} onClick={toggleFavorite}>
         {isFavorite
           ? "Remove from favorite recipes"
           : "Add to favorite recipes"}

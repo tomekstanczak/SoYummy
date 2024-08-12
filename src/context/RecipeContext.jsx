@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const RecipeContext = createContext();
@@ -10,6 +10,10 @@ export const RecipeProvider = ({ children }) => {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [shoppingList, setShoppingList] = useState([]);
 
+  useEffect(() => {
+    fetchFavoriteRecipes();
+  }, []);
+
   const fetchRecipe = async (recipeId) => {
     try {
       const response = await axios.get(
@@ -17,7 +21,7 @@ export const RecipeProvider = ({ children }) => {
       );
       const data = response.data.data.recipe;
       setRecipe(data);
-      setIsFavorite(data?.favorites?.includes("yourUserId") || false);
+      setIsFavorite(checkIfFavorite(data._id));
     } catch (error) {
       console.error("Error fetching recipe:", error);
     }
@@ -34,6 +38,7 @@ export const RecipeProvider = ({ children }) => {
       console.error("Error fetching ingredients:", error);
     }
   };
+
   const fetchFavoriteRecipes = async () => {
     const token = localStorage.getItem("authToken");
     if (token) {
@@ -45,9 +50,10 @@ export const RecipeProvider = ({ children }) => {
       );
       setFavoriteRecipes(response.data.data.favoriteRecipes);
     } catch (error) {
-      console.error("Error checking if recipe is favorite:", error);
+      console.error("Error fetching favorite recipes:", error);
     }
   };
+
   const checkIfFavorite = (recipeId) => {
     return favoriteRecipes.some((favorite) => favorite._id === recipeId);
   };
@@ -58,12 +64,12 @@ export const RecipeProvider = ({ children }) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
     try {
-      const response = await axios.post(
+      await axios.post(
         `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/add`,
         { recipeId }
       );
       setIsFavorite(true);
-      console.log("Recipe added to favorites:", response.data);
+      await fetchFavoriteRecipes();
     } catch (error) {
       console.error("Error adding recipe to favorites:", error);
     }
@@ -75,21 +81,21 @@ export const RecipeProvider = ({ children }) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
     try {
-      const response = await axios.delete(
+      await axios.delete(
         `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/delete/${recipeId}`
       );
       setIsFavorite(false);
-      console.log("Recipe removed from favorites:", response.data);
+      await fetchFavoriteRecipes(); // Odświeżenie ulubionych przepisów
     } catch (error) {
       console.error("Error removing recipe from favorites:", error);
     }
   };
 
-  const toggleFavorite = (recipeId) => {
+  const toggleFavorite = async (recipeId) => {
     if (isFavorite) {
-      removeFromFavorites(recipeId);
+      await removeFromFavorites(recipeId);
     } else {
-      addToFavorites(recipeId);
+      await addToFavorites(recipeId);
     }
   };
 
@@ -114,7 +120,7 @@ export const RecipeProvider = ({ children }) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
     try {
-      const response = await axios.post(
+      await axios.post(
         `https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list/add`,
         {
           ttl: ingredient.ttl,
@@ -123,8 +129,7 @@ export const RecipeProvider = ({ children }) => {
           thb: ingredient.thb || "",
         }
       );
-      console.log("Ingredient added to shopping list:", response.data);
-      fetchShoppingList();
+      await fetchShoppingList();
     } catch (error) {
       console.error("Error adding ingredient to shopping list:", error);
     }
@@ -136,13 +141,10 @@ export const RecipeProvider = ({ children }) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
     try {
-      const response = await axios.delete(
+      await axios.delete(
         `https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list/delete/${ingredientId}`
       );
-      console.log("Removed from shopping list:", response.data);
-      setShoppingList((prevList) =>
-        prevList.filter((item) => item.id !== ingredientId)
-      );
+      await fetchShoppingList();
     } catch (error) {
       console.error("Error removing from shopping list:", error);
     }
@@ -154,13 +156,10 @@ export const RecipeProvider = ({ children }) => {
         recipe,
         isFavorite,
         fetchRecipe,
-        setIsFavorite,
         fetchIngredientsList,
         ingredients,
         fetchFavoriteRecipes,
         checkIfFavorite,
-        addToFavorites,
-        removeFromFavorites,
         toggleFavorite,
         fetchShoppingList,
         shoppingList,

@@ -10,7 +10,7 @@ import edit from "../../../assets/icons/formatedIcons/edit-01.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const UserLogoModal = ({ onClose }) => {
+const UserLogoModal = ({ onClose, onUserUpdate }) => {
   const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -38,8 +38,12 @@ const UserLogoModal = ({ onClose }) => {
     navigate(`/`);
   };
 
-  const handleUserInfoModalClose = () => {
+  const handleUserInfoModalClose = (updatedUser = null) => {
     setIsUserInfoModalOpen(false);
+    if (updatedUser) {
+      onUserUpdate(updatedUser);
+    }
+    onClose();
   };
 
   return (

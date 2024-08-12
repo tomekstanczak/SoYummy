@@ -7,6 +7,7 @@ import styles from "./UserLogo.module.css";
 
 const UserLogo = ({ user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [updatedUser, setUpdatedUser] = useState();
 
   const handleUserLogoClick = () => {
     setIsModalOpen(true);
@@ -16,15 +17,23 @@ const UserLogo = ({ user }) => {
     setIsModalOpen(false);
   };
 
-  const name = user.name;
+  const handleUserUpdate = (newUserData) => {
+    setUpdatedUser(newUserData);
+  };
 
+  const name = updatedUser?.name || user?.name;
   return (
     <div>
       <div onClick={handleUserLogoClick} className={styles.container}>
         <img src={userIcon} alt="User" className={styles.userIconStyle} />
         <span className={styles.name}>{name}</span>
       </div>
-      {isModalOpen && <UserLogoModal onClose={handleCloseModal} />}
+      {isModalOpen && (
+        <UserLogoModal
+          onClose={handleCloseModal}
+          onUserUpdate={handleUserUpdate}
+        />
+      )}
     </div>
   );
 };

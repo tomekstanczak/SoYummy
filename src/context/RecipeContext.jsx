@@ -45,11 +45,11 @@ export const RecipeProvider = ({ children }) => {
       );
       setIsFavorite(true);
       console.log("Recipe added to favorites:", response.data);
-      console.log(response);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.error("Error adding recipe to favorites:", error);
     }
   };
+
   const removeFromFavorites = async (recipeId) => {
     const token = localStorage.getItem("authToken");
     if (token) {

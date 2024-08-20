@@ -50,14 +50,30 @@ const UserInfoModal = ({ onClose }) => {
   };
 
   const handleSubmit = async (e) => {
-    const newUser = { name: username };
     e.preventDefault();
+
+    const formData = new FormData();
+
+    if (username) {
+      formData.append("name", username);
+    }
+
+    if (profilePicture) {
+      console.log(profilePicture);
+      formData.append("avatar", profilePicture);
+    }
     try {
       const response = await axios.patch(
-        "https://so-yummy-31fabc853d58.herokuapp.com/auth//updateUser",
-        newUser
+        "https://so-yummy-31fabc853d58.herokuapp.com/auth/updateUser",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       console.log(response.data.data.user.name);
+      console.log(response.data.data.user.avatarURL);
       onClose(response.data.data.user);
     } catch (error) {
       setError("Failed to update profile");

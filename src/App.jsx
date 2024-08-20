@@ -8,7 +8,7 @@ import RecipePage from "./pages/RecipePage/RecipePage";
 import ShoppingListPage from "./pages/ShoppingListPage/ShoppingListPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
-import SharedLayout from "./pages/SharedLayout";
+import SharedLayout from "./pages/SharedLayout/SharedLayout";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import SigninPage from "./pages/SigninPage/SigninPage";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";

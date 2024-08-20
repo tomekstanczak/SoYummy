@@ -2,7 +2,6 @@
 // Kliknięcie tego bloku powinno wyrenderować komponent UserLogoModal.
 import { useState } from "react";
 import UserLogoModal from "../UserLogoModal/UserLogoModal";
-import userIcon from "../../../assets/icons/formatedIcons/user.svg";
 import styles from "./UserLogo.module.css";
 
 const UserLogo = ({ user }) => {
@@ -22,10 +21,15 @@ const UserLogo = ({ user }) => {
   };
 
   const name = updatedUser?.name || user?.name;
+  const userIcon = updatedUser?.avatarURL || user?.avatarURL;
   return (
     <div>
       <div onClick={handleUserLogoClick} className={styles.container}>
-        <img src={userIcon} alt="User" className={styles.userIconStyle} />
+        <img
+          src={`https://so-yummy-31fabc853d58.herokuapp.com/${userIcon}`}
+          alt="User"
+          className={styles.userIconStyle}
+        />
         <span className={styles.name}>{name}</span>
       </div>
       {isModalOpen && (

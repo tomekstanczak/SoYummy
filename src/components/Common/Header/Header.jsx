@@ -42,6 +42,7 @@ const Header = () => {
           }
         );
         console.log(response);
+        console.log(response.data.data);
         setUser(response.data.data.user);
       } catch (e) {
         console.log("message:", e);

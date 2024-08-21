@@ -64,6 +64,7 @@ export const RecipeProvider = ({ children }) => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
+
     try {
       await axios.post(
         `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/add`,

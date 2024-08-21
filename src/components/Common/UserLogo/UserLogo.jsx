@@ -3,6 +3,7 @@
 import { useState } from "react";
 import UserLogoModal from "../UserLogoModal/UserLogoModal";
 import styles from "./UserLogo.module.css";
+import icon from "../../../assets/icons/formatedIcons/user.svg";
 
 const UserLogo = ({ user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,8 +23,10 @@ const UserLogo = ({ user }) => {
 
   const name = updatedUser?.name || user?.name;
   const userIcon = updatedUser?.avatarURL
-    ? `https://so-yummy-31fabc853d58.herokuapp.com${updatedUser.avatarURL}`
-    : user?.avatarURL;
+    ? `https://so-yummy-31fabc853d58.herokuapp.com/${updatedUser.avatarURL}`
+    : user.avatarURL && user.avatarURL !== ""
+    ? `https://so-yummy-31fabc853d58.herokuapp.com/${user.avatarURL}`
+    : icon;
 
   console.log(userIcon);
 

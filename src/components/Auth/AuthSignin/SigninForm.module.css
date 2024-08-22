@@ -1,144 +1,132 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    width: 335px;
-    height: 315px;
-    background-color: rgba(42, 44, 54, 1);
-    border-radius: 30px;
-    margin: 0 auto;
-    margin-top: 45px;
-    margin-left: 20px;
-    z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 335px;
+  height: 315px;
+  background-color: rgba(42, 44, 54, 1);
+  border-radius: 30px;
 }
 
 .title {
-    color: rgba(250, 250, 250, 1);
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 28px;
-    margin-left: 28px;
-    margin-top: 32px;
-    max-width: 144px;
+  color: rgba(250, 250, 250, 1);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  margin-left: 28px;
+  margin-top: 32px;
+  max-width: 144px;
 }
 
 .box {
-    display: flex;
-    flex-direction: column;
-    max-width: 279px ;
-    margin-top: 40px;
-    margin-left: 28px;
-    gap: 12px;    
-    background-color: rgba(42, 44, 54, 1);
+  display: flex;
+  flex-direction: column;
+  max-width: 279px;
+  margin-top: 40px;
+  margin-left: 28px;
+  gap: 12px;
+  background-color: rgba(42, 44, 54, 1);
 }
 
 .label {
-    border: 1px solid rgba(250, 250, 250, 1);
-    border-radius: 6px;
-    position: relative;
+  border: 1px solid rgba(250, 250, 250, 1);
+  border-radius: 6px;
+  position: relative;
 }
 
-
 .inputs {
-    background-color: rgba(42, 44, 54, 1);
-    color: white;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-    width: 277px;
-    height: 43px;
-    border-radius: 6px;
-    padding-left: 40px;
-    opacity: 80%;
+  background-color: rgba(42, 44, 54, 1);
+  color: white;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  width: 277px;
+  height: 43px;
+  border-radius: 6px;
+  padding-left: 40px;
+  opacity: 80%;
 }
 
 .inputs:focus {
-    outline: 0;
+  outline: 0;
 }
 
-
 :hover::placeholder {
-    color: white;
+  color: white;
 }
 
 .svg {
-    position: absolute;
-    top:12px;
-    left:14px;
-    opacity: 80%;
-    width: 18px;
-    height: 18px;
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  opacity: 80%;
+  width: 18px;
+  height: 18px;
 }
 
 .button {
-     width: 279px;
-     height: 45px;
-     margin-left: 28px;
-     margin-top: 28px;
-     color: rgba(250, 250, 250, 1);
-     background-color: rgba(139, 170, 54, 1);
-     border-radius: 6px;
+  width: 279px;
+  height: 45px;
+  margin-left: 28px;
+  margin-top: 28px;
+  color: rgba(250, 250, 250, 1);
+  background-color: rgba(139, 170, 54, 1);
+  border-radius: 6px;
 }
 
 .button:hover {
-    color: black
+  color: black;
 }
 
 @media screen and (min-width: 768px) {
+  .form {
+    width: 500px;
+    height: 419px;
+  }
 
-    .form {
-        width: 500px;
-        height: 419px;
-        margin-top: 75px;
-        margin-left: 134px;
-    }
+  .title {
+    font-size: 28px;
+    line-height: 30px;
+    margin-left: 50px;
+    margin-top: 44px;
+    max-width: 168px;
+  }
 
-    .title {
-        font-size: 28px;
-        line-height: 30px;
-        margin-left: 50px;
-        margin-top: 44px;
-        max-width: 168px;
-    }
+  .box {
+    max-width: 400px;
+    margin-top: 50px;
+    margin-left: 50px;
+    gap: 24px;
+  }
 
-    .box {
-        max-width: 400px;
-        margin-top: 50px;
-        margin-left: 50px;
-        gap: 24px;
-    }
+  .inputs {
+    font-size: 18px;
+    line-height: 27px;
+    width: 398px;
+    height: 57px;
+    padding-left: 50px;
+  }
 
-    .inputs {
-        font-size: 18px;
-        line-height: 27px;
-        width: 398px;
-        height: 57px;
-        padding-left: 50px;
-    }
+  .svg {
+    top: 16px;
+    left: 18px;
+    width: 24px;
+    height: 24px;
+  }
 
-    .svg {
-        top: 16px;
-        left: 18px;
-        width: 24px;
-        height: 24px;
-    }
-
-    .button {
-        width: 400px;
-        height: 56px;
-        margin-left: 50px;
-        margin-top: 50px;
-    }
+  .button {
+    width: 400px;
+    height: 56px;
+    margin-left: 50px;
+    margin-top: 50px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
+  .form {
+    height: 419px;
+  }
 
-    .form {
-        height: 419px;
-        margin-top: -330px;
-        margin-left: 760px;
-    }
-
-    .button {
-        height: 59px;
-    }
+  .button {
+    height: 59px;
+  }
 }

@@ -1,7 +1,12 @@
 import styles from "./RegisterForm.module.css";
 import axios from "axios";
 import { useState } from "react";
-import { ErrorIcon, SecureIcon, WarningIcon } from "./RegisterIcons";
+import {
+  ErrorIcon,
+  SecureIcon,
+  WarningIcon,
+  CorrectIcon,
+} from "./RegisterIcons";
 import { useNavigate } from "react-router-dom";
 
 const INITIAL_STATE = {
@@ -15,6 +20,8 @@ export const RegisterForm = () => {
   const [inputError, setInputError] = useState("");
   const [inputWarning, setInputWarning] = useState("");
   const [isSecure, setIsSecure] = useState(false);
+  const [isValidate, setIsValidate] = useState(false);
+  const [isNotValid, setIsNotValid] = useState("");
 
   const navigate = useNavigate();
 
@@ -28,20 +35,38 @@ export const RegisterForm = () => {
     setInputError("");
     setInputWarning("");
     setIsSecure(false);
+    setIsValidate(false);
+    setIsNotValid("");
 
-    const hasMinLength = value.length >= 10;
+    const hasMinLength = value.length >= 5;
     const hasNumber = /\d/.test(value);
     const hasUpperCase = /[A-Z]/.test(value);
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
 
-    if (!hasMinLength) {
-      setInputError("Enter a valid password.");
-      setIsSecure(false);
-    } else if (!hasNumber || !hasUpperCase || !hasSpecialChar) {
-      setInputWarning("Your password is little secure.");
-      setIsSecure(false);
-    } else {
-      setIsSecure(true);
+    if (name === "password") {
+      if (!hasMinLength) {
+        setInputError("Password needs at least five characters.");
+      } else if (!hasNumber || !hasUpperCase || !hasSpecialChar) {
+        setInputWarning(
+          "Your password is somewhat secure, but could be stronger."
+        );
+      } else {
+        setIsSecure(true);
+      }
+    }
+
+    if (name === "name") {
+      if (hasSpecialChar) {
+        setIsValidate(false);
+        setIsNotValid(
+          "Your name is not allowed to contain special characters."
+        );
+      } else if (name === "name" && value === "" && !hasSpecialChar) {
+        setIsValidate(false);
+      } else {
+        setIsNotValid(null);
+        setIsValidate(true);
+      }
     }
   };
 
@@ -59,12 +84,19 @@ export const RegisterForm = () => {
       console.log(e.response);
     }
   };
+
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <h2 className={styles.title}>Registration</h2>
       <div className={styles.box}>
-        <label className={styles.label}>
+        <label
+          htmlFor="name"
+          className={`${styles.label} ${isNotValid ? styles.error : ""} ${
+            isValidate ? styles.secure : ""
+          }`}
+        >
           <input
+            id="name"
             className={styles.inputs}
             type="text"
             name="name"
@@ -72,12 +104,17 @@ export const RegisterForm = () => {
             value={userData.name}
             onChange={onChange}
           />
+          <div className={styles.icons}>
+            {isValidate && !isNotValid && <CorrectIcon />}
+            {isNotValid && <ErrorIcon />}
+          </div>
           <svg className={styles.svg}>
             <use href="./src/assets/icons/formatedIcons/icons.svg#icon-user"></use>
           </svg>
         </label>
-        <label className={styles.label}>
+        <label htmlFor="email" className={styles.label}>
           <input
+            id="email"
             className={styles.inputs}
             type="email"
             name="email"
@@ -91,11 +128,13 @@ export const RegisterForm = () => {
         </label>
 
         <label
-          className={`styles.label ${
-            inputError ? styles.error : styles.label
-          } ${isSecure ? styles.secure : styles.label}`}
+          htmlFor="password"
+          className={`${styles.label} ${inputError ? styles.error : ""} ${
+            isSecure ? styles.secure : ""
+          }`}
         >
           <input
+            id="password"
             className={styles.inputs}
             type="password"
             name="password"
@@ -104,23 +143,14 @@ export const RegisterForm = () => {
             onChange={onChange}
           />
           <div className={styles.icons}>
-            {inputError ? <ErrorIcon /> : ""}
-            {inputWarning ? <WarningIcon /> : ""}
-            {isSecure ? <SecureIcon /> : ""}
+            {inputError && <ErrorIcon />}
+            {inputWarning && <WarningIcon />}
+            {isSecure && <SecureIcon />}
           </div>
           <svg className={styles.svg}>
             <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
           </svg>
         </label>
-        {inputError && (
-          <p style={{ color: "rgba(231, 74, 59, 1)" }}>{inputError}</p>
-        )}
-        {inputWarning && !inputError && (
-          <p style={{ color: "rgba(246, 194, 62, 1)" }}>{inputWarning}</p>
-        )}
-        {isSecure && !inputError && !inputWarning && (
-          <p style={{ color: "rgba(60, 188, 129, 1)" }}>Password is secure</p>
-        )}
       </div>
       <button className={styles.button} type="submit">
         Sign up

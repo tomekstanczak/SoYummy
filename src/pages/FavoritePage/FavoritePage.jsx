@@ -9,55 +9,55 @@ import styles from "./FavoritePage.module.css";
 import EmptyState from "./EmptyState/EmptyState";
 import axios from "axios";
 
-// Funkcja do pobierania przepisów z backendu
-const fetchFavoriteRecipes = async () => {
-  const token = localStorage.getItem("authToken");
-  if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  }
-
-  const response = await axios.get(
-    "https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite",
-    {
-      headers: {
-        Authorization: `Bearer ${token} `,
-      },
-    }
-  ); // Ścieżka API
-
-  console.log("toto", response);
-  if (!response) {
-    throw new Error("Failed to fetch favorite recipes");
-  }
-  return response.data.data.recipes;
-};
-
-// Funkcja do usuwania przepisu z backendu
-const deleteFavoriteRecipe = async (id) => {
-  console.log("id", id);
-  const token = localStorage.getItem("authToken");
-  if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  }
-
-  const response = await axios.delete(
-    `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/delete/${id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token} `,
-      },
-    }
-  );
-  if (!response) {
-    throw new Error("Failed to delete favorite recipe");
-  }
-  return response;
-};
-
 const FavoritePage = () => {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const listRef = useRef(null);
   const navigate = useNavigate();
+
+  // Funkcja do pobierania przepisów z backendu
+  const fetchFavoriteRecipes = async () => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+
+    const response = await axios.get(
+      "https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite",
+      {
+        headers: {
+          Authorization: `Bearer ${token} `,
+        },
+      }
+    ); // Ścieżka API
+
+    console.log("toto", response);
+    if (!response) {
+      throw new Error("Failed to fetch favorite recipes");
+    }
+    return response.data.data.recipes;
+  };
+
+  // Funkcja do usuwania przepisu z backendu
+  const deleteFavoriteRecipe = async (id) => {
+    console.log("id", id);
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+
+    const response = await axios.delete(
+      `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/delete/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token} `,
+        },
+      }
+    );
+    if (!response) {
+      throw new Error("Failed to delete favorite recipe");
+    }
+    return response;
+  };
 
   useEffect(() => {
     // Pobieranie danych z backendu

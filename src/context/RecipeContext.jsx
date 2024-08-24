@@ -10,10 +10,6 @@ export const RecipeProvider = ({ children }) => {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [shoppingList, setShoppingList] = useState([]);
 
-  useEffect(() => {
-    fetchFavoriteRecipes(); // Ładowanie ulubionych przepisów przy starcie
-  }, []);
-
   const fetchRecipe = async (recipeId) => {
     try {
       const response = await axios.get(

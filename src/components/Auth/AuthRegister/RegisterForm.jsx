@@ -58,9 +58,7 @@ export const RegisterForm = () => {
     if (name === "name") {
       if (hasSpecialChar) {
         setIsValidate(false);
-        setIsNotValid(
-          "Your name is not allowed to contain special characters."
-        );
+        setIsNotValid("Your name can not to contain special characters.");
       } else if (name === "name" && value === "" && !hasSpecialChar) {
         setIsValidate(false);
       } else {
@@ -112,6 +110,7 @@ export const RegisterForm = () => {
             <use href="./src/assets/icons/formatedIcons/icons.svg#icon-user"></use>
           </svg>
         </label>
+        {isNotValid && <div className={styles.littleInfo}>{isNotValid}</div>}
         <label htmlFor="email" className={styles.label}>
           <input
             id="email"
@@ -151,6 +150,12 @@ export const RegisterForm = () => {
             <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
           </svg>
         </label>
+        {(inputError && (
+          <div className={styles.littleInfo}>{inputError}</div>
+        )) ||
+          (inputWarning && (
+            <div className={styles.littleInfo}>{inputWarning}</div>
+          ))}
       </div>
       <button className={styles.button} type="submit">
         Sign up

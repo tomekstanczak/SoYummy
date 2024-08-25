@@ -46,12 +46,27 @@ export const RegisterForm = () => {
     if (name === "password") {
       if (!hasMinLength) {
         setInputError("Password needs at least five characters.");
-      } else if (!hasNumber || !hasUpperCase || !hasSpecialChar) {
-        setInputWarning(
-          "Your password is somewhat secure, but could be stronger."
-        );
       } else {
-        setIsSecure(true);
+        let warningMessage = "";
+
+        if (!hasNumber) {
+          warningMessage += " Add a number.";
+        }
+        if (!hasUpperCase) {
+          warningMessage += " Add a big letter.";
+        }
+        if (!hasSpecialChar) {
+          warningMessage += " Add a special character.";
+        }
+
+        if (warningMessage) {
+          setInputWarning(
+            "Your password is somewhat secure, but could be stronger." +
+              warningMessage
+          );
+        } else {
+          setIsSecure(true);
+        }
       }
     }
 

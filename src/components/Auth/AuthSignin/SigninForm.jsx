@@ -13,11 +13,16 @@ const INITIAL_STATE = {
 
 export const SigninForm = () => {
   const [userData, setUserData] = useState(INITIAL_STATE);
+  const [fetchError, setFetchError] = useState(null);
 
   const navigate = useNavigate();
 
   const onChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "password") {
+      setFetchError(null);
+    }
 
     setUserData((prev) => ({
       ...prev,
@@ -45,7 +50,7 @@ export const SigninForm = () => {
       setUserData(INITIAL_STATE);
       navigate(`/main`);
     } catch (e) {
-      console.log(e.response);
+      return setFetchError(e.response.data.message);
     }
   };
 
@@ -80,6 +85,7 @@ export const SigninForm = () => {
             <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
           </svg>
         </label>
+        {fetchError && <div className={styles.littleInfo}>{fetchError}</div>}
       </div>
       <button className={styles.button} type="submit">
         Sign In

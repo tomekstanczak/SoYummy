@@ -23,9 +23,9 @@ const UserLogo = ({ user }) => {
 
   const name = updatedUser?.name || user?.name;
   const userIcon = updatedUser?.avatarURL
-    ? `https://so-yummy-31fabc853d58.herokuapp.com/${updatedUser.avatarURL}`
+    ? `https://soyummybe.onrender.com/${updatedUser.avatarURL}`
     : user.avatarURL && user.avatarURL !== ""
-    ? `https://so-yummy-31fabc853d58.herokuapp.com/${user.avatarURL}`
+    ? `https://soyummybe.onrender.com/${user.avatarURL}`
     : icon;
 
   console.log(userIcon);

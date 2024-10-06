@@ -1,10 +1,8 @@
-// Komponent AuthForm może być również zaimplementowany przez dwa komponenty SigninForm i RegisterForm.
-
-import styles from "./SigninForm.module.css";
-
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useAuthFetch } from "../../../hooks/useAuthFetch.js";
+import styles from "./SigninForm.module.css";
 
 const INITIAL_STATE = {
   email: "",
@@ -16,6 +14,8 @@ export const SigninForm = () => {
   const [fetchError, setFetchError] = useState(null);
 
   const navigate = useNavigate();
+
+  const { fetchData, loading, error } = useAuthFetch();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -32,25 +32,22 @@ export const SigninForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(userData);
-    setUserData(INITIAL_STATE);
+
+    const pUrl = "auth/login";
 
     try {
-      const response = await axios.post(
-        "https://so-yummy-31fabc853d58.herokuapp.com/auth/login",
-        userData
-      );
+      const response = await fetchData(pUrl, userData);
 
       const token = response.data.data.user.token;
 
       localStorage.setItem("authToken", token);
 
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
+      setFetchError(error);
       setUserData(INITIAL_STATE);
       navigate(`/main`);
     } catch (e) {
-      return setFetchError(e.response.data.message);
+      setFetchError(e.response?.data?.message || "Login failed");
     }
   };
 
@@ -88,7 +85,7 @@ export const SigninForm = () => {
         {fetchError && <div className={styles.littleInfo}>{fetchError}</div>}
       </div>
       <button className={styles.button} type="submit">
-        Sign In
+        {loading ? "Logging in..." : "Sign In"}
       </button>
     </form>
   );

@@ -20,7 +20,7 @@ const PreviewCategories = () => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          "https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipes/main-page"
+          "https://soyummybe.onrender.com/recipes/recipes/main-page"
         );
 
         const fetchedData = {};

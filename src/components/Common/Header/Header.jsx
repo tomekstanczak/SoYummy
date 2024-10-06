@@ -34,7 +34,7 @@ const Header = () => {
 
       try {
         const response = await axios.get(
-          "https://so-yummy-31fabc853d58.herokuapp.com/auth/currentUser",
+          "https://soyummybe.onrender.com/auth/currentUser",
           {
             headers: {
               Authorization: `Bearer ${token} `,

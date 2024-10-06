@@ -64,7 +64,7 @@ const UserInfoModal = ({ onClose }) => {
     }
     try {
       const response = await axios.patch(
-        "https://so-yummy-31fabc853d58.herokuapp.com/auth/updateUser",
+        "https://soyummybe.onrender.com/auth/updateUser",
         formData,
         {
           headers: {

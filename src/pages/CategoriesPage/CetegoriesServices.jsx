@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL =
-  "https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipes";
+const API_BASE_URL = "https://soyummybe.onrender.com/recipes/recipes";
 
 export const fetchCategories = async () => {
   try {

@@ -13,7 +13,7 @@ export const RecipeProvider = ({ children }) => {
   const fetchRecipe = async (recipeId) => {
     try {
       const response = await axios.get(
-        `https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipe/${recipeId}`
+        `https://soyummybe.onrender.com/recipes/recipe/${recipeId}`
       );
       const data = response.data.data.recipe;
       setRecipe(data);
@@ -27,7 +27,7 @@ export const RecipeProvider = ({ children }) => {
   const fetchIngredientsList = async () => {
     try {
       const response = await axios.get(
-        `https://so-yummy-31fabc853d58.herokuapp.com/ingredients/ingredients/list`
+        `https://soyummybe.onrender.com/ingredients/ingredients/list`
       );
       const data = response.data.data.ingredients;
       setIngredients(data);
@@ -43,7 +43,7 @@ export const RecipeProvider = ({ children }) => {
     }
     try {
       const response = await axios.get(
-        `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/`
+        `https://soyummybe.onrender.com/favorite/favorite/`
       );
       setFavoriteRecipes(response.data.data.favoriteRecipes);
     } catch (error) {
@@ -61,10 +61,9 @@ export const RecipeProvider = ({ children }) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
     try {
-      await axios.post(
-        `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/add`,
-        { recipeId }
-      );
+      await axios.post(`https://soyummybe.onrender.com/favorite/favorite/add`, {
+        recipeId,
+      });
       setIsFavorite(true);
       await fetchFavoriteRecipes();
     } catch (error) {
@@ -79,7 +78,7 @@ export const RecipeProvider = ({ children }) => {
     }
     try {
       await axios.delete(
-        `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/delete/${recipeId}`
+        `https://soyummybe.onrender.com/favorite/favorite/delete/${recipeId}`
       );
       setIsFavorite(false);
       await fetchFavoriteRecipes();
@@ -103,7 +102,7 @@ export const RecipeProvider = ({ children }) => {
     }
     try {
       const response = await axios.get(
-        "https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list/"
+        "https://soyummybe.onrender.com/shopping-list/shopping-list/"
       );
       setShoppingList(response.data.data.shoppingList);
     } catch (error) {
@@ -118,7 +117,7 @@ export const RecipeProvider = ({ children }) => {
     }
     try {
       await axios.post(
-        `https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list/add`,
+        `https://soyummybe.onrender.com/shopping-list/shopping-list/add`,
         {
           ttl: ingredient.ttl,
           desc: ingredient.desc || "",
@@ -139,7 +138,7 @@ export const RecipeProvider = ({ children }) => {
     }
     try {
       await axios.delete(
-        `https://so-yummy-31fabc853d58.herokuapp.com/shopping-list/shopping-list/delete/${ingredientId}`
+        `https://soyummybe.onrender.com/shopping-list/shopping-list/delete/${ingredientId}`
       );
       await fetchShoppingList();
     } catch (error) {

@@ -22,7 +22,7 @@ const FavoritePage = () => {
     }
 
     const response = await axios.get(
-      "https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite",
+      "https://soyummybe.onrender.com/favorite/favorite",
       {
         headers: {
           Authorization: `Bearer ${token} `,
@@ -46,7 +46,7 @@ const FavoritePage = () => {
     }
 
     const response = await axios.delete(
-      `https://so-yummy-31fabc853d58.herokuapp.com/favorite/favorite/delete/${id}`,
+      `https://soyummybe.onrender.com/favorite/favorite/delete/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token} `,
@@ -85,9 +85,7 @@ const FavoritePage = () => {
   };
 
   const viewRecipeHandler = (id) => {
-    navigate(
-      `https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipe/${id}`
-    ); // Przekierowanie do strony przepisu
+    navigate(`https://soyummybe.onrender.com/recipes/recipe/${id}`); // Przekierowanie do strony przepisu
   };
 
   return (

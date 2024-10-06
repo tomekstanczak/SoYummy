@@ -8,6 +8,7 @@ import {
   CorrectIcon,
 } from "./RegisterIcons";
 import { useNavigate } from "react-router-dom";
+import { useAuthFetch } from "../../../hooks/useAuthFetch";
 
 const INITIAL_STATE = {
   name: "",
@@ -22,8 +23,11 @@ export const RegisterForm = () => {
   const [isSecure, setIsSecure] = useState(false);
   const [isValidate, setIsValidate] = useState(false);
   const [isNotValid, setIsNotValid] = useState("");
+  const [fetchError, setFetchError] = useState(null);
 
   const navigate = useNavigate();
+
+  const { fetchData, loading, error } = useAuthFetch();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -86,15 +90,16 @@ export const RegisterForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    const pathUrl = "auth/signup";
+
     setUserData(INITIAL_STATE);
     try {
-      const response = await axios.post(
-        "https://so-yummy-31fabc853d58.herokuapp.com/auth/signup",
-        userData
-      );
+      const response = fetchData(pathUrl, userData);
+      setFetchError(error);
       navigate("/signin");
     } catch (e) {
       console.log(e.response);
+      setFetchError(e.response?.data?.message || "Login failed");
     }
   };
 
@@ -172,8 +177,9 @@ export const RegisterForm = () => {
             <div className={styles.littleInfo}>{inputWarning}</div>
           ))}
       </div>
+      {fetchError && <div className={styles.littleInfo}>{fetchError}</div>}
       <button className={styles.button} type="submit">
-        Sign up
+        {loading ? "Logging in..." : "Sign Up"}
       </button>
     </form>
   );

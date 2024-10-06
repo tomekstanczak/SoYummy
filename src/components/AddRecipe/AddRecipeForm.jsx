@@ -33,7 +33,7 @@ const AddRecipeForm = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://so-yummy-31fabc853d58.herokuapp.com/recipes/recipes/category-list"
+          "https://soyummybe.onrender.com/recipes/recipes/category-list"
         );
         const categoryTitles = response.data.data.categories.map(
           (cat) => cat.title
@@ -51,7 +51,7 @@ const AddRecipeForm = () => {
     const fetchIngredients = async () => {
       try {
         const response = await axios.get(
-          "https://so-yummy-31fabc853d58.herokuapp.com/ingredients/ingredients/list"
+          "https://soyummybe.onrender.com/ingredients/ingredients/list"
         );
         const ingredientOptions = response.data.data.ingredients.map(
           (ingredient) => ingredient.ttl
@@ -102,15 +102,11 @@ const AddRecipeForm = () => {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       }
 
-      await axios.post(
-        "https://so-yummy-31fabc853d58.herokuapp.com/ownRecipes/",
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${token} `,
-          },
-        }
-      );
+      await axios.post("https://soyummybe.onrender.com/ownRecipes/", data, {
+        headers: {
+          Authorization: `Bearer ${token} `,
+        },
+      });
 
       console.log("ok");
       navigate("/main");

@@ -14,7 +14,7 @@ export const SearchProvider = ({ children }) => {
   const searchRecipesByTitle = async (title, currentPage, recipesPerPage) => {
     try {
       const response = await axios.get(
-        `https://so-yummy-31fabc853d58.herokuapp.com/recipes/search?keyword=${title}`
+        `https://soyummybe.onrender.com/recipes/search?keyword=${title}`
       );
       setRecipes(response.data.data.recipes);
       setSearchError(null);
@@ -32,7 +32,7 @@ export const SearchProvider = ({ children }) => {
   ) => {
     try {
       const response = await axios.get(
-        `https://so-yummy-31fabc853d58.herokuapp.com/ingredients/ingredients?keyword=${ingredient}`
+        `https://soyummybe.onrender.com/ingredients/ingredients?keyword=${ingredient}`
       );
       const ingredientData = response.data.data.ingredients;
 

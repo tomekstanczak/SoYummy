@@ -31,37 +31,49 @@ const Navigation = ({ onClose }) => {
       <div className={styles.desktopNavMenu}>
         <NavLink
           to="/categories"
-          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          className={({ isActive }) =>
+            `${styles.navL}${isActive ? styles.activeLink : ""}`
+          }
         >
           Categories
         </NavLink>
         <NavLink
           to="/add-recipe"
-          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          className={({ isActive }) =>
+            `${styles.navL}${isActive ? styles.activeLink : ""}`
+          }
         >
           Add Recipe
         </NavLink>
         <NavLink
           to="/my-recipes"
-          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          className={({ isActive }) =>
+            `${styles.navL}${isActive ? styles.activeLink : ""}`
+          }
         >
           My Recipes
         </NavLink>
         <NavLink
           to="/favorites"
-          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          className={({ isActive }) =>
+            `${styles.navL}${isActive ? styles.activeLink : ""}`
+          }
         >
           Favorite
         </NavLink>
         <NavLink
           to="/shopping-list"
-          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          className={({ isActive }) =>
+            `${styles.navL}${isActive ? styles.activeLink : ""}`
+          }
         >
           Shopping List
         </NavLink>
         <NavLink
           to="/search"
-          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          className={({ isActive }) =>
+            `${styles.navL}${isActive ? styles.activeLink : ""}`
+          }
         >
           <svg width="24" height="24">
             <use href={`${searchIcon}#search`}></use>
@@ -80,43 +92,55 @@ const Navigation = ({ onClose }) => {
             <NavLink
               to="/categories"
               onClick={handleLinkClick}
-              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              className={({ isActive }) =>
+                `${styles.navL}${isActive ? styles.activeLink : ""}`
+              }
             >
               Categories
             </NavLink>
             <NavLink
               to="/add-recipe"
               onClick={handleLinkClick}
-              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              className={({ isActive }) =>
+                `${styles.navL}${isActive ? styles.activeLink : ""}`
+              }
             >
               Add Recipe
             </NavLink>
             <NavLink
               to="/my-recipes"
               onClick={handleLinkClick}
-              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              className={({ isActive }) =>
+                `${styles.navL}${isActive ? styles.activeLink : ""}`
+              }
             >
               My Recipes
             </NavLink>
             <NavLink
               to="/favorites"
               onClick={handleLinkClick}
-              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              className={({ isActive }) =>
+                `${styles.navL}${isActive ? styles.activeLink : ""}`
+              }
             >
               Favorite
             </NavLink>
             <NavLink
               to="/shopping-list"
               onClick={handleLinkClick}
-              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              className={({ isActive }) =>
+                `${styles.navL}${isActive ? styles.activeLink : ""}`
+              }
             >
               Shopping List
             </NavLink>
             <NavLink
               to="/search"
-              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              className={({ isActive }) =>
+                `${styles.navL}${isActive ? styles.activeLink : ""}`
+              }
             >
-              <svg width="24" height="24">
+              <svg width="24" height="24" className={styles.searchIcon}>
                 <use href={`${searchIcon}#search`}></use>
               </svg>{" "}
               Search

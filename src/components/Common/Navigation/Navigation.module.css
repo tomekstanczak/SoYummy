@@ -80,6 +80,15 @@ use {
   stroke: #8baa36;
   fill: transparent;
 }
+.navL:hover,
+.navL:focus {
+  color: #8baa36;
+}
+
+.searchIcon:hover,
+.searchIcon:focus {
+  color: #8baa36;
+}
 
 @media (min-width: 1440px) {
   .mobileNavMenu {

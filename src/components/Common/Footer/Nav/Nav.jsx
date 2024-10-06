@@ -6,45 +6,50 @@ const Nav = () => {
     <ul className={css.navMenu}>
       <li>
         <NavLink
-          className={css.navLink}
           to="/add-recipe"
-          activeClassName={css.navActive}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""}`
+          }
         >
           Add recipes
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.navLink}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""}`
+          }
           to="/search"
-          activeClassName={css.navActive}
         >
           Search
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.navLink}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""}`
+          }
           to="/my-recipes"
-          activeClassName={css.navActive}
         >
           My recipes
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.navLink}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""}`
+          }
           to="/favorites"
-          activeClassName={css.navActive}
         >
           Favorites
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.navLink}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""}`
+          }
           to="/shopping-list"
-          activeClassName={css.navActive}
         >
           Shopping list
         </NavLink>

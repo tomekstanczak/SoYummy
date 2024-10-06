@@ -59,7 +59,6 @@ const UserInfoModal = ({ onClose }) => {
     }
 
     if (profilePicture) {
-      console.log(profilePicture);
       formData.append("avatar", profilePicture);
     }
     try {
@@ -72,8 +71,6 @@ const UserInfoModal = ({ onClose }) => {
           },
         }
       );
-      console.log(response.data.data.user.name);
-      console.log(response.data.data.user.avatarURL);
       onClose(response.data.data.user);
     } catch (error) {
       setError("Failed to update profile");

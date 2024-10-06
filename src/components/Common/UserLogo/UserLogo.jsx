@@ -28,8 +28,6 @@ const UserLogo = ({ user }) => {
     ? `https://soyummybe.onrender.com/${user.avatarURL}`
     : icon;
 
-  console.log(userIcon);
-
   return (
     <div>
       <div onClick={handleUserLogoClick} className={styles.container}>

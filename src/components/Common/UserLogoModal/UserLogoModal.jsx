@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 const UserLogoModal = ({ onClose, onUserUpdate }) => {
   const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false);
-
+  const [isModalLogoutOpen, setIsModalLogoutOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleEscape = (e) => {
@@ -30,6 +30,10 @@ const UserLogoModal = ({ onClose, onUserUpdate }) => {
 
   const handleEditProfileClick = () => {
     setIsUserInfoModalOpen(true);
+  };
+
+  const handleOpenModalLogoutClick = () => {
+    setIsModalLogoutOpen(true);
   };
 
   const handleLogoutClick = () => {
@@ -60,13 +64,34 @@ const UserLogoModal = ({ onClose, onUserUpdate }) => {
             Edit Profile <img src={edit} className={styles.editIcon} />
           </button>
           <button
-            onClick={handleLogoutClick}
+            onClick={handleOpenModalLogoutClick}
             className={`${styles.userLogoModalButton} ${styles.userLogOutButton}`}
           >
             Logout <img src={arrowRight} />
           </button>
         </div>
       </div>
+      {isModalLogoutOpen && (
+        <div className={styles.backgroundModalLogOut}>
+          <div className={styles.logOutMainBox}>
+            <button className={styles.exitButton} onClick={onClose}>
+              X
+            </button>
+            <p>Are you sure you want to log out?</p>
+            <div className={styles.lcButtons}>
+              <button
+                className={styles.logoutButton}
+                onClick={handleLogoutClick}
+              >
+                Log out
+              </button>
+              <button className={styles.cancelButton} onClick={onClose}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

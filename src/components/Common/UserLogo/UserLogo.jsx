@@ -29,18 +29,22 @@ const UserLogo = ({ user }) => {
     : icon;
 
   return (
-    <div>
-      <div onClick={handleUserLogoClick} className={styles.container}>
-        <img src={userIcon} alt="User" className={styles.userIconStyle} />
-        <span className={styles.name}>{name}</span>
+    <>
+      <div>
+        <div onClick={handleUserLogoClick} className={styles.container}>
+          <img src={userIcon} alt="User" className={styles.userIconStyle} />
+          <span className={styles.name}>{name}</span>
+        </div>
+        <div className={styles.mainContainer}>
+          {isModalOpen && (
+            <UserLogoModal
+              onClose={handleCloseModal}
+              onUserUpdate={handleUserUpdate}
+            />
+          )}
+        </div>
       </div>
-      {isModalOpen && (
-        <UserLogoModal
-          onClose={handleCloseModal}
-          onUserUpdate={handleUserUpdate}
-        />
-      )}
-    </div>
+    </>
   );
 };
 

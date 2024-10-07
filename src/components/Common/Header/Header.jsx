@@ -46,7 +46,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.desktopMenu}>
         <Logo />
-        <Navigation />
+        <Navigation onClose={handleCloseMenu} />
         <div className={styles.userTogglerContainer}>
           <UserLogo user={user} />
           <ThemeToggler />

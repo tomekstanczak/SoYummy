@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import UserLogo from "../UserLogo/UserLogo";
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
 import styles from "./Header.module.css";
 import axios from "axios";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState({});
+
+  const { isDark } = useContext(ThemeContext);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);

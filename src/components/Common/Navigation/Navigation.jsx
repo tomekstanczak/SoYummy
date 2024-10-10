@@ -4,9 +4,12 @@ import searchIcon from "../../../assets/icons/formatedIcons/search.svg";
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
 import Logo from "../Logo/Logo";
 import xIcon from "../../../assets/icons/formatedIcons/X.svg";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 const Navigation = ({ onClose }) => {
+  const { isDark } = useContext(ThemeContext);
+
   const navigate = useNavigate();
 
   const handleEscape = (e) => {
@@ -28,7 +31,7 @@ const Navigation = ({ onClose }) => {
 
   return (
     <nav>
-      <div className={styles.desktopNavMenu}>
+      <div className={`${styles.desktopNavMenu} ${isDark ? styles.dark : ""}`}>
         <NavLink
           to="/categories"
           className={({ isActive }) =>

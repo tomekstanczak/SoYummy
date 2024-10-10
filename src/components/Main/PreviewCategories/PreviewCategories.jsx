@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
+
+import { ThemeContext } from "../../../context/ThemeContext";
 
 import styles from "./PreviewCategories.module.css";
 
@@ -9,6 +12,9 @@ const categories = ["Breakfast", "Miscellaneous", "Chicken", "Dessert"];
 const PreviewCategories = () => {
   const [categoryData, setCategoryData] = useState({});
   const [numOfRecipes, setNumOfRecipes] = useState(4);
+
+  const { isDark } = useContext(ThemeContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -68,7 +74,11 @@ const PreviewCategories = () => {
       {categories.map((category) => (
         <div className={styles.previewCategory} key={category}>
           <div className={styles.contentContainer}>
-            <h3 className={styles.categoryTitle}>{category}</h3>
+            <h3
+              className={`${styles.categoryTitle} ${isDark ? styles.dark : ""}`}
+            >
+              {category}
+            </h3>
             <div className={styles.recipesContainer}>
               {categoryData[category]
                 ?.slice(0, numOfRecipes)
@@ -78,13 +88,23 @@ const PreviewCategories = () => {
                     className={styles.recipe}
                     onClick={() => navigate(`/recipe/${recipe._id}`)}
                   >
-                    <div className={styles.recipeTitleContainer}>
+                    <div
+                      className={`${styles.recipeTitleContainer} ${
+                        isDark ? styles.dark : ""
+                      }`}
+                    >
                       <img
                         src={recipe.thumb}
                         alt={recipe.title}
                         className={styles.recipeImage}
                       />
-                      <h4 className={styles.recipeTitle}>{recipe.title}</h4>
+                      <h4
+                        className={`${styles.recipeTitle} ${
+                          isDark ? styles.dark : ""
+                        }`}
+                      >
+                        {recipe.title}
+                      </h4>
                     </div>
                   </div>
                 ))}
@@ -99,7 +119,7 @@ const PreviewCategories = () => {
         </div>
       ))}
       <button
-        className={styles.otherCategoriesBtn}
+        className={`${styles.otherCategoriesBtn} ${isDark ? styles.dark : ""}`}
         onClick={handleOtherCategories}
       >
         Other categories

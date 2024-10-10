@@ -1,18 +1,23 @@
 // SharedLayout.js
 
 // Komponent jest renderowany do ścieżki "/". Zawiera Header i Footer i owija zagnieżdżone ścieżki z odpowiadającymi im stronami.
-import React from "react";
+import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 
 import Header from "../../components/Common/Header/Header";
 import Footer from "../../components/Common/Footer/Footer";
-import "./SharedLayout.css"; // Import stylów
+import { ThemeContext } from "../../context/ThemeContext";
+import styles from "./SharedLayout.module.css";
 
 const SharedLayout = () => {
+  const { isDark } = useContext(ThemeContext);
+
   return (
-    <div className="sharedLayoutWrapper">
+    <div
+      className={`${styles.sharedLayoutWrapper} ${isDark ? styles.dark : ""}`}
+    >
       <Header />
-      <main className="contentWrapper">
+      <main className={styles.contentWrapper}>
         <Outlet />
       </main>
       <Footer />

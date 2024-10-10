@@ -3,8 +3,9 @@
 // Jeśli w polu wyszukiwania nie ma wartości, przekierowanie nie nastąpi, a użytkownik otrzyma odpowiednie powiadomienie push.
 // src/components/Search.js
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 import styles from "./Search.module.css";
 
@@ -12,6 +13,8 @@ import mainUnsplash from "../../../assets/images/landingPgUnsplash.png";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const { isDark } = useContext(ThemeContext);
+
   const navigate = useNavigate();
 
   const handleSearch = () => {
@@ -26,10 +29,17 @@ const Search = () => {
     <div className={styles.searchPage}>
       <div className={styles.contentContainer}>
         <div className={styles.descriptionContainer}>
-          <h1 className={styles.title}>
-            <span className={styles.titleHighlight}>So</span>Yummy
+          <h1
+            className={`${styles.title} ${isDark ? styles.dark : styles.light}`}
+          >
+            <span className={styles.titleHighlight}>So</span>
+            Yummy
           </h1>
-          <p className={styles.description}>
+          <p
+            className={`${styles.description} ${
+              isDark ? styles.dark : styles.light
+            }`}
+          >
             &quot;What to cook?&quot; is not only a recipe app, it is, in fact,
             your cookbook. You can add your own recipes to save them for the
             future.
@@ -42,9 +52,16 @@ const Search = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search recipes..."
-            className={styles.searchInput}
+            className={`${styles.searchInput} ${
+              isDark ? styles.dark : styles.light
+            }`}
           />
-          <button className={styles.searchButton} onClick={handleSearch}>
+          <button
+            className={`${styles.searchButton} ${
+              isDark ? styles.dark : styles.light
+            }`}
+            onClick={handleSearch}
+          >
             Search
           </button>
         </div>

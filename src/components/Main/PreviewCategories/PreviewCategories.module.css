@@ -39,11 +39,19 @@
   border-radius: 8px;
 }
 
+.recipeTitleContainer.dark {
+  background-color: black;
+}
+
 .recipeTitle {
   padding: 16px 0 16px 16px;
   font-size: 16px;
   font-weight: 500;
   color: #3e4462;
+}
+
+.recipeTitle.dark {
+  color: #fafafa;
 }
 .recipeImage {
   width: 343px;
@@ -61,6 +69,10 @@
   font-weight: 600;
 }
 
+.categoryTitle.dark {
+  color: #fafafa;
+}
+
 .recipeSeeAllBtn {
   padding: 10px 24px;
   font-size: 14px;
@@ -75,6 +87,10 @@
   font-size: 14px;
   border: 2px solid #8baa36;
   border-radius: 20px 40px 20px 40px;
+}
+
+.otherCategoriesBtn.dark {
+  color: #fafafa;
 }
 
 @media (min-width: 768px) {

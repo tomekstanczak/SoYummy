@@ -15,28 +15,31 @@ import WelcomePage from "./pages/WelcomePage/WelcomePage";
 
 import { RecipeProvider } from "./context/RecipeContext";
 import { SearchProvider } from "./context/SearchContext";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const App = () => {
   return (
     <RecipeProvider>
       <SearchProvider>
-        <Routes>
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="signin" element={<SigninPage />} />
+        <ThemeProvider>
+          <Routes>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="signin" element={<SigninPage />} />
 
-          <Route element={<SharedLayout />}>
-            <Route path="main" element={<MainPage />} />
-            <Route path="add-recipe" element={<AddRecipePage />} />
-            <Route path="categories" element={<CategoriesPage />} />
-            <Route path="favorites" element={<FavoritePage />} />
-            <Route path="my-recipes" element={<MyRecipiesPage />} />
-            <Route path="recipe/:recipeId" element={<RecipePage />} />
-            <Route path="search" element={<SearchPage />} />
-            <Route path="shopping-list" element={<ShoppingListPage />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+            <Route element={<SharedLayout />}>
+              <Route path="main" element={<MainPage />} />
+              <Route path="add-recipe" element={<AddRecipePage />} />
+              <Route path="categories" element={<CategoriesPage />} />
+              <Route path="favorites" element={<FavoritePage />} />
+              <Route path="my-recipes" element={<MyRecipiesPage />} />
+              <Route path="recipe/:recipeId" element={<RecipePage />} />
+              <Route path="search" element={<SearchPage />} />
+              <Route path="shopping-list" element={<ShoppingListPage />} />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </ThemeProvider>
       </SearchProvider>
     </RecipeProvider>
   );

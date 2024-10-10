@@ -1,10 +1,6 @@
 .chooseContainer {
   width: 225px;
   height: 92px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
   position: absolute;
   top: 28rem;
   right: 34px;
@@ -14,27 +10,44 @@
   background-color: #fafafa;
   z-index: 3;
 }
+.chooseContainer.dark {
+  background-color: #2a2c36;
+}
+
 .chooseDescription {
   font-size: 12px;
   line-height: 18px;
   letter-spacing: -0.24px;
   font-weight: 500;
 }
+
+.chooseDescription.dark {
+  color: #fafafa;
+}
 .chooseDescriptionSpan {
   color: #8baa36;
 }
 .chooseArrowBtn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
   font-size: 10px;
   color: #3e4462;
 }
-.chooseArrowBtn img {
-  width: 12px;
-  margin-left: 4px;
-  z-index: 3;
+
+.seeRecipiesBox {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 4px;
 }
+
+svg.chooseArrowBtn {
+  width: 18px;
+  height: 18px;
+}
+
+.chooseArrowBtn.dark {
+  color: #fafafa;
+}
+
 @media screen and (min-width: 768px) {
   .chooseContainer {
     width: 260px;

@@ -1,17 +1,21 @@
-// Przełącznik motywu ZADANIE DODATKOWE!!!
-// Blok zmienia motyw z jasnego na ciemny i odwrotnie.
-// Wybrany motyw jest zapisywany w pamięci i stosowany, gdy użytkownik wchodzi na stronę aplikacji.
-
+import { useContext } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
 import styles from "./ThemeToggler.module.css";
 
 const ThemeToggler = () => {
+  const { isDark, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <>
-      <button className={styles.toggleContainer}>
-        <input type="checkbox" className={styles.toggleInput} />
-        <label className={styles.toggleLabel}></label>
-      </button>
-    </>
+    <button className={styles.toggleContainer}>
+      <input
+        type="checkbox"
+        className={styles.toggleInput}
+        checked={isDark}
+        name="toggle"
+        onChange={toggleTheme}
+      />
+      <label htmlFor="toggle" className={styles.toggleLabel}></label>
+    </button>
   );
 };
 

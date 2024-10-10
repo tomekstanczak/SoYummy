@@ -1,6 +1,10 @@
 .desktopNavMenu {
   display: none;
 }
+
+.desktopNavMenu.dark {
+  color: #fafafa;
+}
 .mobileNavMenu .menu use {
   fill: transparent;
 }

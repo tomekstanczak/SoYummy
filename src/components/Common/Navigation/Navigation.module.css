@@ -1,6 +1,10 @@
 .desktopNavMenu {
   display: none;
 }
+
+.desktopNavMenu.dark {
+  color: #fafafa;
+}
 .mobileNavMenu .menu use {
   fill: transparent;
 }
@@ -22,6 +26,11 @@ use {
   z-index: 1000;
 }
 
+.nav.dark {
+  background: black;
+  color: #fafafa;
+}
+
 .searchButton {
   background: none;
   border: none;
@@ -41,6 +50,13 @@ use {
   font-weight: 500;
   gap: 32px;
 }
+
+.menu.dark {
+  color: #fafafa;
+  fill: #fafafa;
+  stroke: #fafafa;
+}
+
 .menu a:last-child {
   display: flex;
   gap: 8px;
@@ -79,6 +95,27 @@ use {
 .activeLink use {
   stroke: #8baa36;
   fill: transparent;
+}
+.navL:hover,
+.navL:focus {
+  color: #8baa36;
+}
+
+.searchIcon:hover,
+.searchIcon:focus {
+  color: #8baa36;
+}
+
+.onCloseBtn {
+  stroke: #22252a;
+  fill: #22252a;
+  color: black;
+}
+
+.onCloseBtn.darkOnClose {
+  color: #fafafa;
+  fill: #fafafa;
+  stroke: #fafafa;
 }
 
 @media (min-width: 1440px) {

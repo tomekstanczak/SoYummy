@@ -7,8 +7,16 @@
   background-color: #22252a;
 }
 
+.footer.dark {
+  background-color: #8baa36;
+}
+
 .footerCopyright {
   background-color: #fafafa;
+}
+
+.footerCopyright.dark {
+  background-color: black;
 }
 
 .footerBox {
@@ -33,9 +41,11 @@
 }
 
 .footerBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #fafafa;
   width: 418px;
-  height: 156px;
 }
 
 .footerHeader {
@@ -44,6 +54,7 @@
 
 .footerTitle {
   display: flex;
+  align-items: center;
   gap: 8px;
   font-size: 18px;
   font-weight: bold;
@@ -55,6 +66,10 @@
   gap: 12px;
   color: #22252a;
   font-size: 10px;
+}
+
+.footerCopyrightBox.dark {
+  color: #fafafa;
 }
 
 .footerFollowUs {
@@ -106,6 +121,14 @@
     gap: 28px;
     font-size: 14px;
   }
+  .footerBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    color: #fafafa;
+    width: 418px;
+    height: 156px;
+  }
 }
 @media screen and (min-width: 1440px) {
   .footerContainer {
@@ -132,6 +155,9 @@
 
   .footerCopyrightBox {
     gap: 40px;
+  }
+  .footerNav {
+    gap: 150px;
   }
 }
 

@@ -1,21 +1,23 @@
-// Komponent renderuje do ścieżki /main.
-// Ułożyć stronę główną (wersje na urządzenia mobilne, tablety i komputery stacjonarne), na której powinny znajdować się kontenery bloków:
-//  - СhooseYourBreakfast
-//  - Search
-//  - PreviewCategories
-
+import { useContext } from "react";
 import ChooseYourBreakfast from "../../components/Main/ChoseYourBreakfast/ChooseYourBreakfasts";
 import Search from "../../components/Main/Search/Search";
 import PreviewCategories from "../../components/Main/PreviewCategories/PreviewCategories";
+import { ThemeContext } from "../../context/ThemeContext";
 
 import spinach from "../../assets/images/spinach.png";
 
 import styles from "./MainPage.module.css";
 
 const MainPage = () => {
+  const { isDark } = useContext(ThemeContext);
+
   return (
     <>
-      <div className={styles.mainPageContainer}>
+      <div
+        className={`${styles.mainPageContainer} ${
+          isDark ? styles.dark : styles.light
+        }`}
+      >
         <ChooseYourBreakfast />
         <Search />
         <PreviewCategories />

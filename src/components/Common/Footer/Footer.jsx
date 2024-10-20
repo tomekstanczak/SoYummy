@@ -1,21 +1,26 @@
-import css from "./Footer.module.css";
+import { useContext } from "react";
 
 import FollowUs from "./FollowUs/FollowUs";
 import Logo from "../Logo/Logo";
 import Nav from "./Nav/Nav";
 import SubscribeForm from "./SubscribeForm/SubscribeForm";
 
+import { ThemeContext } from "../../../context/ThemeContext";
+
+import css from "./Footer.module.css";
+
 const Footer = () => {
+  const { isDark } = useContext(ThemeContext);
   return (
     <div>
-      <div className={css.footer}>
+      <div className={`${css.footer} ${isDark ? css.dark : ""} `}>
         <div className={css.footerContainer}>
           <div className={css.footerBox}>
             <div className={css.footerNavSub}>
               <div className={css.footerNav}>
                 <div className={css.footerBlock}>
                   <div className={css.footerTitle}>
-                    <Logo />
+                    <Logo isDark={isDark} />
                     So Yummy
                   </div>
                   <ul className={css.footerList}>
@@ -27,19 +32,21 @@ const Footer = () => {
                     <li>Convenient and easy to use</li>
                   </ul>
                 </div>
-                <Nav />
+                <Nav isDark={isDark} />
               </div>
-              <SubscribeForm />
+              <SubscribeForm isDark={isDark} />
             </div>
             <div className={css.footerFollowUs}>
-              <FollowUs />
+              <FollowUs isDark={isDark} />
             </div>
           </div>
         </div>
       </div>
-      <div className={css.footerCopyright}>
+      <div className={`${css.footerCopyright} ${isDark ? css.dark : ""} `}>
         <div className={css.footerContainer}>
-          <div className={css.footerCopyrightBox}>
+          <div
+            className={`${css.footerCopyrightBox} ${isDark ? css.dark : ""} `}
+          >
             <div>© 2023 All Rights Reserved.</div>
             <div>Terms of Service</div>
           </div>

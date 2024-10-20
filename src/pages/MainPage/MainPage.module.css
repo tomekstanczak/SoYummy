@@ -12,14 +12,20 @@
 
 .squareBackground {
   position: absolute;
-  top: -4rem;
-  left: 72%;
-  width: 1000px;
-  height: 1080px;
+  top: 150px;
+  left: 55%;
   z-index: 0;
   background-color: #ebf3d4;
-  rotate: -55deg;
-  border-radius: 10%;
+  width: 706px;
+  height: 642px;
+  transform: rotate(45deg);
+}
+
+.light {
+  background-color: #fafafa;
+}
+.dark {
+  background-color: black;
 }
 @media screen and (min-width: 768px) {
   .mainPageContainer {
@@ -31,9 +37,12 @@
     z-index: 1;
   }
   .squareBackground {
-    height: 1800px;
-    top: -19rem;
-    left: 55rem;
+    left: 65%;
+    top: -204px;
+    width: 730px;
+    height: 753px;
+    border-radius: 10%;
+    transform: rotate(30deg);
   }
 }
 @media screen and (min-width: 1440px) {
@@ -44,17 +53,12 @@
     right: 0;
   }
   .squareBackground {
-    rotate: -66deg;
-    height: 1600px;
-    width: 1200px;
-    top: -32rem;
-    left: 62rem;
-  }
-}
-@media screen and (min-width: 2140px) {
-  .squareBackground {
-    rotate: -111deg;
-    top: -46rem;
-    left: 99rem;
+    left: 58%;
+    top: 0px;
+    transform: rotate(20deg);
+    border-radius: 10%;
+    border-bottom-right-radius: 80%;
+    width: 2048px;
+    height: 912px;
   }
 }

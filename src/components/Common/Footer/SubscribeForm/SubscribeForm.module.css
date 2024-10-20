@@ -32,7 +32,7 @@
 .newsletterInput {
   background-color: transparent;
   color: #fafafa;
-  border: 1px solid #fafafa;
+  border: 1px dashed #fafafa80;
   border-radius: 6px;
   outline: none;
   font-size: 10px;
@@ -56,7 +56,18 @@
   font-size: 14px;
   font-weight: normal;
   line-height: 1.4;
-  cursor: pointer; /* Dodanie kursora ręki dla przycisku */
+  cursor: pointer;
+}
+
+.newsletterButton.dark {
+  background-color: black;
+  border-color: black;
+}
+
+.newsletterButton.dark:hover,
+.newsletterButton.dark:focus {
+  border-color: #fafafa;
+  font-weight: 500;
 }
 
 @media screen and (min-width: 768px) {

@@ -1,50 +1,66 @@
 import { NavLink } from "react-router-dom";
+
 import css from "./Nav.module.css";
 
-const Nav = () => {
+const Nav = ({ isDark }) => {
   return (
-    <ul className={css.navMenu}>
+    <ul className={`${css.navMenu} ${isDark ? css.dark : ""} `}>
       <li>
         <NavLink
-          className={css.navLink}
           to="/add-recipe"
-          activeClassName={css.navActive}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
+          }
         >
           Add recipes
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.navLink}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
+          }
           to="/search"
-          activeClassName={css.navActive}
         >
           Search
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.navLink}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
+          }
           to="/my-recipes"
-          activeClassName={css.navActive}
         >
           My recipes
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.navLink}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
+          }
           to="/favorites"
-          activeClassName={css.navActive}
         >
           Favorites
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.navLink}
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
+          }
           to="/shopping-list"
-          activeClassName={css.navActive}
         >
           Shopping list
         </NavLink>

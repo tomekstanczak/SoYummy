@@ -7,7 +7,15 @@
 }
 
 .toggleInput {
-  display: none;
+  width: 61px;
+  height: 27px;
+  z-index: 1000;
+  border: none;
+  background: none;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .toggleLabel {
@@ -17,10 +25,9 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  cursor: pointer;
-  transition: 0.4s;
   border-radius: 34px;
-  -webkit-transition: transform 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.4s;
 }
 
 .toggleLabel::before {
@@ -31,8 +38,8 @@
   left: 4px;
   bottom: 3px;
   background-color: white;
-  transition: 0.4s;
   border-radius: 50%;
+  transition: transform 0.4s ease;
 }
 
 .toggleInput:checked + .toggleLabel {
@@ -40,5 +47,5 @@
 }
 
 .toggleInput:checked + .toggleLabel::before {
-  transform: translateX(26px);
+  transform: translateX(32px);
 }

@@ -1,6 +1,6 @@
 import css from "./SubscribeForm.module.css";
 
-const SubscribeForm = () => {
+const SubscribeForm = ({ isDark }) => {
   return (
     <div className={css.newsletterForm}>
       <div className={css.newsletterInviteBlock}>
@@ -22,7 +22,10 @@ const SubscribeForm = () => {
             aria-label="Email address"
           />
         </div>
-        <button type="submit" className={css.newsletterButton}>
+        <button
+          type="submit"
+          className={`${css.newsletterButton} ${isDark ? css.dark : ""} `}
+        >
           Subscribe
         </button>
       </form>

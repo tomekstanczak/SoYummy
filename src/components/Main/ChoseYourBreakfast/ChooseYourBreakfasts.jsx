@@ -1,4 +1,3 @@
-// Komponent СhooseYourBreakfast zawiera przycisk See recipes, który powinien przekierowywać użytkownika na stronę CategoriesPage z aktywną kategorią Breakfast.
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../../context/ThemeContext";
@@ -11,7 +10,7 @@ const ChooseYourBreakfast = () => {
   const navigate = useNavigate();
 
   const handleSeeRecipes = () => {
-    navigate("/categories/Breakfast");
+    navigate("/categories?category=Breakfast");
   };
 
   return (

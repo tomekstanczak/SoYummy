@@ -12,17 +12,15 @@
 
 .squareBackground {
   position: absolute;
-  top: 0;
-  left: 72%;
+  top: 150px;
+  left: 55%;
   z-index: 0;
-  /* background-color: #ebf3d4; */
-  /* width: 941px;
-  height: 912px;
-  
-  
-  rotate: -55deg;
-  border-radius: 10%; */
+  background-color: #ebf3d4;
+  width: 706px;
+  height: 642px;
+  transform: rotate(45deg);
 }
+
 .light {
   background-color: #fafafa;
 }
@@ -39,9 +37,12 @@
     z-index: 1;
   }
   .squareBackground {
-    /* height: 1800px;
-    top: -19rem;
-    left: 55rem; */
+    left: 65%;
+    top: -204px;
+    width: 730px;
+    height: 753px;
+    border-radius: 10%;
+    transform: rotate(30deg);
   }
 }
 @media screen and (min-width: 1440px) {
@@ -52,19 +53,12 @@
     right: 0;
   }
   .squareBackground {
-    width: 0;
-    height: 0;
-    border-top: 0px solid transparent;
-    border-bottom: 600px solid blue; /* Wysokość trapezu */
-    border-left: 900px solid transparent; /* Krawędź pozioma trapezu */
-    border-right: 300px solid transparent; /* Krawędź pochylona trapezu */
-    border-bottom-left-radius: 30px;
-  }
-}
-@media screen and (min-width: 2140px) {
-  .squareBackground {
-    /* rotate: -111deg;
-    top: -46rem;
-    left: 99rem; */
+    left: 58%;
+    top: 0px;
+    transform: rotate(20deg);
+    border-radius: 10%;
+    border-bottom-right-radius: 80%;
+    width: 2048px;
+    height: 912px;
   }
 }

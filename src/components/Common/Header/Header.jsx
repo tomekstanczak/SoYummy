@@ -64,7 +64,10 @@ const Header = () => {
               <Navigation onClose={handleCloseMenu} />
             </div>
           )}
-          <button className={styles.hamburger} onClick={handleMenuToggle}>
+          <button
+            className={`${styles.hamburger} ${isDark ? styles.dark : ""}`}
+            onClick={handleMenuToggle}
+          >
             ☰
           </button>
         </div>

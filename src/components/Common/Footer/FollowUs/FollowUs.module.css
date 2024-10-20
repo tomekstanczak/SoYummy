@@ -2,21 +2,22 @@
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: baseline;
+  justify-content: center;
   gap: 14px;
 }
 
 .followLink {
-  color: inherit;
-}
-.followLink:hover,
-.followLink:focus {
-  color: inherit;
+  width: 24px;
+  height: 24px;
 }
 
-.followIcon {
-  width: 24px; /* rozmiar ikon */
-  height: 24px; /* rozmiar ikon */
+.followLink.dark {
+  color: #fafafa;
+}
+
+.followLink.dark:hover,
+.followLink.dark:focus {
+  color: black;
 }
 
 @media screen and (min-width: 768px) {

@@ -18,6 +18,11 @@
   justify-content: space-between;
 }
 
+.userLogoModalContent.dark {
+  color: #fafafa;
+  background-color: black;
+}
+
 .userLogoModalButton {
   display: block;
   width: 125px;
@@ -30,6 +35,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.userLogoModalButton.userEditButton.dark {
+  color: #fafafa;
+}
+
 .editIcon {
   width: 12px;
   height: 12px;
@@ -77,12 +87,21 @@
   gap: 32px;
 }
 
+.logOutMainBox.dark {
+  background-color: black;
+  color: #fafafa;
+}
+
 .exitButton {
   position: absolute;
   top: 18px;
   right: 18px;
   width: 20px;
   height: 20px;
+}
+
+.exitButton.dark {
+  color: #fafafa;
 }
 
 .lcButtons {

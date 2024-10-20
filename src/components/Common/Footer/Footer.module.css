@@ -7,8 +7,16 @@
   background-color: #22252a;
 }
 
+.footer.dark {
+  background-color: #8baa36;
+}
+
 .footerCopyright {
   background-color: #fafafa;
+}
+
+.footerCopyright.dark {
+  background-color: black;
 }
 
 .footerBox {
@@ -58,6 +66,10 @@
   gap: 12px;
   color: #22252a;
   font-size: 10px;
+}
+
+.footerCopyrightBox.dark {
+  color: #fafafa;
 }
 
 .footerFollowUs {

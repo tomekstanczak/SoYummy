@@ -1,14 +1,17 @@
 import { NavLink } from "react-router-dom";
+
 import css from "./Nav.module.css";
 
-const Nav = () => {
+const Nav = ({ isDark }) => {
   return (
-    <ul className={css.navMenu}>
+    <ul className={`${css.navMenu} ${isDark ? css.dark : ""} `}>
       <li>
         <NavLink
           to="/add-recipe"
           className={({ isActive }) =>
-            `${css.navLink} ${isActive ? css.activeLink : ""}`
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
           }
         >
           Add recipes
@@ -17,7 +20,9 @@ const Nav = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            `${css.navLink} ${isActive ? css.activeLink : ""}`
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
           }
           to="/search"
         >
@@ -27,7 +32,9 @@ const Nav = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            `${css.navLink} ${isActive ? css.activeLink : ""}`
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
           }
           to="/my-recipes"
         >
@@ -37,7 +44,9 @@ const Nav = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            `${css.navLink} ${isActive ? css.activeLink : ""}`
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
           }
           to="/favorites"
         >
@@ -47,7 +56,9 @@ const Nav = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            `${css.navLink} ${isActive ? css.activeLink : ""}`
+            `${css.navLink} ${isActive ? css.activeLink : ""} ${
+              isDark ? css.dark : ""
+            }`
           }
           to="/shopping-list"
         >

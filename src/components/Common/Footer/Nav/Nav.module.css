@@ -20,6 +20,11 @@
   color: #8baa36;
 }
 
+.navLink.dark:hover,
+.navLink.dark:focus {
+  color: black;
+}
+
 .activeLink {
   color: #8baa36;
 }

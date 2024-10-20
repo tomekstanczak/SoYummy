@@ -5,43 +5,79 @@ import InstagramIcon from "../../../../assets/icons/formatedIcons/insta.svg";
 import TwitterIcon from "../../../../assets/icons/formatedIcons/tweeter.svg";
 import YouTubeIcon from "../../../../assets/icons/formatedIcons/youtube.svg";
 
-const FollowUs = () => {
+const FollowUs = ({ isDark }) => {
   return (
-    <ul className={css.followIconList}>
+    <ul className={`${css.followIconList} ${isDark ? css.dark : ""} `}>
       <li>
         <a
-          className={css.followLink}
+          className={`${css.followLink} ${isDark ? css.dark : ""} `}
           href="https://pl-pl.facebook.com/"
           aria-label="Follow us on Facebook"
         >
-          <img src={FacebookIcon} alt="Facebook" />
+          <svg
+            className={`${css.followLink} ${isDark ? css.dark : ""} ${
+              css.followIcon
+            }`}
+          >
+            <use
+              href={`${FacebookIcon}#Facebook`}
+              className={css.followLink}
+            ></use>
+          </svg>
         </a>
       </li>
       <li>
         <a
-          className={css.followLink}
+          className={`${css.followLink} ${isDark ? css.dark : ""} `}
           href="https://www.youtube.com/"
           aria-label="Follow us on YouTube"
         >
-          <img src={YouTubeIcon} alt="YouTube" />
+          <svg
+            className={`${css.followLink} ${isDark ? css.dark : ""} ${
+              css.followIcon
+            }`}
+          >
+            <use
+              href={`${YouTubeIcon}#YouTube`}
+              className={css.followLink}
+            ></use>
+          </svg>
         </a>
       </li>
       <li>
         <a
-          className={css.followLink}
+          className={`${css.followLink} ${isDark ? css.dark : ""} `}
           href="https://x.com/"
           aria-label="Follow us on Twitter"
         >
-          <img src={TwitterIcon} alt="Twitter" />
+          <svg
+            className={`${css.followLink} ${isDark ? css.dark : ""} ${
+              css.followIcon
+            }`}
+          >
+            <use
+              href={`${TwitterIcon}#twitter`}
+              className={css.followLink}
+            ></use>
+          </svg>
         </a>
       </li>
       <li>
         <a
-          className={css.followLink}
+          className={`${css.followLink} ${isDark ? css.dark : ""} `}
           href="https://www.instagram.com/soyummy/"
           aria-label="Follow us on Instagram"
         >
-          <img src={InstagramIcon} alt="Instagram" />
+          <svg
+            className={`${css.followLink} ${isDark ? css.dark : ""} ${
+              css.followIcon
+            }`}
+          >
+            <use
+              href={`${InstagramIcon}#Instagram`}
+              className={css.followLink}
+            ></use>
+          </svg>
         </a>
       </li>
     </ul>

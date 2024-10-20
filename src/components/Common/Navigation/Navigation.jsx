@@ -84,14 +84,22 @@ const Navigation = ({ onClose }) => {
         </NavLink>
       </div>
       <div className={styles.mobileNavMenu}>
-        <div className={styles.nav}>
+        <div className={`${styles.nav} ${isDark ? styles.dark : ""}`}>
           <div className={styles.topConteiner}>
             <Logo />
             <button onClick={onClose}>
-              <img src={xIcon} alt="Close" />
+              <svg alt="Close" width="32px" height="32px">
+                <use
+                  href={`${xIcon}#X`}
+                  onClick={onClose}
+                  className={`${styles.onCloseBtn} ${
+                    isDark ? styles.darkOnClose : ""
+                  }`}
+                ></use>
+              </svg>
             </button>
           </div>
-          <div className={styles.menu}>
+          <div className={`${styles.menu} ${isDark ? styles.dark : ""}`}>
             <NavLink
               to="/categories"
               onClick={handleLinkClick}

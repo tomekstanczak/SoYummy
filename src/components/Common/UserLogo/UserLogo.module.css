@@ -18,6 +18,10 @@
   margin-top: 15px;
 }
 
+.name.dark {
+  color: #fafafa;
+}
+
 @media screen and (min-width: 768px) {
   .userIconStyle {
     width: 44px;
@@ -28,5 +32,8 @@
   .name {
     font-size: 14px;
     font-weight: 600;
+  }
+  .name.dark {
+    color: black;
   }
 }

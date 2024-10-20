@@ -62,7 +62,7 @@ const PreviewCategories = () => {
   }, []);
 
   const handleSeeAll = (category) => {
-    navigate(`/categories/${category}`);
+    navigate(`/categories?category=${category}`);
   };
 
   const handleOtherCategories = () => {

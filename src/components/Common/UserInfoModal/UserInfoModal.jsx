@@ -7,18 +7,21 @@
 // - Po naciśnięciu Escape;
 // - Po przesłaniu formularza, zaraz po otrzymaniu pomyślnej odpowiedzi.
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "./UserInfoModal.module.css";
 import userIcon from "../../../assets/icons/formatedIcons/user.svg";
 import edit from "../../../assets/icons/formatedIcons/edit-01.svg";
 import plus from "../../../assets/icons/formatedIcons/plus.svg";
 import axios from "axios";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 const UserInfoModal = ({ onClose }) => {
   const [username, setUsername] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
   const [profilePictureURL, setProfilePictureURL] = useState(null);
   const [error, setError] = useState(null);
+
+  const { isDark } = useContext(ThemeContext);
 
   const handleEscape = (e) => {
     if (e.key === "Escape") {
@@ -79,7 +82,7 @@ const UserInfoModal = ({ onClose }) => {
 
   return (
     <div className={styles.modalBackground} onClick={handleBackgroundClick}>
-      <div className={styles.modalContent}>
+      <div className={`${styles.modalContent} ${isDark ? styles.dark : ""}`}>
         <form onSubmit={handleSubmit} className={styles.formStyle}>
           <label htmlFor="profilePicture" className={styles.fileInputLabel}>
             <img
@@ -87,7 +90,12 @@ const UserInfoModal = ({ onClose }) => {
               alt="User"
               className={styles.userImagine}
             />
-            <img src={plus} alt="Plus" className={styles.plusStyle} />
+            <svg className={styles.plusStyle} width="18px" height="18px">
+              <use
+                href={`${plus}#plus`}
+                className={`${styles.plusSVG} ${isDark ? styles.dark : ""}`}
+              ></use>
+            </svg>
           </label>
           <input
             id="profilePicture"
@@ -100,10 +108,21 @@ const UserInfoModal = ({ onClose }) => {
               type="text"
               value={username}
               onChange={handleUsernameChange}
-              className={styles.nameInput}
+              className={`${styles.nameInput} ${isDark ? styles.dark : ""}`}
             />
-            <img src={userIcon} alt="edit" className={styles.userIcon} />
-            <img src={edit} alt="edit" className={styles.editIcon} />
+            <svg className={styles.iconUser}>
+              <use
+                href={`${userIcon}#user`}
+                className={`${styles.userIconSvg} ${isDark ? styles.dark : ""}`}
+                y="-10px"
+              ></use>
+            </svg>
+            <svg className={styles.editIcon}>
+              <use
+                href={`${edit}#edit-01`}
+                className={`${styles.editIcon} ${isDark ? styles.dark : ""}`}
+              ></use>
+            </svg>
           </label>
           {error && <div className={styles.error}>{error}</div>}
           <button type="submit" className={styles.saveButton}>

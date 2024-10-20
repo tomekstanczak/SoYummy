@@ -1,9 +1,25 @@
-.logoIcon {
+.logoIconBox {
   width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.logoIcon {
+  stroke: #8baa36;
+}
+
+.logoIconBox:hover,
+.logoIconBox:focus {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.logoIcon.dark {
+  stroke: #fafafa;
 }
 
 @media screen and (min-width: 768px) {
   .logoIcon {
     width: 44px;
+    height: 44px;
   }
 }

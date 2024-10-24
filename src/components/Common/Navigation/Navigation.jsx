@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Navigation.module.css";
-import searchIcon from "../../../assets/icons/formatedIcons/search.svg";
+import searchIcon from "/icons/formatedIcons/search.svg";
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
 import Logo from "../Logo/Logo";
 import xIcon from "../../../assets/icons/formatedIcons/X.svg";

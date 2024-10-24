@@ -1,9 +1,9 @@
 import css from "./FollowUs.module.css";
 
-import FacebookIcon from "../../../../assets/icons/formatedIcons/facebook.svg";
-import InstagramIcon from "../../../../assets/icons/formatedIcons/insta.svg";
-import TwitterIcon from "../../../../assets/icons/formatedIcons/tweeter.svg";
-import YouTubeIcon from "../../../../assets/icons/formatedIcons/youtube.svg";
+import FacebookIcon from "/icons/facebook.svg";
+import InstagramIcon from "/icons/insta.svg";
+import TwitterIcon from "/icons/tweeter.svg";
+import YouTubeIcon from "/icons/youtube.svg";
 
 const FollowUs = ({ isDark }) => {
   return (

@@ -6,7 +6,7 @@ import AuthNav from "../../components/Auth/AuthNav/AuthNav";
 
 import styles from "./WelcomePage.module.css";
 
-import logo from "../../assets/icons/formatedIcons/logo.svg";
+import logo from "/icons/logo.svg";
 
 const WelcomePage = () => {
   return (

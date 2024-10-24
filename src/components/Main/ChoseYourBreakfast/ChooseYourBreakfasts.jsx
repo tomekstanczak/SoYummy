@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../../context/ThemeContext";
 import styles from "./ChooseYourBreakfast.module.css";
-import arrowRight from "../../../assets/icons/formatedIcons/arrow-right.svg";
+import arrowRight from "/icons/arrow-right.svg";
 
 const ChooseYourBreakfast = () => {
   const { isDark } = useContext(ThemeContext);

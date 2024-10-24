@@ -1,12 +1,8 @@
-// Komponent renderuje okno modalne z przyciskami:
-// - EditProfile - otwiera komponent UserInfoModal;
-// - LogoutBtn - komponent wylogowujący użytkownika.
-
 import { useState, useEffect, useContext } from "react";
 import UserInfoModal from "../UserInfoModal/UserInfoModal";
 import styles from "./UserLogoModal.module.css";
-import arrowRight from "../../../assets/icons/formatedIcons/arrow-right.svg";
-import edit from "../../../assets/icons/formatedIcons/edit-01.svg";
+import arrowRight from "/icons/arrow-right.svg";
+import edit from "/icons/edit-01.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../../context/ThemeContext";

@@ -7,7 +7,7 @@ const Logo = ({ isDark }) => {
       <Link to="/main">
         <svg className={styles.logoIconBox}>
           <use
-            href="/public/icons/formatedIcons/logo.svg#logo"
+            href="/public/icons/logo.svg#logo"
             className={`${styles.logoIcon} ${isDark ? styles.dark : ""} `}
           ></use>
         </svg>

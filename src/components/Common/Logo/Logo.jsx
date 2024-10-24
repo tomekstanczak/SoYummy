@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logo from "../../../../public/icons/formatedIcons/logo.svg";
 import styles from "./Logo.module.css";
 
 const Logo = ({ isDark }) => {
@@ -8,7 +7,7 @@ const Logo = ({ isDark }) => {
       <Link to="/main">
         <svg className={styles.logoIconBox}>
           <use
-            href={`${logo}#logo`}
+            href="/public/icons/formatedIcons/logo.svg#logo"
             className={`${styles.logoIcon} ${isDark ? styles.dark : ""} `}
           ></use>
         </svg>

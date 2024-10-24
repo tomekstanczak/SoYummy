@@ -3,7 +3,7 @@
 import { useContext, useState } from "react";
 import UserLogoModal from "../UserLogoModal/UserLogoModal";
 import styles from "./UserLogo.module.css";
-import icon from "../../../assets/icons/formatedIcons/user.svg";
+import icon from "/icons/user.svg";
 import { ThemeContext } from "../../../context/ThemeContext";
 
 const UserLogo = ({ user }) => {

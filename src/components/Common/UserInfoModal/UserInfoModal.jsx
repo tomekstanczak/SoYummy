@@ -9,9 +9,9 @@
 
 import { useState, useEffect, useContext } from "react";
 import styles from "./UserInfoModal.module.css";
-import userIcon from "../../../assets/icons/formatedIcons/user.svg";
-import edit from "../../../assets/icons/formatedIcons/edit-01.svg";
-import plus from "../../../assets/icons/formatedIcons/plus.svg";
+import userIcon from "/icons/user.svg";
+import edit from "/icons/edit-01.svg";
+import plus from "/icons/plus.svg";
 import axios from "axios";
 import { ThemeContext } from "../../../context/ThemeContext";
 

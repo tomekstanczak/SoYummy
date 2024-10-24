@@ -3,7 +3,7 @@ import styles from "./Navigation.module.css";
 import searchIcon from "/icons/search.svg";
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
 import Logo from "../Logo/Logo";
-import xIcon from "../../../assets/icons/formatedIcons/X.svg";
+import xIcon from "/icons/X.svg";
 import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
 

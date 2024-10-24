@@ -127,7 +127,7 @@ export const RegisterForm = () => {
             {isNotValid && <ErrorIcon />}
           </div>
           <svg className={styles.svg}>
-            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-user"></use>
+            <use href="/icons/icons.svg#icon-user"></use>
           </svg>
         </label>
         {isNotValid && <div className={styles.littleInfo}>{isNotValid}</div>}
@@ -142,7 +142,7 @@ export const RegisterForm = () => {
             onChange={onChange}
           />
           <svg className={styles.svg}>
-            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
+            <use href="/icons/icons.svg#icon-email"></use>
           </svg>
         </label>
 
@@ -167,7 +167,7 @@ export const RegisterForm = () => {
             {isSecure && <SecureIcon />}
           </div>
           <svg className={styles.svg}>
-            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
+            <use href="/icons/icons.svg#icon-lock-02"></use>
           </svg>
         </label>
         {(inputError && (

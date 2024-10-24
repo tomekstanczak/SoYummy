@@ -65,7 +65,7 @@ export const SigninForm = () => {
             onChange={onChange}
           />
           <svg className={styles.svg}>
-            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-email"></use>
+            <use href="/icons/icons.svg#icon-email"></use>
           </svg>
         </label>
 
@@ -79,7 +79,7 @@ export const SigninForm = () => {
             onChange={onChange}
           />
           <svg className={styles.svg}>
-            <use href="./src/assets/icons/formatedIcons/icons.svg#icon-lock-02"></use>
+            <use href="/icons/icons.svg#icon-lock-02"></use>
           </svg>
         </label>
         {fetchError && <div className={styles.littleInfo}>{fetchError}</div>}

@@ -10,7 +10,7 @@ const UserLogo = ({ user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [updatedUser, setUpdatedUser] = useState();
 
-  const { isDark } = useContext(ThemeContext);
+  const { isDark, headerTextColor } = useContext(ThemeContext);
 
   const handleUserLogoClick = () => {
     setIsModalOpen(true);
@@ -36,7 +36,10 @@ const UserLogo = ({ user }) => {
       <div>
         <div onClick={handleUserLogoClick} className={styles.container}>
           <img src={userIcon} alt="User" className={styles.userIconStyle} />
-          <span className={`${styles.name} ${isDark ? styles.dark : ""}`}>
+          <span
+            className={styles.name}
+            style={isDark ? { color: headerTextColor } : {}}
+          >
             {name}
           </span>
         </div>

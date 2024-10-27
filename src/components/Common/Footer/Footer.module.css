@@ -1,3 +1,7 @@
+.mainContainer {
+  width: 100%;
+}
+
 .footerContainer {
   width: 100%;
   padding: 12px;
@@ -69,7 +73,7 @@
 }
 
 .footerCopyrightBox.dark {
-  color: #fafafa;
+  color: #fafafa99;
 }
 
 .footerFollowUs {

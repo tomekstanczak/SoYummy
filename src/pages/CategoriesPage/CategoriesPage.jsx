@@ -1,13 +1,13 @@
-// Po przejściu na tę stronę ustawiana jest kategoria, z której przyszedł użytkownik.
-// W górnej części strony znajduje się menu z listą kategorii. Po kliknięciu kategorii zostanie wysłane żądanie pobrania przepisów z wybranej kategorii:
 //  - W przypadku niepomyślnej odpowiedzi wyświetlony zostanie odpowiedni blok informacyjny.
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./CategoriesPage.module.css";
 import Loader from "../../components/Common/Loader/Loader";
 import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
 import { fetchCategories, fetchRecipes } from "./CetegoriesServices";
+import leaf from "../../assets/images/spinach.png";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
@@ -18,7 +18,11 @@ const CategoriesPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const { isDark, setHeaderTextColor } = useContext(ThemeContext);
+
   useEffect(() => {
+    setHeaderTextColor("white");
+
     const loadData = async () => {
       try {
         const categories = await fetchCategories();
@@ -61,9 +65,9 @@ const CategoriesPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.topbar}>
-        <MainPageTitle title="Categories" />
-        <ul className={styles.categoryList}>
+      <div className={`${styles.topbar} ${isDark ? styles.dark : ""} `}>
+        <MainPageTitle title="Categories" isDark={isDark} />
+        <ul className={`${styles.categoryList} ${isDark ? styles.dark : ""} `}>
           {categories.map((category) => (
             <li
               key={category._id}
@@ -92,13 +96,14 @@ const CategoriesPage = () => {
                   onClick={() => handleRecipeClick(recipe._id)}
                 >
                   <img src={recipe.thumb} className={styles.recipePicture} />
-                  <spam className={styles.recipeTitle}>{recipe.title}</spam>
+                  <span className={styles.recipeTitle}>{recipe.title}</span>
                 </li>
               ))}
             </ul>
           </div>
         )}
       </div>
+      <img src={leaf} className={styles.leafPicture} />
     </div>
   );
 };

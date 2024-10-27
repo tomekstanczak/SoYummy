@@ -18,7 +18,7 @@ export const RecipeProvider = ({ children }) => {
       const data = response.data.data.recipe;
       setRecipe(data);
       const favoriteStatus = checkIfFavorite(data._id);
-      setIsFavorite(favoriteStatus); // Ustawienie statusu ulubionego
+      setIsFavorite(favoriteStatus);
     } catch (error) {
       console.error("Error fetching recipe:", error);
     }

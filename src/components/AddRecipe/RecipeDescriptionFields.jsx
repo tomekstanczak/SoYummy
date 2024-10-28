@@ -97,13 +97,14 @@ const RecipeDescriptionFields = ({
         </div>
 
         <div className={styles.fieldContainer}>
+          <p className={styles.categoryFieldDescription}>Category</p>
           <select
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             className={styles.select}
           >
-            <option value="">Category</option>
+            <option value=""></option>
             {categories.map((cat, index) => (
               <option key={index} value={cat}>
                 {cat}
@@ -116,13 +117,14 @@ const RecipeDescriptionFields = ({
         </div>
 
         <div className={styles.fieldContainer}>
+          <p className={styles.cookingTimeFieldDescription}>Cooking time</p>
           <select
             id="cookingTime"
             value={cookingTime}
             onChange={(e) => setCookingTime(e.target.value)}
             className={styles.select}
           >
-            <option value="">Cooking time</option>
+            <option value=""></option>
             {cookingTimeOptions.map((time, index) => (
               <option key={index} value={time}>
                 {time} minutes

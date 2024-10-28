@@ -16,6 +16,12 @@ h1 {
     font-size: 32px;
     font-weight: 600;
   }
+  .titleContainer {
+    padding: 73px 0px 100px 32px;
+    width: 704px;
+    display: flex;
+    justify-content: flex-start;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -24,6 +30,7 @@ h1 {
     font-weight: 600;
   }
   .titleContainer {
-    max-width: 1440px;
+    width: 1440px;
+    padding: 102px 0px 100px 100px;
   }
 }

@@ -1,5 +1,3 @@
-//  - W przypadku niepomyślnej odpowiedzi wyświetlony zostanie odpowiedni blok informacyjny.
-
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./CategoriesPage.module.css";
@@ -7,6 +5,7 @@ import Loader from "../../components/Common/Loader/Loader";
 import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
 import { fetchCategories, fetchRecipes } from "./CetegoriesServices";
 import leaf from "../../assets/images/spinach.png";
+import notFoundPicture from "../../assets/images/404.png";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const CategoriesPage = () => {
@@ -85,7 +84,10 @@ const CategoriesPage = () => {
         {loading ? (
           <Loader />
         ) : error ? (
-          <p className={styles.error}>{error}</p>
+          <div className={styles.notFoundContainer}>
+            <img src={notFoundPicture}></img>
+            <p className={styles.error}>{error}</p>
+          </div>
         ) : (
           <div>
             <ul className={styles.recipeList}>

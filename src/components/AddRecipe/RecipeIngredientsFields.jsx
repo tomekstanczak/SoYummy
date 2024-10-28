@@ -84,7 +84,7 @@ const RecipeIngredientsFields = ({
               onChange={(e) =>
                 handleIngredientChange(index, "name", e.target.value)
               }
-              className={styles.select}
+              className={styles.selectIngredient}
             >
               <option value=""></option>
               {ingredientOptions.map((option, i) => (
@@ -101,7 +101,7 @@ const RecipeIngredientsFields = ({
                   onChange={(e) =>
                     handleIngredientChange(index, "amount", e.target.value)
                   }
-                  className={styles.input}
+                  className={styles.inputUnitValue}
                 />
                 <select
                   value={ingredient.unit}

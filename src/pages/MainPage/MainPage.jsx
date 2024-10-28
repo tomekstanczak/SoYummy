@@ -9,7 +9,9 @@ import spinach from "../../assets/images/spinach.png";
 import styles from "./MainPage.module.css";
 
 const MainPage = () => {
-  const { isDark } = useContext(ThemeContext);
+  const { isDark, setHeaderTextColor } = useContext(ThemeContext);
+
+  setHeaderTextColor("black");
 
   return (
     <>

@@ -7,6 +7,7 @@ const ThemeProvider = ({ children }) => {
     const savedTheme = localStorage.getItem("theme");
     return savedTheme;
   });
+  const [headerTextColor, setHeaderTextColor] = useState("black");
 
   useEffect(() => {
     if (isDark) {
@@ -21,7 +22,9 @@ const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{ headerTextColor, setHeaderTextColor, isDark, toggleTheme }}
+    >
       {children}
     </ThemeContext.Provider>
   );

@@ -35,7 +35,7 @@ const Navigation = ({ onClose }) => {
         <NavLink
           to="/categories"
           className={({ isActive }) =>
-            `${styles.navL}${isActive ? styles.activeLink : ""}`
+            `${styles.navL} ${isActive ? styles.activeLink : ""}`
           }
         >
           Categories
@@ -43,7 +43,7 @@ const Navigation = ({ onClose }) => {
         <NavLink
           to="/add-recipe"
           className={({ isActive }) =>
-            `${styles.navL}${isActive ? styles.activeLink : ""}`
+            `${styles.navL} ${isActive ? styles.activeLink : ""}`
           }
         >
           Add Recipe
@@ -51,7 +51,7 @@ const Navigation = ({ onClose }) => {
         <NavLink
           to="/my-recipes"
           className={({ isActive }) =>
-            `${styles.navL}${isActive ? styles.activeLink : ""}`
+            `${styles.navL} ${isActive ? styles.activeLink : ""}`
           }
         >
           My Recipes
@@ -59,7 +59,7 @@ const Navigation = ({ onClose }) => {
         <NavLink
           to="/favorites"
           className={({ isActive }) =>
-            `${styles.navL}${isActive ? styles.activeLink : ""}`
+            `${styles.navL} ${isActive ? styles.activeLink : ""}`
           }
         >
           Favorite
@@ -67,7 +67,7 @@ const Navigation = ({ onClose }) => {
         <NavLink
           to="/shopping-list"
           className={({ isActive }) =>
-            `${styles.navL}${isActive ? styles.activeLink : ""}`
+            `${styles.navL} ${isActive ? styles.activeLink : ""}`
           }
         >
           Shopping List
@@ -75,7 +75,7 @@ const Navigation = ({ onClose }) => {
         <NavLink
           to="/search"
           className={({ isActive }) =>
-            `${styles.navL}${isActive ? styles.activeLink : ""}`
+            `${styles.navL} ${isActive ? styles.activeLink : ""}`
           }
         >
           <svg width="24" height="24">
@@ -104,7 +104,7 @@ const Navigation = ({ onClose }) => {
               to="/categories"
               onClick={handleLinkClick}
               className={({ isActive }) =>
-                `${styles.navL}${isActive ? styles.activeLink : ""}`
+                `${styles.navL} ${isActive ? styles.activeLink : ""}`
               }
             >
               Categories
@@ -113,7 +113,7 @@ const Navigation = ({ onClose }) => {
               to="/add-recipe"
               onClick={handleLinkClick}
               className={({ isActive }) =>
-                `${styles.navL}${isActive ? styles.activeLink : ""}`
+                `${styles.navL} ${isActive ? styles.activeLink : ""}`
               }
             >
               Add Recipe
@@ -122,7 +122,7 @@ const Navigation = ({ onClose }) => {
               to="/my-recipes"
               onClick={handleLinkClick}
               className={({ isActive }) =>
-                `${styles.navL}${isActive ? styles.activeLink : ""}`
+                `${styles.navL} ${isActive ? styles.activeLink : ""}`
               }
             >
               My Recipes
@@ -131,7 +131,7 @@ const Navigation = ({ onClose }) => {
               to="/favorites"
               onClick={handleLinkClick}
               className={({ isActive }) =>
-                `${styles.navL}${isActive ? styles.activeLink : ""}`
+                `${styles.navL} ${isActive ? styles.activeLink : ""}`
               }
             >
               Favorite
@@ -140,7 +140,7 @@ const Navigation = ({ onClose }) => {
               to="/shopping-list"
               onClick={handleLinkClick}
               className={({ isActive }) =>
-                `${styles.navL}${isActive ? styles.activeLink : ""}`
+                `${styles.navL} ${isActive ? styles.activeLink : ""}`
               }
             >
               Shopping List
@@ -148,7 +148,7 @@ const Navigation = ({ onClose }) => {
             <NavLink
               to="/search"
               className={({ isActive }) =>
-                `${styles.navL}${isActive ? styles.activeLink : ""}`
+                `${styles.navL} ${isActive ? styles.activeLink : ""}`
               }
             >
               <svg width="24" height="24" className={styles.searchIcon}>

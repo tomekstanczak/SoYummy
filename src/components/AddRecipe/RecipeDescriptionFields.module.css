@@ -8,9 +8,10 @@
 
 .fieldContainer {
   display: flex;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #e0e0e0;
   max-width: 343px;
   height: 40px;
+  position: relative;
 }
 
 .fileInputContainer {
@@ -32,6 +33,28 @@
   background-color: transparent;
   font-size: 14px;
   color: #000000;
+}
+.input,
+.textarea {
+  margin-bottom: 10px;
+}
+
+.select {
+  text-align: right;
+  padding-right: 15px;
+  margin-bottom: 10px;
+}
+.categoryFieldDescription,
+.cookingTimeFieldDescription {
+  position: absolute;
+  bottom: 10px;
+  font-size: 14px;
+  color: #00000080;
+}
+.textarea {
+  resize: none;
+  text-align: left;
+  line-height: 2.4;
 }
 
 .imageLabel {
@@ -101,6 +124,10 @@
     font-size: 16px;
     color: #000000;
   }
+  .categoryFieldDescription,
+  .cookingTimeFieldDescription {
+    font-size: 16px;
+  }
 }
 
 @media screen and (min-width: 1439px) {
@@ -129,5 +156,9 @@
     border-radius: 8px;
     width: 357px;
     height: 344px;
+  }
+  .categoryFieldDescription,
+  .cookingTimeFieldDescription {
+    font-size: 16px;
   }
 }

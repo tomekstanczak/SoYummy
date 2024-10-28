@@ -12,7 +12,7 @@ import css from "./Footer.module.css";
 const Footer = () => {
   const { isDark } = useContext(ThemeContext);
   return (
-    <div>
+    <div className={css.mainContainer}>
       <div className={`${css.footer} ${isDark ? css.dark : ""} `}>
         <div className={css.footerContainer}>
           <div className={css.footerBox}>

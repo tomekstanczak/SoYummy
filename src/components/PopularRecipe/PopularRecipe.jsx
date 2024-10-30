@@ -34,12 +34,12 @@ const PopularRecipe = () => {
 
   return (
     <div className={styles.popularContainer}>
-      <h3>Popular Recipes</h3>
+      <h3>Popular recipes</h3>
       {error && <p>{error}</p>}
       {recipes.length > 0 ? (
         <ul className={styles.popularList}>
           {recipes.map((recipe) => (
-            <li key={recipe.id} className={styles.popularListItems}>
+            <li key={recipe._id} className={styles.popularListItems}>
               <img src={recipe.thumb} className={styles.popularPictures} />
               <div className={styles.popularText}>
                 <Link

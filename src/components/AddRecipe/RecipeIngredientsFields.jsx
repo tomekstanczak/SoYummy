@@ -124,7 +124,9 @@ const RecipeIngredientsFields = ({
               onClick={() => handleRemoveIngredient(index)}
               className={styles.removeButton}
             >
-              <img src={cross} />
+              <svg width="20px" height="20px">
+                <use href={`${cross}#X`} className={styles.cross}></use>
+              </svg>
             </button>
           </div>
         ))}

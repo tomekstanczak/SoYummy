@@ -1,5 +1,3 @@
-// Komponent renderuje listę elementów z linkami do sieci społecznościowych
-
 import css from "./FollowUs.module.css";
 
 import FacebookIcon from "../../assets/icons/formatedIcons/facebook.svg";

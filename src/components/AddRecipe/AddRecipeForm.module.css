@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 67px;
+  margin-bottom: 76px;
 }
 
 .submitButton {
@@ -21,4 +22,16 @@
   height: 52px;
   width: 161px;
   margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .form {
+    margin-bottom: 200px;
+  }
 }

@@ -26,16 +26,20 @@
   height: 53px;
   border-radius: 8px;
   padding-left: 10px;
+  outline: none;
 }
 
 .inputUnitValue {
   position: relative;
   right: 0px;
-  max-width: 94px;
+  max-width: 114px;
   height: 53px;
   border-radius: 8px;
   padding-left: 10px;
   background-color: #d9d9d984;
+  text-align: right;
+  padding-right: 60px;
+  outline: none;
 }
 
 .selectUnit {

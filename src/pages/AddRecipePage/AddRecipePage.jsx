@@ -6,11 +6,15 @@ import FollowUs from "../../components/Common/Footer/FollowUs/FollowUs";
 import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
 import styles from "./AddRecipePage.module.css";
 import leaf from "../../assets/images/spinach.png";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const AddRecipePage = () => {
-  const { isDark } = useContext(ThemeContext);
+  const { isDark, setHeaderTextColor } = useContext(ThemeContext);
+
+  useEffect(() => {
+    setHeaderTextColor("white");
+  }, []);
 
   return (
     <div className={styles.addRecipeContainer}>
@@ -18,7 +22,7 @@ const AddRecipePage = () => {
         <MainPageTitle title="Add Recipe" isDark={isDark} />
       </div>
       <div className={styles.formContainer}>
-        <AddRecipeForm />
+        <AddRecipeForm isDark={isDark} />
         <div className={styles.followUsPopularContainer}>
           <div className={styles.followUs}>
             <h2
@@ -31,7 +35,7 @@ const AddRecipePage = () => {
             <FollowUs isDark={isDark} />
           </div>
           <div className={styles.popular}>
-            <PopularRecipe />
+            <PopularRecipe isDark={isDark} />
           </div>
         </div>
       </div>

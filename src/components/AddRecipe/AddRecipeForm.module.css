@@ -24,6 +24,10 @@
   margin-bottom: 15px;
 }
 
+.submitButton.dark {
+  background-color: #8baa36;
+}
+
 @media screen and (min-width: 768px) {
   .form {
     margin-bottom: 100px;

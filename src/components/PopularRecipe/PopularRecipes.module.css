@@ -6,6 +6,10 @@
   margin-bottom: 100px;
 }
 
+.popularContainer.dark {
+  color: #fafafa;
+}
+
 h3 {
   font-size: 24px;
   font-weight: 600;

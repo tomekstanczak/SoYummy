@@ -1,22 +1,15 @@
-// Komponent do dodawania składników zawiera:
-// - Podtytuł;
-// - Licznik liczby określonych składników w przepisie. Przyciski +/- dodają nowe pole wprowadzania danych na końcu listy lub usuwają ostatnie pole.
-// - Pole do wprowadzania danych o składnikach, które składa się z:
-//      * Nazwy składnika (wybieranej z rozwijanej listy pochodzącej z backendu);
-//      * Ilości składnika + miary ilości (wybierane z rozwijanej listy);
-//      * Przycisku usuwania, którego kliknięcie powoduje usunięcie ze stanu i strony.
-
 import { useState, useEffect } from "react";
 import styles from "./RecipeIngredientsFields.module.css";
-import plus from "../../assets/icons/formatedIcons/plus.svg";
-import minus from "../../assets/icons/formatedIcons/Minus.svg";
-import cross from "../../assets/icons/formatedIcons/X.svg";
+import plus from "/icons/plus.svg";
+import minus from "/icons/Minus.svg";
+import cross from "/icons/X.svg";
 
 const RecipeIngredientsFields = ({
   ingredients,
   setIngredients,
   ingredientOptions,
   unitOptions,
+  isDark,
 }) => {
   const [localIngredients, setLocalIngredients] = useState(ingredients);
   const [ingredientCount, setIngredientCount] = useState(1);
@@ -54,25 +47,43 @@ const RecipeIngredientsFields = ({
       i === index ? { ...ingredient, [field]: value } : ingredient
     );
     setLocalIngredients(updatedIngredients);
-    console.log(updatedIngredients);
     setIngredients(updatedIngredients);
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.titlePart}>
-        <h2 className={styles.subtitle}>Ingredients</h2>
-        <div className={styles.ingredientCounter}>
+        <h2 className={`${styles.subtitle} ${isDark ? styles.dark : ""}`}>
+          Ingredients
+        </h2>
+        <div
+          className={`${styles.ingredientCounter} ${isDark ? styles.dark : ""}`}
+        >
           <button
             type="button"
             onClick={handleRemoveLastIngredient}
             disabled={ingredientCount === 0}
           >
-            <img src={minus} className={styles.counterIcon} />
+            {" "}
+            <svg
+              className={`${styles.counterIcon} ${isDark ? styles.dark : ""}`}
+            >
+              <use
+                href={`${minus}#Minus`}
+                className={`${styles.counterIcon} ${isDark ? styles.dark : ""}`}
+              ></use>
+            </svg>
           </button>
           <span className={styles.counterText}>{ingredientCount}</span>
           <button type="button" onClick={handleAddIngredient}>
-            <img src={plus} className={styles.counterIcon} />
+            <svg
+              className={`${styles.counterIcon} ${isDark ? styles.dark : ""}`}
+            >
+              <use
+                href={`${plus}#plus`}
+                className={`${styles.counterIcon} ${isDark ? styles.dark : ""}`}
+              ></use>
+            </svg>
           </button>
         </div>
       </div>
@@ -84,11 +95,24 @@ const RecipeIngredientsFields = ({
               onChange={(e) =>
                 handleIngredientChange(index, "name", e.target.value)
               }
-              className={styles.selectIngredient}
+              className={`${styles.selectIngredient} ${
+                isDark ? styles.dark : ""
+              } `}
             >
-              <option value=""></option>
+              <option
+                value=""
+                className={`${styles.selectIngredient} ${
+                  isDark ? styles.dark : ""
+                } `}
+              ></option>
               {ingredientOptions.map((option, i) => (
-                <option key={i} value={option}>
+                <option
+                  key={i}
+                  value={option}
+                  className={`${styles.selectIngredient} ${
+                    isDark ? styles.dark : ""
+                  } `}
+                >
                   {option}
                 </option>
               ))}
@@ -101,18 +125,33 @@ const RecipeIngredientsFields = ({
                   onChange={(e) =>
                     handleIngredientChange(index, "amount", e.target.value)
                   }
-                  className={styles.inputUnitValue}
+                  className={`${styles.inputUnitValue} ${
+                    isDark ? styles.dark : ""
+                  } `}
                 />
                 <select
                   value={ingredient.unit}
                   onChange={(e) =>
                     handleIngredientChange(index, "unit", e.target.value)
                   }
-                  className={styles.selectUnit}
+                  className={`${styles.selectUnit} ${
+                    isDark ? styles.dark : ""
+                  } `}
                 >
-                  <option value=""></option>
+                  <option
+                    value=""
+                    className={`${styles.selectUnitOption} ${
+                      isDark ? styles.dark : ""
+                    } `}
+                  ></option>
                   {unitOptions.map((option, i) => (
-                    <option key={i} value={option}>
+                    <option
+                      key={i}
+                      value={option}
+                      className={`${styles.selectUnitOption} ${
+                        isDark ? styles.dark : ""
+                      } `}
+                    >
                       {option}
                     </option>
                   ))}
@@ -125,7 +164,10 @@ const RecipeIngredientsFields = ({
               className={styles.removeButton}
             >
               <svg width="20px" height="20px">
-                <use href={`${cross}#X`} className={styles.cross}></use>
+                <use
+                  href={`${cross}#X`}
+                  className={`${styles.cross} ${isDark ? styles.dark : ""} `}
+                ></use>
               </svg>
             </button>
           </div>

@@ -24,6 +24,7 @@ const RecipeDescriptionFields = ({
   category,
   setCategory,
   error,
+  isDark,
 }) => {
   const cookingTimeOptions = [...Array(24).keys()].map((n) => (n + 1) * 5);
   const [recipiePictureURL, setrecipiePictureURL] = useState(null);
@@ -66,7 +67,7 @@ const RecipeDescriptionFields = ({
           id="image"
           type="file"
           onChange={handleFileChange}
-          className={styles.fileInput}
+          className={`${styles.fileInput} ${isDark ? styles.dark : ""}`}
         />
         {error.image && <div className={styles.error}>{error.image}</div>}
       </div>
@@ -77,7 +78,7 @@ const RecipeDescriptionFields = ({
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className={styles.input}
+            className={`${styles.input} ${isDark ? styles.dark : ""}`}
             placeholder="Enter item title"
           />
           {error.name && <div className={styles.error}>{error.name}</div>}
@@ -88,7 +89,7 @@ const RecipeDescriptionFields = ({
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className={styles.textarea}
+            className={`${styles.textarea} ${isDark ? styles.dark : ""}`}
             placeholder="Enter about recipe"
           />
           {error.description && (
@@ -97,16 +98,29 @@ const RecipeDescriptionFields = ({
         </div>
 
         <div className={styles.fieldContainer}>
-          <p className={styles.categoryFieldDescription}>Category</p>
+          <p
+            className={`${styles.categoryFieldDescription} ${
+              isDark ? styles.dark : ""
+            } `}
+          >
+            Category
+          </p>
           <select
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className={styles.select}
+            className={`${styles.select} ${isDark ? styles.dark : ""}`}
           >
-            <option value=""></option>
+            <option
+              value=""
+              className={`${isDark ? styles.dark : ""}`}
+            ></option>
             {categories.map((cat, index) => (
-              <option key={index} value={cat}>
+              <option
+                key={index}
+                value={cat}
+                className={`${isDark ? styles.dark : ""}`}
+              >
                 {cat}
               </option>
             ))}
@@ -117,16 +131,29 @@ const RecipeDescriptionFields = ({
         </div>
 
         <div className={styles.fieldContainer}>
-          <p className={styles.cookingTimeFieldDescription}>Cooking time</p>
+          <p
+            className={`${styles.cookingTimeFieldDescription} ${
+              isDark ? styles.dark : ""
+            } `}
+          >
+            Cooking time
+          </p>
           <select
             id="cookingTime"
             value={cookingTime}
             onChange={(e) => setCookingTime(e.target.value)}
-            className={styles.select}
+            className={`${styles.select} ${isDark ? styles.dark : ""}`}
           >
-            <option value=""></option>
+            <option
+              value=""
+              className={`${isDark ? styles.dark : ""}`}
+            ></option>
             {cookingTimeOptions.map((time, index) => (
-              <option key={index} value={time}>
+              <option
+                key={index}
+                value={time}
+                className={`${isDark ? styles.dark : ""}`}
+              >
                 {time} minutes
               </option>
             ))}

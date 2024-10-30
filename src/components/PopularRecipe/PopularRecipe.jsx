@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import Loader from "../Common/Loader/Loader";
 import styles from "./PopularRecipes.module.css";
 
-const PopularRecipe = () => {
+const PopularRecipe = ({ isDark }) => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
 
@@ -19,8 +19,6 @@ const PopularRecipe = () => {
         const response = await axios.get(
           "https://soyummybe.onrender.com/popular-recipe/popular-recipe"
         );
-        console.log(response.data.data);
-        console.log(response);
         setRecipes(response.data.data);
         setError(null);
       } catch (err) {
@@ -33,7 +31,7 @@ const PopularRecipe = () => {
   }, []);
 
   return (
-    <div className={styles.popularContainer}>
+    <div className={`${styles.popularContainer} ${isDark ? styles.dark : ""}`}>
       <h3>Popular recipes</h3>
       {error && <p>{error}</p>}
       {recipes.length > 0 ? (

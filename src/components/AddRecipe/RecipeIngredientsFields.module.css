@@ -8,6 +8,10 @@
   margin-bottom: 10px;
 }
 
+.subtitle.dark {
+  color: #fafafa;
+}
+
 .ingredientsList {
   margin-bottom: 20px;
 }
@@ -19,6 +23,10 @@
   justify-content: space-between;
 }
 
+.ingredientContainer.dark {
+  color: #fafafa;
+}
+
 .selectIngredient {
   margin-right: 33px;
   max-width: 194px;
@@ -26,16 +34,20 @@
   height: 53px;
   border-radius: 8px;
   padding-left: 10px;
+  outline: none;
 }
 
 .inputUnitValue {
   position: relative;
   right: 0px;
-  max-width: 94px;
+  max-width: 114px;
   height: 53px;
   border-radius: 8px;
   padding-left: 10px;
   background-color: #d9d9d984;
+  text-align: right;
+  padding-right: 60px;
+  outline: none;
 }
 
 .selectUnit {
@@ -88,11 +100,43 @@
   align-items: center;
   padding: 7px 14px 7px 14px;
 }
+
+.ingredientCounter.dark {
+  border: 1px solid #fafafa;
+  color: #fafafa;
+}
+
 .counterText {
   font-size: 14px;
 }
 .counterIcon {
+  width: 16px;
+  height: 16px;
+  color: #8baa36;
+  fill: #8baa36;
   stroke: #8baa36;
+}
+.counterIcon.dark {
+  color: #fafafa;
+}
+
+.selectIngredient.dark,
+.inputUnitValue.dark {
+  color: #fafafa;
+  background-color: black;
+  border: 1px solid #fafafa50;
+}
+.selectUnit.dark {
+  color: #fafafa;
+  background-color: transparent;
+}
+.selectUnitOption.dark {
+  color: #fafafa;
+  background-color: black;
+}
+
+.cross.dark {
+  color: #fafafa;
 }
 
 @media screen and (min-width: 767px) {

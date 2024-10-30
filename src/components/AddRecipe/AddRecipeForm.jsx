@@ -15,7 +15,7 @@ import RecipePreparationFields from "./RecipePreparationFields";
 import axios from "axios";
 import styles from "./AddRecipeForm.module.css";
 
-const AddRecipeForm = () => {
+const AddRecipeForm = ({ isDark }) => {
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -129,6 +129,7 @@ const AddRecipeForm = () => {
         setCookingTime={setCookingTime}
         setImage={setImage}
         error={errors}
+        isDark={isDark}
       />
       <RecipeIngredientsFields
         ingredients={ingredients}
@@ -136,15 +137,17 @@ const AddRecipeForm = () => {
         ingredientOptions={ingredientOptions}
         unitOptions={unitOptions}
         error={errors.ingredients}
+        isDark={isDark}
       />
       <RecipePreparationFields
         preparation={preparation}
         setPreparation={setPreparation}
         error={errors.preparation}
+        isDark={isDark}
       />
       <button
         type="submit"
-        className={styles.submitButton}
+        className={`${styles.submitButton} ${styles.dark}`}
         onClick={handleSubmit}
       >
         Add Recipe

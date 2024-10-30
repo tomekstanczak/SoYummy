@@ -6,6 +6,10 @@
   margin-bottom: 100px;
 }
 
+.popularContainer.dark {
+  color: #fafafa;
+}
+
 h3 {
   font-size: 24px;
   font-weight: 600;
@@ -24,7 +28,7 @@ h3 {
   justify-content: left;
   gap: 12px;
   padding-bottom: 13px;
-  border-bottom: 1px solid #707070;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .popularPictures {
@@ -64,7 +68,7 @@ h3 {
     max-width: 336px;
     gap: 12px;
     padding-bottom: 13px;
-    border-bottom: 1px solid #707070;
+    border-bottom: 1px solid #e0e0e0;
   }
 }
 
@@ -80,5 +84,8 @@ h3 {
   }
   .popularListItems {
     max-width: 319px;
+  }
+  h3 {
+    padding-bottom: 24px;
   }
 }

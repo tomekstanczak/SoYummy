@@ -2,25 +2,40 @@
 
 import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
 import AddRecipeForm from "../../components/AddRecipe/AddRecipeForm";
-import FollowUs from "../../components/FollowUS/FollowUs";
+import FollowUs from "../../components/Common/Footer/FollowUs/FollowUs";
 import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
 import styles from "./AddRecipePage.module.css";
 import leaf from "../../assets/images/spinach.png";
+import { useContext, useEffect } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const AddRecipePage = () => {
+  const { isDark, setHeaderTextColor } = useContext(ThemeContext);
+
+  useEffect(() => {
+    setHeaderTextColor("white");
+  }, []);
+
   return (
     <div className={styles.addRecipeContainer}>
       <div className={styles.titleBox}>
-        <MainPageTitle title="Add Recipe" />
+        <MainPageTitle title="Add Recipe" isDark={isDark} />
       </div>
       <div className={styles.formContainer}>
-        <AddRecipeForm />
+        <AddRecipeForm isDark={isDark} />
         <div className={styles.followUsPopularContainer}>
           <div className={styles.followUs}>
-            <FollowUs />
+            <h2
+              className={`${styles.followUsTextStyle} ${
+                isDark ? styles.dark : ""
+              }`}
+            >
+              Follow Us
+            </h2>
+            <FollowUs isDark={isDark} />
           </div>
           <div className={styles.popular}>
-            <PopularRecipe />
+            <PopularRecipe isDark={isDark} />
           </div>
         </div>
       </div>

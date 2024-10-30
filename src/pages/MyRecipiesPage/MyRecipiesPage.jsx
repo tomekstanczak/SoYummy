@@ -1,7 +1,7 @@
-// // Ułożyć podrrzędne komponenty strony (wersja mobilna, tabletowa i desktopowa):
-// // - MainPageTitle - uniwersalny komponent tytułu strony;
-// // - MyRecipesList - komponent z listą własnych przepisów użytkownika;
-// // - Paginator - komponent do przełączania między stronami.
+// Ułożyć podrrzędne komponenty strony (wersja mobilna, tabletowa i desktopowa):
+// - MainPageTitle - uniwersalny komponent tytułu strony;
+// - MyRecipesList - komponent z listą własnych przepisów użytkownika;
+// - Paginator - komponent do przełączania między stronami.
 
 // import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
 // import MyRecipesList from "../../components/MyRecipies/MyRecipiesList";
@@ -47,5 +47,5 @@
 
 // export default MyRecipesPage;
 
-const MyRecipesPage = () => {};
-export default MyRecipesPage;
+// const MyRecipesPage = () => {};
+// export default MyRecipesPage;

@@ -34,6 +34,17 @@
   font-size: 14px;
   color: #000000;
 }
+
+.input.dark,
+.textarea.dark,
+.select.dark {
+  color: #fafafa;
+}
+
+option.dark {
+  background-color: #000000;
+}
+
 .input,
 .textarea {
   margin-bottom: 10px;
@@ -51,10 +62,18 @@
   font-size: 14px;
   color: #00000080;
 }
+
+.categoryFieldDescription.dark,
+.cookingTimeFieldDescription.dark {
+  position: absolute;
+  bottom: 10px;
+  font-size: 14px;
+  color: #fafafa;
+}
 .textarea {
   resize: none;
   text-align: left;
-  line-height: 2.4;
+  line-height: 1.8;
 }
 
 .imageLabel {

@@ -15,7 +15,22 @@
 }
 .followUs {
   display: none;
+  color: #8baa36;
+  padding-left: 16px;
 }
+
+.followUsTextStyle {
+  color: black;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 40px;
+}
+
+.followUsTextStyle.dark {
+  color: #fafafa;
+}
+
 .titleBox {
   padding-left: 16px;
   padding-right: 190px;

@@ -68,16 +68,19 @@ const RecipeIngredientsList = ({ ingredients }) => {
                 />
                 <h3 className={styles.ingredientName}>{ingredient.ttl}</h3>
               </td>
-              <td className={styles.ingredientCell}>
-                <p>{ingredient.measure}</p>
-              </td>
-              <td className={styles.ingredientCell}>
-                <input
-                  type="checkbox"
-                  checked={isInShoppingList[ingredient.id] || false}
-                  onChange={() => handleCheckboxChange(ingredient)}
-                />
-              </td>
+              <div className={styles.ingredientMeasureBox}>
+                <td className={styles.ingredientCell}>
+                  <p>{ingredient.measure}</p>
+                </td>
+                <td className={styles.ingredientCell}>
+                  <input
+                    type="checkbox"
+                    checked={isInShoppingList[ingredient.id] || false}
+                    onChange={() => handleCheckboxChange(ingredient)}
+                    className={styles.ingredientCheckBox}
+                  />
+                </td>
+              </div>
             </tr>
           ))}
         </tbody>

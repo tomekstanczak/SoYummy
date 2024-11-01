@@ -94,6 +94,7 @@ const AddRecipeForm = ({ isDark }) => {
       instructions: preparation,
       time: cookingTime,
       ingredients: ingredients,
+      area: description,
     };
 
     try {

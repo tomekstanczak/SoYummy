@@ -3,49 +3,95 @@
 // - MyRecipesList - komponent z listą własnych przepisów użytkownika;
 // - Paginator - komponent do przełączania między stronami.
 
-// import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
-// import MyRecipesList from "../../components/MyRecipies/MyRecipiesList";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
+import MyRecipesList from "../../components/MyRecipies/MyRecipesList.jsx";
+import { ThemeContext } from "../../context/ThemeContext";
+import styles from "./MyRecipiesPage.module.css";
 
-// const MyRecipesPage = () => {
-//   const [recipes, setRecipes] = useState([]);
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const [totalPages, setTotalPages] = useState(1);
+const MyRecipiesPage = () => {
+  const [myRecipies, setMyRecipies] = useState([]);
+  const { isDark } = useContext(ThemeContext);
 
-//   useEffect(() => {
-//     // Fetch user's recipes from the API or other data source
-//     const fetchRecipes = async () => {
-//       // This is just a placeholder for the actual API call
-//       const response = await fetch(
-//         `https://api.example.com/user/recipes?page=${currentPage}`
-//       );
-//       const data = await response.json();
-//       setRecipes(data.recipes);
-//       setTotalPages(data.totalPages);
-//     };
+  const navigate = useNavigate();
 
-//     fetchRecipes();
-//   }, [currentPage]);
+  useEffect(() => {
+    const fetchRecipies = async () => {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        console.error("Brak tokenu autoryzacyjnego.");
+        return;
+      }
 
-//   const handleRecipeClick = (recipeId) => {
-//     // Navigate to the recipe page
-//     console.log("Recipe clicked:", recipeId);
-//   };
+      try {
+        const response = await axios.get(
+          "https://soyummybe.onrender.com/ownRecipes",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-//   const handlePageChange = (newPage) => {
-//     if (newPage >= 1 && newPage <= totalPages) {
-//       setCurrentPage(newPage);
-//     }
-//   };
+        setMyRecipies(response.data);
+        return;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchRecipies();
+  }, []);
 
-//   return (
-//     <>
-//       <MainPageTitle title={"My recipes"} />
-//       <MyRecipesList />
-//     </>
-//   );
-// };
+  console.log(myRecipies);
 
-// export default MyRecipesPage;
+  const deleteRecipie = async (id) => {
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      console.error("Brak tokenu autoryzacyjnego.");
+      return;
+    }
+    try {
+      const response = await axios.delete(
+        `https://soyummybe.onrender.com/ownRecipes/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
 
-// const MyRecipesPage = () => {};
-// export default MyRecipesPage;
+      if (response.status === 200) {
+        setMyRecipies((prevRecipes) =>
+          prevRecipes.filter((recipe) => recipe._id !== id)
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSeeRecipie = (id) => {
+    navigate(`/recipe/${id}`);
+  };
+
+  return (
+    <div className={styles.recipePageBox}>
+      <div className={styles.recipePageTitleBox}>
+        <MainPageTitle isDark={isDark} title="My recipes" />
+      </div>
+      <MyRecipesList
+        isDark={isDark}
+        myRecipies={myRecipies}
+        deleteRecipie={deleteRecipie}
+        handleSeeRecipie={handleSeeRecipie}
+      />
+    </div>
+  );
+};
+
+export default MyRecipiesPage;

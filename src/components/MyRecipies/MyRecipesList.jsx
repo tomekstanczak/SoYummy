@@ -4,7 +4,12 @@ import bin from "../../../public/icons/bin-svgrepo-com.svg";
 import img from "../../../public/icons/photoCameraVector.svg";
 import imgCamera from "../../../public/icons/photoCamera.svg";
 
-const MyRecipesList = ({ myRecipies, deleteRecipie, handleSeeRecipie }) => {
+const MyRecipesList = ({
+  myRecipies,
+  deleteRecipie,
+  handleSeeRecipie,
+  isDark,
+}) => {
   const handleBinClick = (id) => deleteRecipie(id);
   const handleSeeRecipieButton = (id) => handleSeeRecipie(id);
 
@@ -12,7 +17,10 @@ const MyRecipesList = ({ myRecipies, deleteRecipie, handleSeeRecipie }) => {
     <>
       <ul className={styles.recipesList}>
         {myRecipies.map((recipe) => (
-          <li key={recipe._id} className={styles.recipeMainBox}>
+          <li
+            key={recipe._id}
+            className={`${styles.recipeMainBox} ${isDark ? styles.dark : ""}`}
+          >
             <button
               onClick={() => {
                 handleBinClick(recipe._id);
@@ -28,12 +36,16 @@ const MyRecipesList = ({ myRecipies, deleteRecipie, handleSeeRecipie }) => {
                 <img src={img} className={styles.imgVector} />
                 <img src={imgCamera} className={styles.imgCamera} />
               </div>
-              <div className={styles.recipeTextBox}>
+              <div
+                className={`${styles.recipeTextBox} ${
+                  isDark ? styles.dark : ""
+                }`}
+              >
                 <div>
                   <p className={styles.recipeTite}>{recipe.title}</p>
                   <p className={styles.recipeArea}>{recipe.area}</p>
                 </div>
-                <p className={styles.recipeTime}>{recipe.time}</p>
+                <p className={styles.recipeTime}>{recipe.time} min</p>
               </div>
             </div>
             <button

@@ -13,11 +13,13 @@ import styles from "./MyRecipiesPage.module.css";
 
 const MyRecipiesPage = () => {
   const [myRecipies, setMyRecipies] = useState([]);
-  const { isDark } = useContext(ThemeContext);
+  const { isDark, setHeaderTextColor } = useContext(ThemeContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    setHeaderTextColor("white");
+
     const fetchRecipies = async () => {
       const token = localStorage.getItem("authToken");
       if (!token) {

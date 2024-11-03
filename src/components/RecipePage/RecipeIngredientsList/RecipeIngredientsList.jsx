@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RecipeContext } from "../../../context/RecipeContext";
 import { ThemeContext } from "../../../context/ThemeContext";
 import styles from "./RecipeIngredientsList.module.css";
@@ -25,24 +25,22 @@ const RecipeIngredientsList = ({ ingredients }) => {
     const matchedIngredient = allIngredients.find(
       (item) => item._id === ingredient.id
     );
-
     return {
       ...ingredient,
       ...matchedIngredient,
     };
   });
 
-  const handleCheckboxChange = (ingredient) => {
-    const ingredientId = ingredient.id;
-
+  const handleCheckboxChange = (matchedIngredient) => {
+    const ingredientId = matchedIngredient.id;
     if (isInShoppingList[ingredientId]) {
-      removeFromShoppingList(ingredient._id);
+      removeFromShoppingList(matchedIngredient._id);
       setIsInShoppingList((prevState) => ({
         ...prevState,
         [ingredientId]: false,
       }));
     } else {
-      addToShoppingList(ingredient);
+      addToShoppingList(matchedIngredient);
       setIsInShoppingList((prevState) => ({
         ...prevState,
         [ingredientId]: true,

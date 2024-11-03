@@ -1,106 +1,237 @@
-.container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding: 16px;
-  box-sizing: border-box;
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .container {
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-}
-
-.section {
-  width: 100%;
-  padding-bottom: 100px;
-}
-
-.title {
-  color: black;
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  padding-top: 50px;
-  margin-bottom: 40px;
-}
-
-@media screen and (min-width: 768px) {
-  .title {
-    font-size: 32px;
-    padding-top: 72px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .title {
-    font-size: 44px;
-    padding-top: 50px;
-  }
-}
-
-.list {
+.recipePageBox {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+.recipePageTitleBox {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.recipesList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 18px;
-  margin: 50px 0 40px;
+  padding-bottom: 40px;
 }
 
-.recipeCard {
+.recipeMainBox {
+  position: relative;
+  width: 343px;
+  min-height: 152px;
+  border-radius: 8px;
+  padding: 14px 9px 14px 9px;
+  background-color: white;
+}
+
+.recipeMainBox.dark {
+  background-color: #2a2c36;
+}
+.recipeBox {
+  display: flex;
+  gap: 14px;
+}
+.imgDiv {
+  position: relative;
+  background-color: #8baa36;
+  width: 124px;
+  height: 124px;
+  border-radius: 8px;
+}
+.imgVector {
+  position: absolute;
+  top: 37px;
+  left: 37px;
+  width: 50px;
+  height: 50px;
+}
+.imgCamera {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 50px;
+  left: 50px;
+}
+.recipeTextBox {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ddd;
-  padding: 20px;
+  justify-content: space-between;
+}
+.recipeTite {
+  padding-bottom: 14px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.recipeArea {
+  font-weight: 400;
+  font-size: 8px;
+  max-height: 73px;
+  width: 163px;
+}
+.recipeTime {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.recipeTextBox.dark {
+  color: #fafafa;
+}
+
+.binButton {
+  position: absolute;
+  right: 9px;
+  top: 14px;
+  background-color: transparent;
+  border-radius: 4px;
+  width: 38px;
+  height: 38px;
+  z-index: 1;
+}
+.svgBin,
+.svgUseBin {
+  width: 38px;
+  height: 38px;
+  color: #fafafa;
+  stroke: #fafafa;
+  fill: #fafafa;
+  background-color: #8baa36;
+  border-radius: 8px;
+  padding: 3px;
+}
+.seeRecipeButton {
+  position: absolute;
+  right: 9px;
+  bottom: 14px;
+  width: 87px;
+  height: 27px;
+  background-color: #8baa36;
+  color: #fafafa;
+  padding-bottom: 6px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 5px;
+}
+
+.seeRecipeButtonSpan {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.recipeImg {
   border-radius: 8px;
 }
 
-.recipeImage {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 15px;
+@media screen and (min-width: 768px) {
+  .recipePageTitleBox {
+    width: 100%;
+    padding-left: 40px;
+  }
+  .recipeMainBox {
+    width: 704px;
+    min-height: 288px;
+    padding: 28px 24px 28px 24px;
+  }
+  .imgDiv {
+    width: 228px;
+    height: 232px;
+  }
+  .imgVector {
+    top: 89px;
+    left: 91px;
+  }
+  .imgCamera {
+    top: 102px;
+    left: 104px;
+  }
+  .recipeTite {
+    padding-bottom: 28px;
+    font-size: 24px;
+  }
+  .recipeArea {
+    font-size: 14px;
+    max-height: 149px;
+    width: 404px;
+  }
+  .recipeTime {
+    font-size: 14px;
+  }
+  .binButton {
+    right: 24px;
+    top: 28px;
+    width: 38px;
+    height: 38px;
+  }
+  .seeRecipeButton {
+    right: 24px;
+    bottom: 28px;
+    width: 138px;
+    height: 45px;
+    padding-bottom: 2px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .seeRecipeButtonSpan {
+    font-size: 14px;
+  }
 }
 
-.recipeTitle {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
+@media screen and (min-width: 1440px) {
+  .recipesList {
+    gap: 50px;
+    padding-bottom: 50px;
+  }
+  .recipeMainBox {
+    width: 1240px;
+    min-height: 404px;
+    padding: 40px;
+  }
+  .recipeBox {
+    gap: 54px;
+  }
+  .imgDiv {
+    width: 318px;
+    height: 324px;
+  }
+  .imgVector {
+    top: 139px;
+    left: 130px;
+  }
+  .imgCamera {
+    top: 152px;
+    left: 143px;
+  }
+  .recipeTite {
+    padding-bottom: 40px;
+  }
+  .recipeArea {
+    font-size: 18px;
+    max-height: 221px;
+    width: 806px;
+  }
+  .binButton {
+    right: 40px;
+    top: 40px;
+    width: 38px;
+    height: 38px;
+  }
+  .seeRecipeButton {
+    right: 40px;
+    bottom: 40px;
+    width: 172px;
+    height: 59px;
+    padding-bottom: 2px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 15px;
+  }
 
-.recipeDescription {
-  font-size: 1em;
-  margin-bottom: 20px;
-}
-
-.deleteIcon {
-  cursor: pointer;
-  color: black;
-  font-size: 1.2em;
-  align-self: flex-end;
-  border: none;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-}
-
-.viewRecipeButton {
-  cursor: pointer;
-  color: blue;
-  font-size: 1em;
-  align-self: flex-end;
-  border: none;
-  background: transparent;
-  padding: 10px;
-  margin-top: 10px;
+  .seeRecipeButtonSpan {
+    font-size: 16px;
+  }
 }

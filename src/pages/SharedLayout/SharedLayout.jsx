@@ -1,6 +1,3 @@
-// SharedLayout.js
-
-// Komponent jest renderowany do ścieżki "/". Zawiera Header i Footer i owija zagnieżdżone ścieżki z odpowiadającymi im stronami.
 import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 

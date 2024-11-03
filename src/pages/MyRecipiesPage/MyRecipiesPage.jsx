@@ -1,6 +1,3 @@
-// Ułożyć podrrzędne komponenty strony (wersja mobilna, tabletowa i desktopowa):
-// - MainPageTitle - uniwersalny komponent tytułu strony;
-// - MyRecipesList - komponent z listą własnych przepisów użytkownika;
 // - Paginator - komponent do przełączania między stronami.
 
 import axios from "axios";
@@ -47,8 +44,6 @@ const MyRecipiesPage = () => {
     fetchRecipies();
   }, []);
 
-  console.log(myRecipies);
-
   const deleteRecipie = async (id) => {
     const token = localStorage.getItem("authToken");
     if (!token) {
@@ -65,7 +60,6 @@ const MyRecipiesPage = () => {
           },
         }
       );
-      console.log(response);
 
       if (response.status === 200) {
         setMyRecipies((prevRecipes) =>

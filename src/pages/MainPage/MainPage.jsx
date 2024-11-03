@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ChooseYourBreakfast from "../../components/Main/ChoseYourBreakfast/ChooseYourBreakfasts";
 import Search from "../../components/Main/Search/Search";
 import PreviewCategories from "../../components/Main/PreviewCategories/PreviewCategories";
@@ -10,8 +10,9 @@ import styles from "./MainPage.module.css";
 
 const MainPage = () => {
   const { isDark, setHeaderTextColor } = useContext(ThemeContext);
-
-  setHeaderTextColor("black");
+  useEffect(() => {
+    setHeaderTextColor("black");
+  }, []);
 
   return (
     <>

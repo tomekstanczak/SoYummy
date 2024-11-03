@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./MyRecipesList.module.css";
-import bin from "../../../public/icons/bin-svgrepo-com.svg";
-import img from "../../../public/icons/photoCameraVector.svg";
-import imgCamera from "../../../public/icons/photoCamera.svg";
+import bin from "/icons/bin-svgrepo-com.svg";
+import img from "/icons/photoCameraVector.svg";
+import imgCamera from "/icons/photoCamera.svg";
 
 const MyRecipesList = ({
   myRecipies,

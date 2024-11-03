@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { RecipeContext } from "../../../context/RecipeContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 import styles from "./RecipeIngredientsList.module.css";
 
 const RecipeIngredientsList = ({ ingredients }) => {
@@ -8,6 +9,8 @@ const RecipeIngredientsList = ({ ingredients }) => {
     addToShoppingList,
     removeFromShoppingList,
   } = useContext(RecipeContext);
+
+  const { isDark } = useContext(ThemeContext);
 
   const initialShoppingListState = ingredients.reduce((acc, ingredient) => {
     acc[ingredient.id] = false;
@@ -53,13 +56,18 @@ const RecipeIngredientsList = ({ ingredients }) => {
         <thead>
           <tr className={styles.tableHead}>
             <th>Ingredients</th>
-            <th>Number</th>
+            <th className={styles.thNumber}>Number</th>
             <th>Add to List</th>
           </tr>
         </thead>
         <tbody className={styles.ingredientListBody}>
           {enrichedIngredients.map((ingredient, index) => (
-            <tr key={index} className={styles.ingredientRow}>
+            <tr
+              key={index}
+              className={`${styles.ingredientRow} ${
+                isDark ? styles.dark : ""
+              } `}
+            >
               <td className={styles.ingredientCell}>
                 <img
                   src={ingredient.thb || "path/to/default/image.png"}
@@ -68,19 +76,17 @@ const RecipeIngredientsList = ({ ingredients }) => {
                 />
                 <h3 className={styles.ingredientName}>{ingredient.ttl}</h3>
               </td>
-              <div className={styles.ingredientMeasureBox}>
-                <td className={styles.ingredientCell}>
-                  <p>{ingredient.measure}</p>
-                </td>
-                <td className={styles.ingredientCell}>
-                  <input
-                    type="checkbox"
-                    checked={isInShoppingList[ingredient.id] || false}
-                    onChange={() => handleCheckboxChange(ingredient)}
-                    className={styles.ingredientCheckBox}
-                  />
-                </td>
-              </div>
+              <td
+                className={`${styles.ingredientCell} ${styles.ingredientMeasureBox}`}
+              >
+                <p>{ingredient.measure}</p>
+                <input
+                  type="checkbox"
+                  checked={isInShoppingList[ingredient.id] || false}
+                  onChange={() => handleCheckboxChange(ingredient)}
+                  className={styles.ingredientCheckBox}
+                />
+              </td>
             </tr>
           ))}
         </tbody>

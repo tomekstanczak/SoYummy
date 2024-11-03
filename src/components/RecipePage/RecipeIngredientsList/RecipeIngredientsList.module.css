@@ -75,6 +75,15 @@ td p {
   padding-right: 29px;
 }
 
+.ingredientRow.dark {
+  background-color: #2a2c36;
+}
+
+.thNumber {
+  position: absolute;
+  right: 86px;
+}
+
 @media screen and (min-width: 768px) {
   .ingredientMeasureBox {
     gap: 78px;
@@ -102,6 +111,12 @@ td p {
     width: 35px;
     height: 35px;
     background-color: #8baa36;
+  }
+  .thNumber {
+    right: 167px;
+  }
+  .tableHead {
+    font-size: 18px;
   }
 }
 
@@ -132,5 +147,8 @@ td p {
     width: 35px;
     height: 35px;
     background-color: #8baa36;
+  }
+  .thNumber {
+    right: 246px;
   }
 }

@@ -1,0 +1,16 @@
+.recipePageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.recipePageTitleBox {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 767px) {
+  .recipePageTitleBox {
+    width: 100%;
+    padding-left: 40px;
+  }
+}

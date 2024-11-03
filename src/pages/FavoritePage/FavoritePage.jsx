@@ -1,20 +1,21 @@
-// Ułożyć stronę Favorite (wersja na urządzenia mobilne, tablety i komputery stacjonarne).
-// Na stronie należy wyświetlić galerię z listą przepisów, które zostały zapisane po dodaniu ich przez kliknięcie przycisku AddToFavorite.
-// Na karcie z przepisem należy wyświetlić przycisk usuwania, który usunie przepis z listy na backendzie, a także usunie przepis ze strony Favorite.
-// Po kliknięciu przycisku See recipe, użytkownik powinien zostać przekierowany na stronę RecipePage z opisem odpowiedniego przepisu.
-
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./FavoritePage.module.css";
 import EmptyState from "./EmptyState/EmptyState";
 import axios from "axios";
+import MainPageTitle from "../../components/Common/MainPageTitle/MainPageTitle";
+import { ThemeContext } from "../../context/ThemeContext";
+import bin from "/icons/bin-svgrepo-com.svg";
+import img from "/icons/photoCameraVector.svg";
+import imgCamera from "/icons/photoCamera.svg";
 
 const FavoritePage = () => {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const listRef = useRef(null);
   const navigate = useNavigate();
 
-  // Funkcja do pobierania przepisów z backendu
+  const { isDark } = useContext(ThemeContext);
+
   const fetchFavoriteRecipes = async () => {
     const token = localStorage.getItem("authToken");
     if (token) {
@@ -28,7 +29,7 @@ const FavoritePage = () => {
           Authorization: `Bearer ${token} `,
         },
       }
-    ); // Ścieżka API
+    );
 
     console.log("toto", response);
     if (!response) {
@@ -37,7 +38,6 @@ const FavoritePage = () => {
     return response.data.data.recipes;
   };
 
-  // Funkcja do usuwania przepisu z backendu
   const deleteFavoriteRecipe = async (id) => {
     console.log("id", id);
     const token = localStorage.getItem("authToken");
@@ -60,7 +60,6 @@ const FavoritePage = () => {
   };
 
   useEffect(() => {
-    // Pobieranie danych z backendu
     const getFavoriteRecipes = async () => {
       try {
         const data = await fetchFavoriteRecipes();
@@ -77,7 +76,6 @@ const FavoritePage = () => {
   const onDeleteHandler = async (id) => {
     try {
       await deleteFavoriteRecipe(id);
-      // Aktualizowanie stanu po usunięciu
       setFavoriteRecipes(favoriteRecipes.filter((recipe) => recipe._id !== id));
     } catch (error) {
       console.error(error);
@@ -85,42 +83,83 @@ const FavoritePage = () => {
   };
 
   const viewRecipeHandler = (id) => {
-    navigate(`https://soyummybe.onrender.com/recipes/recipe/${id}`); // Przekierowanie do strony przepisu
+    navigate(`/recipe/${id}`);
   };
 
   return (
-    <section className={`${styles.section} ${styles.container}`}>
-      <div className={styles.title}>Favorites</div>
+    <div className={styles.recipePageBox}>
+      <div className={styles.recipePageTitleBox}>
+        <MainPageTitle isDark={isDark} title="Favorites" />
+      </div>
       {favoriteRecipes.length === 0 ? (
         <EmptyState />
       ) : (
         <div className={styles.list} ref={listRef}>
-          {favoriteRecipes.map((recipe) => (
-            <div className={styles.recipeCard} key={recipe._id}>
-              <img
-                src={recipe.thumb}
-                alt={recipe.title}
-                className={styles.recipeImage}
-              />
-              <h3 className={styles.recipeTitle}>{recipe.title}</h3>
-              <p className={styles.recipeDescription}>{recipe.description}</p>
-              <button
-                className={styles.deleteIcon}
-                onClick={() => onDeleteHandler(recipe._id)}
+          <ul className={styles.recipesList}>
+            {favoriteRecipes.map((recipe) => (
+              <li
+                key={recipe._id}
+                className={`${styles.recipeMainBox} ${
+                  isDark ? styles.dark : ""
+                }`}
               >
-                🗑️
-              </button>
-              <button
-                className={styles.viewRecipeButton}
-                onClick={() => viewRecipeHandler(recipe._id)}
-              >
-                See Recipe
-              </button>
-            </div>
-          ))}
+                <button
+                  onClick={() => {
+                    onDeleteHandler(recipe._id);
+                  }}
+                  className={styles.binButton}
+                >
+                  <svg className={styles.svgBin}>
+                    <use href={`${bin}#bin`} className={styles.svgUseBin}></use>
+                  </svg>
+                </button>
+                <div className={styles.recipeBox}>
+                  <div className={styles.imgDiv}>
+                    {recipe.preview ? (
+                      <img
+                        src={recipe.preview}
+                        alt="Recipe preview"
+                        className={styles.recipeImg}
+                      />
+                    ) : (
+                      <div>
+                        <img
+                          src={img}
+                          className={styles.imgVector}
+                          alt="Default vector"
+                        />
+                        <img
+                          src={imgCamera}
+                          className={styles.imgCamera}
+                          alt="Camera icon"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div
+                    className={`${styles.recipeTextBox} ${
+                      isDark ? styles.dark : ""
+                    }`}
+                  >
+                    <div>
+                      <p className={styles.recipeTite}>{recipe.title}</p>
+                      <p className={styles.recipeArea}>{recipe.description}</p>
+                    </div>
+                    <p className={styles.recipeTime}>{recipe.time} min</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => viewRecipeHandler(recipe._id)}
+                  className={styles.seeRecipeButton}
+                >
+                  <span className={styles.seeRecipeButtonSpan}>See recipe</span>
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
-    </section>
+    </div>
   );
 };
 

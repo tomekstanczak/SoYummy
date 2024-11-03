@@ -104,7 +104,8 @@ export const RecipeProvider = ({ children }) => {
       const response = await axios.get(
         "https://soyummybe.onrender.com/shopping-list/shopping-list/"
       );
-      setShoppingList(response.data.data.shoppingList);
+      setShoppingList(response.data.data.products);
+      console.log(response);
     } catch (error) {
       console.error("Error fetching shopping list:", error);
     }
@@ -120,9 +121,9 @@ export const RecipeProvider = ({ children }) => {
         `https://soyummybe.onrender.com/shopping-list/shopping-list/add`,
         {
           ttl: ingredient.ttl,
-          desc: ingredient.desc || "",
-          t: ingredient.t || "",
-          thb: ingredient.thb || "",
+          desc: ingredient.desc,
+          t: ingredient.measure,
+          thb: ingredient.thb,
         }
       );
       await fetchShoppingList();

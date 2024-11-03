@@ -4,12 +4,11 @@ import IngredientItem from "../IngredientItem/IngredientItem";
 import styles from "./IngredientsShoppingList.module.css";
 
 const IngredientsShoppingList = () => {
-  const { shoppingList, fetchShoppingList, removeFromShoppingList } =
-    useContext(RecipeContext);
+  const { shoppingList, removeFromShoppingList } = useContext(RecipeContext);
 
   useEffect(() => {
-    fetchShoppingList();
-  }, [fetchShoppingList]);
+    console.log(shoppingList);
+  }, []);
 
   const handleRemove = (id) => {
     removeFromShoppingList(id);
@@ -28,7 +27,7 @@ const IngredientsShoppingList = () => {
         <tbody>
           {shoppingList.map((ingredient) => (
             <IngredientItem
-              key={ingredient.id}
+              key={ingredient}
               ingredient={ingredient}
               onRemove={handleRemove}
             />

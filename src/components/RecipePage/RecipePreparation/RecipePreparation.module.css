@@ -1,6 +1,6 @@
 .preparation {
   padding: 20px 16px 100px 16px;
-  max-width: 375px;
+  min-width: 375px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,16 +15,9 @@
   margin-bottom: 24px;
   width: 100%;
 }
-.preparationList {
-  /* display: flex;
-  flex-direction: column;
-  gap: 14px; */
-}
 
 .preparationStep {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   gap: 14px;
   margin-bottom: 14px;
   font-size: 12px;
@@ -48,4 +41,39 @@
   border-radius: 8px;
   background-color: wheat;
   margin-top: 26px;
+}
+
+.preparation.dark {
+  color: #fafafa;
+}
+
+@media screen and (min-width: 768px) {
+  .preparation {
+    padding: 20px 16px 100px 16px;
+    min-width: 704px;
+    width: 100%;
+  }
+
+  .preparationTitle {
+    margin-bottom: 34px;
+  }
+
+  .preparationStep {
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  .preparationImg {
+    width: 433px;
+    height: 332px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .preparation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+  }
 }

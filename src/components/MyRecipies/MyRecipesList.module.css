@@ -1,13 +1,3 @@
-.recipePageBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.recipePageTitleBox {
-  display: flex;
-  justify-content: flex-start;
-}
-
 .recipesList {
   display: flex;
   flex-direction: column;
@@ -119,15 +109,7 @@
   font-weight: 400;
 }
 
-.recipeImg {
-  border-radius: 8px;
-}
-
 @media screen and (min-width: 768px) {
-  .recipePageTitleBox {
-    width: 100%;
-    padding-left: 40px;
-  }
   .recipeMainBox {
     width: 704px;
     min-height: 288px;

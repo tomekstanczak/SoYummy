@@ -7,18 +7,18 @@ const SearchedRecipesList = ({ recipes }) => {
 
   if (!recipes) {
     return (
-      <>
+      <div className={styles.recipesList}>
         <img
           className={styles.searchPageImg}
           src={noResultsImg}
           alt="vegetables"
         />
         <div className={styles.noResults}>Enter query</div>
-      </>
+      </div>
     );
   } else if (recipes.length === 0) {
     return (
-      <>
+      <div className={styles.recipesList}>
         <img
           className={styles.searchPageImg}
           src={noResultsImg}
@@ -27,7 +27,7 @@ const SearchedRecipesList = ({ recipes }) => {
         <div className={styles.noResults}>
           Try looking for something else...
         </div>
-      </>
+      </div>
     );
   }
 

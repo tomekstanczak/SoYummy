@@ -6,10 +6,6 @@ import styles from "./IngredientsShoppingList.module.css";
 const IngredientsShoppingList = () => {
   const { shoppingList, removeFromShoppingList } = useContext(RecipeContext);
 
-  useEffect(() => {
-    console.log(shoppingList);
-  }, []);
-
   const handleRemove = (id) => {
     removeFromShoppingList(id);
   };

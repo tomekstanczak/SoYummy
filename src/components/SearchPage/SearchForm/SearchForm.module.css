@@ -1,0 +1,83 @@
+.searchForm {
+  position: relative;
+  width: 293px;
+  height: 53px;
+}
+
+.inputSearch {
+  width: 293px;
+  height: 53px;
+  padding-left: 32px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 15px;
+  font-size: 12px;
+  border: 1px solid #f0f0f0;
+}
+
+.inputSearch:focus,
+.inputSearch:hover {
+  outline: none;
+}
+
+.buttonSearch {
+  position: absolute;
+  right: 0px;
+  width: 113px;
+  height: 53px;
+  background-color: #8baa36;
+  color: #fafafa;
+  font-size: 14px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 15px;
+}
+
+.buttonSearch:focus,
+.buttonSearch:hover {
+  font-weight: 550;
+  border: 1px solid #718a2b;
+}
+
+@media screen and (min-width: 768px) {
+  .searchForm {
+    width: 362px;
+    height: 57px;
+  }
+  .inputSearch {
+    width: 362px;
+    height: 57px;
+    font-size: 14px;
+  }
+  .buttonSearch {
+    width: 167px;
+    height: 57px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .searchForm {
+    width: 510px;
+    height: 71px;
+  }
+  .inputSearch {
+    width: 510px;
+    height: 71px;
+    font-size: 16px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 20px;
+  }
+  .buttonSearch {
+    width: 161px;
+    height: 71px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 20px;
+  }
+}

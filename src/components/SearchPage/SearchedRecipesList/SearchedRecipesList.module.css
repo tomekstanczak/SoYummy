@@ -29,3 +29,29 @@
   width: 208px;
   height: 133px;
 }
+
+@media screen and (min-width: 768px) {
+  .searchPageImg {
+    width: 350px;
+    height: 225px;
+    margin-bottom: 32px;
+  }
+
+  .noResults {
+    font-size: 24px;
+  }
+
+  .recipesList {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .recipesList {
+    max-width: 1500px;
+  }
+}

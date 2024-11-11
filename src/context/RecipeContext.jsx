@@ -105,7 +105,6 @@ export const RecipeProvider = ({ children }) => {
         "https://soyummybe.onrender.com/shopping-list/shopping-list/"
       );
       setShoppingList(response.data.data.products);
-      console.log(response);
     } catch (error) {
       console.error("Error fetching shopping list:", error);
     }

@@ -31,7 +31,6 @@ const FavoritePage = () => {
       }
     );
 
-    console.log("toto", response);
     if (!response) {
       throw new Error("Failed to fetch favorite recipes");
     }
@@ -39,7 +38,6 @@ const FavoritePage = () => {
   };
 
   const deleteFavoriteRecipe = async (id) => {
-    console.log("id", id);
     const token = localStorage.getItem("authToken");
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -63,7 +61,6 @@ const FavoritePage = () => {
     const getFavoriteRecipes = async () => {
       try {
         const data = await fetchFavoriteRecipes();
-        console.log("get", data);
         setFavoriteRecipes(data);
       } catch (error) {
         console.error(error);

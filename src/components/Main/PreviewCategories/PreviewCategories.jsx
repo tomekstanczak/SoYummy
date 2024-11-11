@@ -35,7 +35,6 @@ const PreviewCategories = () => {
         }
 
         setCategoryData(fetchedData);
-        console.log("Updated Category Data: ", fetchedData);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }

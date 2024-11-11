@@ -19,8 +19,6 @@ const ShoppingListPage = () => {
     if (shoppingList.length === 0) {
       fetchShoppingList();
     }
-
-    console.log(shoppingList);
   }, [fetchShoppingList]);
 
   return (

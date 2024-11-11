@@ -18,9 +18,9 @@ const SearchForm = ({ onSearch }) => {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Search for recipes..."
-        className={styles.input}
+        className={styles.inputSearch}
       />
-      <button type="submit" className={styles.button}>
+      <button type="submit" className={styles.buttonSearch}>
         Search
       </button>
     </form>

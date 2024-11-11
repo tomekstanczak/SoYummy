@@ -32,7 +32,7 @@ export const SearchProvider = ({ children }) => {
   ) => {
     try {
       const response = await axios.get(
-        `https://soyummybe.onrender.com/ingredients/ingredients?keyword=${ingredient}`
+        `https://soyummybe.onrender.com/ingredients?keyword=${ingredient}`
       );
       const ingredientData = response.data.data.ingredients;
 

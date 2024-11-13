@@ -32,13 +32,10 @@ export const SearchProvider = ({ children }) => {
   ) => {
     try {
       const response = await axios.get(
-        `https://soyummybe.onrender.com/ingredients?keyword=${ingredient}`
+        `https://soyummybe.onrender.com/ingredients/ingredients?keyword=${ingredient}`
       );
-      const ingredientData = response.data.data.ingredients;
+      const recipeList = response.data.data.recipes;
 
-      const recipeList = ingredientData.flatMap(
-        (ingredient) => ingredient.recipes
-      );
       setRecipes(recipeList);
       setSearchError(null);
       setPagination({ currentPage, recipesPerPage });
